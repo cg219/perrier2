@@ -1,0 +1,92 @@
+@green : #007833;
+@sidebargrey : #77787B;
+@times : Times "Times New Roman" serif;
+
+
+.single{
+	overflow: hidden;
+	width: 720px;
+
+	.breadcrumbs{
+		.kreate.gradient(#429D67, #1D7A36);
+		height: 30px;
+		width: 720px;
+		line-height: 30px;
+		color: white;
+		padding-left: 10px;
+	}
+
+	img{
+
+		&.hero{
+			width: 700px;
+		}
+	}
+
+	.metadata{
+		list-style-type: none;
+		padding-left: 0;
+		margin-top: 10px;
+
+		li{
+			display: inline-block;
+			margin-right: 10px;
+			padding-top: 0;
+			height: 16px;
+
+			&.categories{
+				font-size: 16px;
+				line-height: 16px;
+				height: 16px;
+				color: @green;
+			}
+
+			&.date{
+				font-size: 16px;
+				font-family: @times;
+				font-style: italic;
+				line-height: 16px;
+				height: 16px;
+				color: @sidebargrey;
+			}
+
+			&.divider{
+				background: @sidebargrey;
+				width: 1px;
+				height: 15px;
+			}
+
+			&.addthis{
+				width: 350px;
+				height: 16px;
+				float: right;
+			}
+		}
+	}
+
+	.title{
+		font-size: 50px;
+		font-family: @times;
+	}
+
+	.author{
+		margin-top: 30px;
+	}
+
+	.content{
+		border-top: 2px solid @green;
+		padding-top: 30px;
+	}
+
+	.tags{
+		color: black;
+		border-bottom: 1px dotted black;
+		border-top: 1px dotted black;
+		font-size: 14px;
+		line-height: 40px;
+
+		a{
+			color: black;
+		}
+	}
+}

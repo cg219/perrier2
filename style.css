@@ -1,0 +1,242 @@
+/*
+Theme Name: Perrier 2013
+Theme URI: http://societeperrier.com
+Description: New Custom Theme
+Author: Clemente Gomez
+Author URI: http://imkreative.com
+Version: 1.0
+License: GNU General Public License
+*/body {
+  width: 100%;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  font-family: "Helvetica Neue" Helvetica Arial serif;
+}
+.wrap {
+  width: 980px;
+  margin-right: auto;
+  margin-left: auto;
+}
+#topNavLogo {
+  padding-right: 0px;
+}
+#topNav {
+  font-size: 13px;
+  padding-top: 25px;
+}
+#topNav .dropdown-toggle {
+  color: white !important;
+}
+#topNav .divider {
+  background: #77787b;
+  width: 1px;
+  height: 50px;
+}
+#topNav .socialicon {
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-top: 10px;
+}
+#topNav .socialicon.first {
+  padding-left: 10px;
+}
+#topNav .socialicon.search {
+  padding-top: 20px;
+  padding-right: 0;
+  padding-left: 14px;
+}
+#wrapper {
+  margin-top: 50px;
+}
+#main {
+  width: 720px;
+  float: right;
+}
+#sidebar {
+  float: left;
+  width: 240px;
+}
+#sidebar .widget {
+  margin-bottom: 25px;
+}
+#sidebar .widget .title {
+  background-color: #429d67;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#429d67), to(#1d7a36));
+  background-image: -webkit-linear-gradient(top, #429d67, #1d7a36);
+  background-image: -moz-linear-gradient(top, #429d67, #1d7a36);
+  background-image: -o-linear-gradient(top, #429d67, #1d7a36);
+  background-image: linear-gradient(to bottom, #429d67, #1d7a36);
+  height: 30px;
+  line-height: 30px;
+  color: white;
+  padding-left: 10px;
+  margin: 0;
+}
+#sidebar .widget ul {
+  list-style-type: none;
+  padding: 0;
+}
+#sidebar .widget ul li {
+  height: 25px;
+  height: 100%;
+  border-bottom: 1px solid #dedfe0;
+}
+#sidebar .widget ul li a {
+  line-height: 25px;
+  color: #77787b;
+  font-weight: 200;
+  height: 100%;
+  width: 100%;
+  display: block;
+  padding-left: 10px;
+}
+#sidebar .widget ul li a:hover {
+  text-decoration: none;
+}
+.article {
+  margin-bottom: 50px;
+}
+.article.media img {
+  width: 225px;
+  height: 150px;
+  background: url("assets/images/image-bg.png");
+}
+.article.media h5 {
+  margin-top: 0;
+}
+.article.media h3 {
+  margin-top: 15px;
+}
+.article.media a {
+  color: #007833;
+  text-transform: uppercase;
+}
+.article h2 {
+  color: #007833;
+  font-size: 22px;
+}
+.article h3 {
+  color: #007833;
+  font-size: 17px;
+}
+.article h5 {
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.article p {
+  font-size: 14px;
+  line-height: 21px;
+}
+.article a {
+  color: #007833;
+  text-transform: uppercase;
+}
+.featured img {
+  width: 720px;
+  height: 480px;
+  background: url("assets/images/image-bg.png");
+}
+.feature {
+  overflow: hidden;
+}
+.feature img.hero {
+  width: 700px;
+}
+.single {
+  overflow: hidden;
+  width: 720px;
+}
+.single .breadcrumbs {
+  background-color: #429d67;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#429d67), to(#1d7a36));
+  background-image: -webkit-linear-gradient(top, #429d67, #1d7a36);
+  background-image: -moz-linear-gradient(top, #429d67, #1d7a36);
+  background-image: -o-linear-gradient(top, #429d67, #1d7a36);
+  background-image: linear-gradient(to bottom, #429d67, #1d7a36);
+  height: 30px;
+  width: 720px;
+  line-height: 30px;
+  color: white;
+  padding-left: 10px;
+}
+.single img.hero {
+  width: 700px;
+}
+.single .metadata {
+  list-style-type: none;
+  padding-left: 0;
+  margin-top: 10px;
+}
+.single .metadata li {
+  display: inline-block;
+  margin-right: 10px;
+  padding-top: 0;
+  height: 16px;
+}
+.single .metadata li.categories {
+  font-size: 16px;
+  line-height: 16px;
+  height: 16px;
+  color: #007833;
+}
+.single .metadata li.date {
+  font-size: 16px;
+  font-family: Times "Times New Roman" serif;
+  font-style: italic;
+  line-height: 16px;
+  height: 16px;
+  color: #77787b;
+}
+.single .metadata li.divider {
+  background: #77787b;
+  width: 1px;
+  height: 15px;
+}
+.single .metadata li.addthis {
+  width: 350px;
+  height: 16px;
+  float: right;
+}
+.single .title {
+  font-size: 50px;
+  font-family: Times "Times New Roman" serif;
+}
+.single .author {
+  margin-top: 30px;
+}
+.single .content {
+  border-top: 2px solid #007833;
+  padding-top: 30px;
+}
+.single .tags {
+  color: black;
+  border-bottom: 1px dotted black;
+  border-top: 1px dotted black;
+  font-size: 14px;
+  line-height: 40px;
+}
+.single .tags a {
+  color: black;
+}
+.slider {
+  width: 720px;
+  height: 480px;
+  overflow: hidden;
+  background: url("assets/images/image-bg.png");
+}
+.slider .slider_images {
+  width: 3000px;
+  height: 100%;
+  line-height: 480px;
+}
+.slider .slider_images img {
+  display: inline-block;
+  vertical-align: middle;
+}

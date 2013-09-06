@@ -1,0 +1,7 @@
+<script src="<? echo theme_uri; ?>/js/jquery.min.js"></script>
+	<script src="<? echo theme_uri; ?>/js/bootstrap.min.js"></script>
+	<script src="<? echo theme_uri; ?>/js/main.kreate.js"></script>
+	<script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+	<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4f79efcc72cb6d9e"></script>
+</body>
+</html>
