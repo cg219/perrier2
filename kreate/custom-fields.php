@@ -58,9 +58,21 @@
 					"type" => "text"
 				),
 				array(
-					"name" => "Address:",
-					"desc" => "The address",
-					"id" => $prefix . "hotspot_address",
+					"name" => "Address Line 1:",
+					"desc" => "The address 1",
+					"id" => $prefix . "hotspot_address1",
+					"type" => "text"
+				),
+				array(
+					"name" => "Address Line 2:",
+					"desc" => "The address 2",
+					"id" => $prefix . "hotspot_address2",
+					"type" => "text"
+				),
+				array(
+					"name" => "Country:",
+					"desc" => "The country",
+					"id" => $prefix . "hotspot_country",
 					"type" => "text"
 				),
 				array(
@@ -216,6 +228,34 @@
 
 		return $boxes;
 	}
+
+	// function general_metabox_kreate( array $boxes ){
+	// 	$prefix = "_perrier2_";
+
+	// 	$boxes[] = array(
+	// 		"id" => "general_metabox",
+	// 		"title" => "Slider Settings",
+	// 		"pages" => array("post"),
+	// 		"context" => "normal",
+	// 		"priority" => "high",
+	// 		"show_names" => true,
+	// 		"fields" => array(
+	// 			array(
+	// 				"name" => "Image IDs",
+	// 				"desc" => "List Image ID's seperated by commas.",
+	// 				"id" => $prefix . "slider_ids",
+	// 				"type" => "text"
+	// 			),
+	// 			array(
+	// 				"name" => "Use Slider as Feature",
+	// 				"id" => $prefix . "slider_as_feature",
+	// 				"type" => "checkbox"
+	// 			)
+	// 		)
+	// 	);
+
+	// 	return $boxes;
+	// }
 
 	function init_metaboxes(){
 		if( !class_exists("cmb_Meta_Box") ){

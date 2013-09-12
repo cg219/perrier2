@@ -1,10 +1,9 @@
 @green : #007833;
 @sidebargrey : #77787B;
 @times : Times "Times New Roman" serif;
-@helvetica : "Helvetica Neue" Helvetica Arial serif;
 
 
-.single{
+.page{
 	overflow: hidden;
 	width: 720px;
 	padding-left: 0;
@@ -37,8 +36,6 @@
 
 		&.hero{
 			width: 720px;
-			height: 480px;
-			background: url("assets/images/image-bg.png");
 		}
 	}
 
@@ -132,62 +129,6 @@
 
 		a{
 			color: black;
-		}
-	}
-
-	&.hotspot{
-		position: relative;
-
-		.title{
-			font-family: @helvetica;
-		}
-
-		.author{
-			margin-top: 5px;
-		}
-
-		.preferred{
-			position: absolute;
-			top: 394px;
-			width: 129px !important;
-			height: 86px !important;
-		}
-
-		.hotspotContent{
-			overflow: hidden;
-			width: 720px;
-			border-top: 2px solid @green;
-
-			.content{
-				width: 500px;
-				border: none;
-			}
-
-			.data{
-				background: url("assets/images/data-border.png");
-				width: 164px;
-				height: 167px;
-
-				h6{
-					color: white;
-					background: @green;
-					width: 164px;
-					margin-top: 0;
-					padding: 2px 0 2px 5px;
-				}
-
-				p{
-					color: @green;
-					padding-left: 5px;
-					font-size: 14px;
-					margin: 0;
-					line-height: 21px;
-
-					&#phone, &#web{
-						padding-top: 8px;
-					}
-				}
-			}
 		}
 	}
 }

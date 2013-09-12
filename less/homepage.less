@@ -23,6 +23,34 @@
 			color: @green;
 			text-transform: uppercase;
 		}
+
+		&.hotspot{
+			position: relative;
+
+			.preferred{
+				position: absolute;
+				bottom: 0px;
+				width: 129px !important;
+				height: 86px !important;
+			}
+		}
+	}
+
+	&.two-up{
+
+		float: left;
+		width: 345px !important;
+		margin-top: 0 !important;
+
+		&:first-child{
+			margin-right: 25px;
+		}
+
+		img{
+			width: 345px;
+			height: 230px;
+			background: url("assets/images/image-bg.png");
+		}
 	}
 
 	h2{
@@ -48,7 +76,7 @@
 
 	a{
 		color: @green;
-		text-transform: uppercase;
+		// text-transform: uppercase;
 	}
 }
 
@@ -58,4 +86,10 @@
 		height: 480px;
 		background: url("assets/images/image-bg.png");
 	}
+}
+
+.two-up-pair{
+	overflow: hidden;
+	width: 720px;
+	margin-bottom: 0;
 }

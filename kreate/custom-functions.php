@@ -25,15 +25,40 @@
 
 	function make_slider_markup( array $images ){
 		$length = count($images);
-		$markup .= "<div class='slider' data-amount='$length'><div class='slider_images'>";
+		$arrows .= "<button type='button' class='prev'></button><button type='button' class='next'></button>";
+		$markup .= "<div class='slider' data-amount='$length'>$arrows<div class='slider_images'>";
 
 		foreach($images as $image){
 			$url = $image["url"];
 			$crop = wp_get_attachment_image($image["id"], array(720,480));
-			$img .= "<img data-image='$url' " . substr($crop, 5, strlen($crop) - 5);
+			$img .= "<div class='slide_image_holder'><img data-image='$url' " . substr($crop, 5, strlen($crop) - 5) . "</div>";
 		}
 		$markup .= $img . "</div></div>";
 
 		return $markup;
 	}
+
+	// function get_post_terms(){
+		
+	// }
+
+	// function addDefaultTerms(){
+	// 	$country = get_option("plugin_options")["country"];
+	// 	$city = get_option("plugin_options")["city"];
+
+	// 	$countryExists = term_exists($country, "country");
+
+	// 	echo $countryExists;
+	// 	if( $countryExists == 0 || $countryExists == null){
+	// 		wp_insert_term( $country, "country", array(
+	// 			"slug" => strtolower($country),
+	// 			"description" => "Country",
+	// 			"parent" => 0
+	// 		));
+
+	// 		echo "Added";
+	// 	}
+	// }
+
+	// add_action("after_setup_theme", addDefaultTerms);
 ?>

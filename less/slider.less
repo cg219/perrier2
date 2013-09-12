@@ -3,15 +3,42 @@
 	height: 480px;
 	overflow: hidden;
 	background: url("assets/images/image-bg.png");
+	position: relative;
 
 	.slider_images{
 		width: 3000px;
-		height: 100%;
-		line-height: 480px;
 
-		img{
+		.slide_image_holder{
+			line-height: 480px;
+			height: 480px;
+			width: 720px;
 			display: inline-block;
-			vertical-align: middle;
+
+			img{
+				display: inline-block;
+				vertical-align: middle;
+			}
+		}
+	}
+
+	button{
+		position: absolute;
+		height: 45px;
+		width: 30px;
+		background: #232323;
+		border: none;
+		top: 50%;
+		background-image: url("assets/images/arrows.png");
+		background-repeat: no-repeat;
+
+		&.prev{
+			left: 0;
+		}
+
+		&.next{
+			right: 0;
+			background-position: -30px 0;
+			background-position-x: -30px;
 		}
 	}
 }

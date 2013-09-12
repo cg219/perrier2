@@ -11,6 +11,14 @@ h1, h2, h3, h4, h5, h6, p{
 	font-family: "Helvetica Neue" Helvetica Arial serif;
 }
 
+input{
+	border-radius: 0 !important;
+}
+
+.preferred{
+	background: transparent !important;
+}
+
 .wrap{
 	width: 980px;
 	margin-right: auto;
@@ -19,17 +27,24 @@ h1, h2, h3, h4, h5, h6, p{
 
 #topNavLogo{
 	padding-right: 0px;
+	padding-top: 10px;
+	padding-bottom: 0;
 }
 
 #topNav{
+	font-size: 13px;
+	padding-top: 10px;
+
 	.dropdown-toggle{
 		color: white !important;
 	}
+
 	.divider{
 		background: @sidebargrey;
 		width: 1px;
 		height: 50px;
 	}
+
 	.socialicon{
 		padding-left: 4px;
 		padding-right: 4px;
@@ -45,8 +60,154 @@ h1, h2, h3, h4, h5, h6, p{
 			padding-left: 14px;
 		}
 	}
-	font-size: 13px;
-	padding-top: 25px;
+
+	#nightlifeLink{
+		font-size: 15px;
+		font-style: italic;
+	}
+	
+	#searchForm{
+		padding: 10px 15px;
+		width: 245px;
+	}
+
+	#newsLetter{
+
+		#newsletterForm{
+			width: 500px;
+			padding: 10px 15px;
+
+			button{
+				.kreate.gradient(#429D67, #1D7A36);
+				border: none;
+				margin-left: 15px;
+				border-radius: 0;
+			}
+
+			select{
+				border-radius: 0;
+			}
+
+			.col-lg-2{
+				padding: 0 1px;
+			}
+
+			.row{
+				margin-top: 10px;
+			}
+
+			#country{
+				padding-top: 5px;
+			}
+		}
+	}
+
+	#aboutDropdown{
+		width: 780px;
+		height: 160px;
+		padding-right: 5px;
+		padding-left: 5px;
+
+		img{
+			padding-top: 15px;
+			padding-left: 40px;
+		}
+
+		h5{
+			font-size: 12px;
+			text-transform: uppercase;
+			margin-bottom: 3px;
+		}
+
+		p{
+			font-size: 11px;
+
+			&#copy{
+				padding-top: 10px;
+				font-size: 7px;
+			}
+		}
+
+		#aboutLinks{
+			list-style-type: none;
+
+			li{
+				float: left;
+				padding-right: 15px;
+
+				:first-child{
+					padding-left: 0;
+				}
+
+				a{
+					font-size: 13px;
+					font-weight: bold;
+					color: @green;
+					background-color: transparent;
+				}
+			}
+		}
+	}
+	
+}
+
+#hotspot-navbar{
+	.kreate.gradient(#429D67, #1D7A36);
+	height: 30px;
+	width: 720px;
+	padding-left: 10px;
+	position: relative;
+
+	h5{
+		margin-top: 0px;
+		padding-top: 7px;
+		text-transform: uppercase;;
+		color: white;
+	}
+
+	.goButton{
+		position: absolute;
+		right: 15px;
+		top: 5px;
+		color: white;
+	}
+
+	.dropdown{
+		position: absolute;
+		right: 30px;
+		top: 5px;
+
+		#hotspot-toggle{
+			color: white;
+			width: 145px;
+			display: block;
+		}
+
+		.dropdown-menu{
+			border-radius: 0;
+			margin-top: 5px;
+
+			li{
+				a{
+					:hover{
+						.kreate.gradient(#429D67, #1D7A36);
+					}
+				}
+
+				:hover{
+					.kreate.gradient(#429D67, #1D7A36);
+				}
+
+				&.selected{
+					.kreate.gradient(#429D67, #1D7A36);
+
+					a{
+						color: white;
+					}
+				}
+			}
+		}
+	}
 }
 
 #wrapper{
@@ -61,26 +222,50 @@ h1, h2, h3, h4, h5, h6, p{
 #sidebar{
 	float: left;
 	width: 240px;
+	position: relative;
 
 	.widget{
 		margin-bottom: 25px;
+		position: relative;
 
 		.title{
 			.kreate.gradient(#429D67, #1D7A36);
 			height: 30px;
+			width: 210px;
 			line-height: 30px;
 			color: white;
 			padding-left: 10px;
 			margin: 0;
+			text-transform: uppercase;
+			position: absolute;
 		}
 
 		ul{
 			list-style-type: none;
 			padding: 0;
+			position: relative;
+			padding-top: 30px;
 
 			.rightMenu{
-				// float: right;
-				// position: relative;
+				position: relative;
+				left: 160px;
+				bottom: 30px;
+
+				li{
+					a{
+						color: black;
+
+						&:hover{
+							text-decoration: none;
+							color: white;
+							.kreate.gradient(#429D67, #1D7A36);
+						}
+					}
+
+					&:hover{
+						.kreate.gradient(#429D67, #1D7A36);
+					}
+				}
 			}
 
 			li{
@@ -99,7 +284,49 @@ h1, h2, h3, h4, h5, h6, p{
 
 					&:hover{
 						text-decoration: none;
+						color: white;
 					}
+				}
+
+				.right-caret {
+				    margin-left:20px;
+				    position: absolute;
+				    right: 5%;
+				    top: 35%;
+				}
+
+				.right-caret:before {
+				    content: ' ';
+					height: 0;
+					position: absolute;
+					width: 0;
+					border: 4px solid transparent;
+					border-left-color: #CCCCCC;
+				}
+
+				&:hover{
+					.kreate.gradient(#429D67, #1D7A36);
+
+					.right-caret:before {
+					    content: ' ';
+						height: 0;
+						position: absolute;
+						width: 0;
+						border: 4px solid transparent;
+						border-left-color: white;
+					}
+				}
+
+				&.open{
+					.kreate.gradient(#D1D3D4, #77787B);
+
+					& >a{
+						color: white;
+					}
+				}
+
+				ul{
+					padding-top: 0;
 				}
 			}
 		}

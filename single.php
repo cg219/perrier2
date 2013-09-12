@@ -10,7 +10,6 @@
 	</div>
 	<div class="div wrap" id="wrapper">
 		<div class="container single" id="main">
-			<ol class="breadcrumbs"></ol>
 			<?
 				if(have_posts()): while(have_posts()): the_post();
 
@@ -23,6 +22,29 @@
 				}
 
 				$postID = $post->ID;
+
+				$country = wp_get_post_terms($postID, "country");
+				$city = wp_get_post_terms($postID, "city");
+
+			?>
+			<ol class="breadcrumb">
+				<li><a href="/">GLOBAL HOME</a></li>
+				<? if($country) :?>
+				<li><a href="<? echo get_term_link($country[0]->slug, "country"); ?>"><? echo $country[0]->name; ?></a></li>
+				<? 
+					endif;
+					if($city) :
+				?>
+				<li><a href="<? echo get_term_link($city[0]->slug, "city"); ?>"><? echo $city[0]->name; ?></a></li>
+				<? 
+					endif; 
+					if($cats[0]) :
+				?>
+				<li><a href="<? echo get_term_link($cats[0], "special-post-type"); ?>"><? echo $cats[0] ?></a></li>
+				<? endif; ?>
+				<!-- <li><a href="#"><? the_title(); ?></a></li> -->
+			</ol>
+			<?
 				if($isFeature) :
 			?>
 			<div class="feature single">
@@ -35,7 +57,14 @@
 				<? elseif( ( $videoID = get_post_meta($postID, "_perrier2_video_id", true) ) && $useVideo = get_post_meta($postID, "_perrier2_video_as_feature", true) ) : ?>
 				<? echo make_video_player($videoID, get_post_meta($postID, "_perrier2_video_type", true), 720, 480) ?>
 				<? else: ?>
-				<img class="hero" src="<? echo theme_uri; ?>/assets/images/test.jpg" alt="">
+				<? 
+					if( has_post_thumbnail() ) :
+						$img = wp_get_attachment_image_src( get_post_thumbnail_id(), 'featured');
+				?>
+				<img class="hero" src="<? echo $img[0]; ?>" alt="">
+					<? else :?>
+				<img class="hero" src="" alt="">
+					<? endif; ?>
 				<? endif; ?>
 				<ul class="metadata">
 					<li class="categories"><? echo join(", ", $cats); ?></li>
@@ -64,7 +93,14 @@
 				<? if( ( $videoID = get_post_meta($postID, "_perrier2_video_id", true) ) && $useVideo = get_post_meta($postID, "_perrier2_video_as_feature", true) ) : ?>
 				<? echo make_video_player($videoID, get_post_meta($postID, "_perrier2_video_type", true), 720, 480) ?>
 				<? else: ?>
-				<img class="hero" src="<? echo theme_uri; ?>/assets/images/test.jpg" alt="">
+				<? 
+					if( has_post_thumbnail() ) :
+						$img = wp_get_attachment_image_src( get_post_thumbnail_id(), 'featured');
+				?>
+				<img class="hero" src="<? echo $img[0]; ?>" alt="">
+					<? else :?>
+				<img class="hero" src="" alt="">
+					<? endif; ?>
 				<? endif; ?>
 				<ul class="metadata">
 					<li class="categories"><? echo join(", ", $cats); ?></li>

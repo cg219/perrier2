@@ -23,16 +23,16 @@
 				if( $currentID == 0 && $creatingSubmenus == false ) :
 		?>
 			<li class="dropdown" role="menuitem" tabindex="-1">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><? echo $items[$i]->title?></a>
-				<ul class="dropdown-menu">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><? echo $items[$i]->title?></a><span class="right-caret"></span>
+				<ul class="dropdown-menu rightMenu pull-right">
 		<? 	
 				elseif( $currentID == 0 && ($creatingSubmenus == true || $menuStarted == true)) :
 					$creatingSubmenus = false;
 		?>
 			</ul></li>
 			<li class="dropdown" role="menuitem" tabindex="-1">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><? echo $items[$i]->title?></a>
-				<ul class="dropdown-menu rightMenu">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><? echo $items[$i]->title?></a><span class="right-caret"></span>
+				<ul class="dropdown-menu rightMenu pull-right">
 		<?
 				else:
 				$creatingSubmenus = true;
@@ -57,17 +57,32 @@
 		<ul>
 		<?
 			$termArgs = array(
-				"type" => "post",
+				"type" => array("post"),
 				"orderby" => "name"
 			);
 
+			$typeArgs = array(
+				"_builtin" => false
+			);
+
 			$terms = get_terms("primary_category", $termArgs);
+			$types = get_post_types($typeArgs, "names");
+
 			for( $i = 0; $i < count($terms); $i++) :
 		?>
 			<li><a href="<? echo get_term_link($terms[$i]); ?>" role="menuitem" tabindex="-1"><? echo $terms[$i]->name; ?></a></li>
 		<?
 			endfor;
+			foreach( $types as $type ) :
+				if($type == "staff") continue;
 		?>
+			<li><a href="<? echo get_post_type_archive_link($type); ?>" role="menuitem" tabindex="-1">
+				<? 
+					$obj = get_post_type_object($type);
+					echo $obj->labels->name;
+				?>
+			</a></li>
+		<? endforeach; ?>
 		</ul>
 	</div>
 </div>
