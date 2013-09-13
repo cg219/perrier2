@@ -135,7 +135,7 @@
 		}
 	}
 
-	&.hotspot{
+	&.hotspot, &.luminary{
 		position: relative;
 
 		.title{
@@ -153,7 +153,7 @@
 			height: 86px !important;
 		}
 
-		.hotspotContent{
+		.hotspotContent, .luminaryContent{
 			overflow: hidden;
 			width: 720px;
 			border-top: 2px solid @green;
@@ -183,8 +183,27 @@
 					margin: 0;
 					line-height: 21px;
 
-					&#phone, &#web{
+					&#phone, &#web, &#lname, &#fame, &#location{
 						padding-top: 8px;
+					}
+
+					a{
+						color: @green;
+					}
+				}
+
+				ul{
+					list-style-type: none;
+					padding: 5px;
+
+					li{
+						// padding-left: 5px;
+						padding: 0 5px 0 0;
+						display: inline;
+
+						img{
+							width: 30px;
+						}
 					}
 				}
 			}

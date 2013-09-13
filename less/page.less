@@ -2,8 +2,54 @@
 @sidebargrey : #77787B;
 @times : Times "Times New Roman" serif;
 
+.author{
+	overflow: hidden;
+	width: 720px;
+	padding-left: 0;
 
-.page{
+	#authorbox{
+		width: 720px;
+		overflow: hidden;
+		position: relative;
+		padding-bottom: 15px;
+		margin-bottom: 15px;
+		border-bottom: 1px solid @green;
+
+		.avatar{
+			float: right;
+		}
+
+		#authorDesc{
+			margin: 0;
+		}
+	}
+
+	.breadcrumb{
+		.kreate.gradient(#429D67, #1D7A36);
+		height: 30px;
+		width: 720px;
+		line-height: 30px;
+		color: white;
+		padding-left: 10px;
+		padding-top: 0;
+
+		a{
+			color: white;
+			text-transform: uppercase;
+		}
+
+		li{
+			&+li{
+				&:before{
+					content: "\003e";
+					color: white;
+				}
+			}
+		}
+	}
+}
+
+.page {
 	overflow: hidden;
 	width: 720px;
 	padding-left: 0;

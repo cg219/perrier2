@@ -432,43 +432,62 @@ input {
 .single .tags a {
   color: black;
 }
-.single.hotspot {
+.single.hotspot,
+.single.luminary {
   position: relative;
 }
-.single.hotspot .title {
+.single.hotspot .title,
+.single.luminary .title {
   font-family: "Helvetica Neue" Helvetica Arial serif;
 }
-.single.hotspot .author {
+.single.hotspot .author,
+.single.luminary .author {
   margin-top: 5px;
 }
-.single.hotspot .preferred {
+.single.hotspot .preferred,
+.single.luminary .preferred {
   position: absolute;
   top: 394px;
   width: 129px !important;
   height: 86px !important;
 }
-.single.hotspot .hotspotContent {
+.single.hotspot .hotspotContent,
+.single.luminary .hotspotContent,
+.single.hotspot .luminaryContent,
+.single.luminary .luminaryContent {
   overflow: hidden;
   width: 720px;
   border-top: 2px solid #007833;
 }
-.single.hotspot .hotspotContent .content {
+.single.hotspot .hotspotContent .content,
+.single.luminary .hotspotContent .content,
+.single.hotspot .luminaryContent .content,
+.single.luminary .luminaryContent .content {
   width: 500px;
   border: none;
 }
-.single.hotspot .hotspotContent .data {
+.single.hotspot .hotspotContent .data,
+.single.luminary .hotspotContent .data,
+.single.hotspot .luminaryContent .data,
+.single.luminary .luminaryContent .data {
   background: url("assets/images/data-border.png");
   width: 164px;
   height: 167px;
 }
-.single.hotspot .hotspotContent .data h6 {
+.single.hotspot .hotspotContent .data h6,
+.single.luminary .hotspotContent .data h6,
+.single.hotspot .luminaryContent .data h6,
+.single.luminary .luminaryContent .data h6 {
   color: white;
   background: #007833;
   width: 164px;
   margin-top: 0;
   padding: 2px 0 2px 5px;
 }
-.single.hotspot .hotspotContent .data p {
+.single.hotspot .hotspotContent .data p,
+.single.luminary .hotspotContent .data p,
+.single.hotspot .luminaryContent .data p,
+.single.luminary .luminaryContent .data p {
   color: #007833;
   padding-left: 5px;
   font-size: 14px;
@@ -476,8 +495,52 @@ input {
   line-height: 21px;
 }
 .single.hotspot .hotspotContent .data p#phone,
-.single.hotspot .hotspotContent .data p#web {
+.single.luminary .hotspotContent .data p#phone,
+.single.hotspot .luminaryContent .data p#phone,
+.single.luminary .luminaryContent .data p#phone,
+.single.hotspot .hotspotContent .data p#web,
+.single.luminary .hotspotContent .data p#web,
+.single.hotspot .luminaryContent .data p#web,
+.single.luminary .luminaryContent .data p#web,
+.single.hotspot .hotspotContent .data p#lname,
+.single.luminary .hotspotContent .data p#lname,
+.single.hotspot .luminaryContent .data p#lname,
+.single.luminary .luminaryContent .data p#lname,
+.single.hotspot .hotspotContent .data p#fame,
+.single.luminary .hotspotContent .data p#fame,
+.single.hotspot .luminaryContent .data p#fame,
+.single.luminary .luminaryContent .data p#fame,
+.single.hotspot .hotspotContent .data p#location,
+.single.luminary .hotspotContent .data p#location,
+.single.hotspot .luminaryContent .data p#location,
+.single.luminary .luminaryContent .data p#location {
   padding-top: 8px;
+}
+.single.hotspot .hotspotContent .data p a,
+.single.luminary .hotspotContent .data p a,
+.single.hotspot .luminaryContent .data p a,
+.single.luminary .luminaryContent .data p a {
+  color: #007833;
+}
+.single.hotspot .hotspotContent .data ul,
+.single.luminary .hotspotContent .data ul,
+.single.hotspot .luminaryContent .data ul,
+.single.luminary .luminaryContent .data ul {
+  list-style-type: none;
+  padding: 5px;
+}
+.single.hotspot .hotspotContent .data ul li,
+.single.luminary .hotspotContent .data ul li,
+.single.hotspot .luminaryContent .data ul li,
+.single.luminary .luminaryContent .data ul li {
+  padding: 0 5px 0 0;
+  display: inline;
+}
+.single.hotspot .hotspotContent .data ul li img,
+.single.luminary .hotspotContent .data ul li img,
+.single.hotspot .luminaryContent .data ul li img,
+.single.luminary .luminaryContent .data ul li img {
+  width: 30px;
 }
 .slider {
   width: 720px;
@@ -586,6 +649,47 @@ input {
   overflow: hidden;
   width: 720px;
   margin-bottom: 0;
+}
+.author {
+  overflow: hidden;
+  width: 720px;
+  padding-left: 0;
+}
+.author #authorbox {
+  width: 720px;
+  overflow: hidden;
+  position: relative;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #007833;
+}
+.author #authorbox .avatar {
+  float: right;
+}
+.author #authorbox #authorDesc {
+  margin: 0;
+}
+.author .breadcrumb {
+  background-color: #429d67;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#429d67), to(#1d7a36));
+  background-image: -webkit-linear-gradient(top, #429d67, #1d7a36);
+  background-image: -moz-linear-gradient(top, #429d67, #1d7a36);
+  background-image: -o-linear-gradient(top, #429d67, #1d7a36);
+  background-image: linear-gradient(to bottom, #429d67, #1d7a36);
+  height: 30px;
+  width: 720px;
+  line-height: 30px;
+  color: white;
+  padding-left: 10px;
+  padding-top: 0;
+}
+.author .breadcrumb a {
+  color: white;
+  text-transform: uppercase;
+}
+.author .breadcrumb li + li:before {
+  content: "\003e";
+  color: white;
 }
 .page {
   overflow: hidden;

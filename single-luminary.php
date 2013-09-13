@@ -43,7 +43,7 @@
 				<? endif; ?>
 				<!-- <li><a href="#"><? the_title(); ?></a></li> -->
 			</ol>
-			<div class="single hotspot">
+			<div class="single luminary">
 				<? if( $galleries = get_post_galleries($post) ) :?>
 				<? 
 					$ids = get_post_meta($postID, meta . "slider_ids", true);
@@ -60,32 +60,29 @@
 				<img class="hero" src="<? echo $img[0]; ?>" alt="">
 					<? else :?>
 				<img class="hero" src="" alt="">
-					<? 
-						endif;
+				<? 
 					endif;
-						if(get_post_meta(get_the_ID(), meta . "hotspot_preferred", true) == "on") :
-					?>
-				<img class="preferred" src="<? echo theme_uri; ?>/assets/images/hotspot.png" />
-					<? endif; ?>
+					endif;
+				?>
 				<h2 class="title"><? the_title(); ?></h2>
 				<h6 class="author"><strong>By:</strong> <? the_author(); ?></h6>
-				<div class="hotspotContent">
+				<div class="luminaryContent">
 					<div class="content pull-left"><? the_content(); ?></div>
 					<div class="data pull-right">
-						<h6>HOTSPOT DETAILS</h6>
-						<p id="address1"><? echo get_post_meta(get_the_ID(), meta . "hotspot_address1", true) ?></p>
-						<p id="address2"><? echo get_post_meta(get_the_ID(), meta . "hotspot_address2", true) ?></p>
-						<p id="phone"><? echo get_post_meta(get_the_ID(), meta . "hotspot_phone", true) ?></p>
-						<p id="web"><a href="<? echo get_post_meta(get_the_ID(), meta . "hotspot_url", true) ?>"><? echo get_post_meta(get_the_ID(), meta . "hotspot_url", true) ?></a></p>
+						<h6>SPOTLIGHT</h6>
+						<p id="lname"><? echo get_post_meta(get_the_ID(), meta . "luminary_name", true) ?></p>
+						<p id="fame"><? echo get_post_meta(get_the_ID(), meta . "luminary_fame", true) ?></p>
+						<p id="location"><? echo get_post_meta(get_the_ID(), meta . "luminary_location", true) ?></p>
+						<p id="web"><? echo get_post_meta(get_the_ID(), meta . "luminary_url", true) ?></p>
 						<ul>
-							<? if(get_post_meta(get_the_ID(), meta . "hotspot_twitter", true)) : ?>
-							<li><a href="<? echo get_post_meta(get_the_ID(), meta . "hotspot_twitter", true); ?>"><img src="<? echo theme_uri; ?>/assets/images/twitter-g.png" alt=""></a></li>
+							<? if(get_post_meta(get_the_ID(), meta . "luminary_twitter", true)) : ?>
+							<li><a href="<? echo get_post_meta(get_the_ID(), meta . "luminary_twitter", true); ?>"><img src="<? echo theme_uri; ?>/assets/images/twitter-g.png" alt=""></a></li>
 							<? endif; ?>
-							<? if(get_post_meta(get_the_ID(), meta . "hotspot_fb", true)) : ?>
-							<li><a href="<? echo get_post_meta(get_the_ID(), meta . "hotspot_fb", true); ?>"><img src="<? echo theme_uri; ?>/assets/images/fb-g.png" alt=""></a></li>
+							<? if(get_post_meta(get_the_ID(), meta . "luminary_fb", true)) : ?>
+							<li><a href="<? echo get_post_meta(get_the_ID(), meta . "luminary_fb", true); ?>"><img src="<? echo theme_uri; ?>/assets/images/fb-g.png" alt=""></a></li>
 							<? endif; ?>
-							<? if(get_post_meta(get_the_ID(), meta . "hotspot_ig", true)) : ?>
-							<li><a href="<? echo get_post_meta(get_the_ID(), meta . "hotspot_ig", true); ?>"><img src="<? echo theme_uri; ?>/assets/images/ig-g.png" alt=""></a></li>
+							<? if(get_post_meta(get_the_ID(), meta . "luminary_ig", true)) : ?>
+							<li><a href="<? echo get_post_meta(get_the_ID(), meta . "luminary_ig", true); ?>"><img src="<? echo theme_uri; ?>/assets/images/ig-g.png" alt=""></a></li>
 							<? endif; ?>
 						</ul>
 					</div>
