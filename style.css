@@ -589,10 +589,11 @@ input {
   font-weight: normal;
 }
 .recipe p {
-  font-size: 14px;
-  line-height: 22px;
+  font-size: 14px !important;
+  line-height: 22px !important;
   font-family: "Helvetica Neue" Helvetica Arial serif;
   font-weight: normal;
+  width: 70%;
 }
 .recipe .ingredients {
   background: url("assets/images/data-border.png");
@@ -616,8 +617,10 @@ input {
   color: #007833;
   font-family: "Helvetica Neue" Helvetica Arial serif;
   font-weight: normal;
-  font-size: 12px;
+  font-size: 12px !important;
+  line-height: 16px !important;
   padding: 5px 0 0 5px;
+  margin-bottom: 5px;
 }
 .slider {
   width: 720px;
