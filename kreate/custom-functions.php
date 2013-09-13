@@ -23,10 +23,7 @@
 		return $images;
 	}
 
-        /*
-         * To check for the most shared globallly all we need to do is suppply the following URL
-         * https://api.addthis.com/analytics/1.0/pub/shares/url.json?pubid=ra-4f79efcc72cb6d9e 
-         */
+        
 	function make_slider_markup( array $images ){
 		$length = count($images);
 		$arrows .= "<button type='button' class='prev'></button><button type='button' class='next'></button>";
@@ -41,6 +38,32 @@
 
 		return $markup;
 	}
+        
+        /*
+         * To check for the most shared globallly all we need to do is suppply the following URL
+         * https://api.addthis.com/analytics/1.0/pub/shares/url.json?pubid=ra-4f79efcc72cb6d9e 
+         * and add a user name password
+         */
+        function get_trending_global() {
+
+    $base_url = 'https://kmarino@mirrorball.com:mirrorball123@api.addthis.com/analytics/1.0/pub/shares/url.json?pubid=ra-4f79efcc72cb6d9e';
+     
+    $trends = array();
+    $url = $base_url;
+
+
+
+    $result = file_get_contents($url);
+    $resobj = json_decode($result);
+
+    for ($i = 0; $i < 5; $i++) {
+        $trends[$resobj[$i]->{'shares'}] = $resobj[$i]->{'url'};
+    }
+
+
+    return $trends;
+     }
+
         
         function get_trending($domain) {
 
