@@ -1,0 +1,61 @@
+@green : #007833;
+@sidebargrey : #77787B;
+@times : Times "Times New Roman" serif;
+@helvetica : Helvetica Arial serif;
+@neue : "Helvetica Neue" Helvetica Arial serif;
+
+.recipe{
+	width: 720px;
+	min-height: 200px;
+	border-top: 1px dotted black;
+	overflow: hidden;
+	position: relative;
+	margin-bottom: 15px;
+
+	h4{
+		font-family: @neue;
+		font-size: 24px;
+		font-weight: 100;
+
+		span{
+			font-size: 14px;
+			font-family: @neue;
+			font-weight: normal;
+		}
+	}
+
+	p{
+		font-size: 14px;
+		line-height: 22px;
+		font-family: @neue;
+		font-weight: normal;
+	}
+
+	.ingredients{
+		background: url("assets/images/data-border.png");
+		width: 164px;
+		height: 167px;
+		position: absolute;
+		right: 0;
+		top: 30px;
+
+		h5{
+			background: @green;
+			margin: 0;
+			width: 100%;
+			color: white;
+			padding: 3px 0 3px 5px;
+			font-family: @neue;
+			font-weight: bold;
+			font-size: 12px;
+		}
+
+		p{
+			color: @green;
+			font-family: @neue;
+			font-weight: normal;
+			font-size: 12px;
+			padding: 5px 0 0 5px;
+		}
+	}
+}

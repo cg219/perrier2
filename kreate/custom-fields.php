@@ -26,7 +26,7 @@
 					"name" => "Ingredients:",
 					"desc" => "The ingredients",
 					"id" => $prefix . "recipe_ingredients",
-					"type" => "textarea"
+					"type" => "wysiwyg"
 				),
 				array(
 					"name" => "Process:",

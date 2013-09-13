@@ -39,50 +39,49 @@
 		return $markup;
 	}
         
-        /*
-         * To check for the most shared globallly all we need to do is suppply the following URL
-         * https://api.addthis.com/analytics/1.0/pub/shares/url.json?pubid=ra-4f79efcc72cb6d9e 
-         * and add a user name password
-         */
-        function get_trending_global() {
+    /*
+     * To check for the most shared globallly all we need to do is suppply the following URL
+     * https://api.addthis.com/analytics/1.0/pub/shares/url.json?pubid=ra-4f79efcc72cb6d9e 
+     * and add a user name password
+     */
+	function get_trending_global() {
 
-    $base_url = 'https://kmarino@mirrorball.com:mirrorball123@api.addthis.com/analytics/1.0/pub/shares/url.json?pubid=ra-4f79efcc72cb6d9e';
-     
-    $trends = array();
-    $url = $base_url;
-
-
-
-    $result = file_get_contents($url);
-    $resobj = json_decode($result);
-
-    for ($i = 0; $i < 5; $i++) {
-        $trends[$resobj[$i]->{'shares'}] = $resobj[$i]->{'url'};
-    }
+	    $base_url = 'https://kmarino@mirrorball.com:mirrorball123@api.addthis.com/analytics/1.0/pub/shares/url.json?pubid=ra-4f79efcc72cb6d9e';
+	     
+	    $trends = array();
+	    $url = $base_url;
 
 
-    return $trends;
+
+	    $result = file_get_contents($url);
+	    $resobj = json_decode($result);
+
+	    for ($i = 0; $i < 5; $i++) {
+	        $trends[$resobj[$i]->{'shares'}] = $resobj[$i]->{'url'};
+	    }
+
+
+	    return $trends;
      }
 
         
-        function get_trending($domain) {
+	function get_trending($domain) {
+
+		$base_url = 'http://q.addthis.com/feeds/1.0/trending.json?pubid=ra-4f79efcc72cb6d9e&period=week&domain=';
+
+	    $trends = array();
+	    $url = $base_url . $domain;
+
+	    $result = file_get_contents($url);
+	    $resobj = json_decode($result);
+
+	    for ($i = 0; $i < 5; $i++) {
+	        $trends[$resobj[$i]->{'title'}] = $resobj[$i]->{'url'};
+	    }
 
 
-    $base_url = 'http://q.addthis.com/feeds/1.0/trending.json?pubid=ra-4f79efcc72cb6d9e&period=week&domain=';
-
-    $trends = array();
-    $url = $base_url . $domain;
-
-    $result = file_get_contents($url);
-    $resobj = json_decode($result);
-
-    for ($i = 0; $i < 5; $i++) {
-        $trends[$resobj[$i]->{'title'}] = $resobj[$i]->{'url'};
-    }
-
-
-    return $trends;
-}
+	    return $trends;
+	}
 
 // function get_post_terms(){
 		
