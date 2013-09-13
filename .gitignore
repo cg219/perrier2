@@ -99,3 +99,4 @@ wp-content/mysql.sql
 *.asf
 *.wmv
 *.avi
+/nbproject/private/

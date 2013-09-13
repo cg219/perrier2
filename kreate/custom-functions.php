@@ -37,8 +37,27 @@
 
 		return $markup;
 	}
+        
+        function get_trending($domain) {
 
-	// function get_post_terms(){
+
+    $base_url = 'http://q.addthis.com/feeds/1.0/trending.json?pubid=ra-4f79efcc72cb6d9e&period=week&domain=';
+
+    $trends = array();
+    $url = $base_url . $domain;
+
+    $result = file_get_contents($url);
+    $resobj = json_decode($result);
+
+    for ($i = 0; $i < 5; $i++) {
+        $trends[$resobj[$i]->{'title'}] = $resobj[$i]->{'url'};
+    }
+
+
+    return $trends;
+}
+
+// function get_post_terms(){
 		
 	// }
 
