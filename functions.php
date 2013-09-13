@@ -20,7 +20,7 @@ require("functions/functions-custom-fields.php");
 // -----------------------------------------------------------------------------
 // POST TYPES ------------------------------------------------------------------
 // -----------------------------------------------------------------------------
-require("functions/functions-post-types.php");
+// require("functions/functions-post-types.php");
 
 
 // -----------------------------------------------------------------------------
@@ -41,6 +41,7 @@ require("kreate/custom-fields.php");
 require("kreate/custom-admin2.php");
 require("kreate/custom-taxes.php");
 require("kreate/custom-functions.php");
+require("kreate/custom-shortcodes.php");
 
 // -----------------------------------------------------------------------------
 // CUSTOM BUILD FUNCTIONS ------------------------------------------------------
