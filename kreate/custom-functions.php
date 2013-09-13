@@ -23,6 +23,10 @@
 		return $images;
 	}
 
+        /*
+         * To check for the most shared globallly all we need to do is suppply the following URL
+         * https://api.addthis.com/analytics/1.0/pub/shares/url.json?pubid=ra-4f79efcc72cb6d9e 
+         */
 	function make_slider_markup( array $images ){
 		$length = count($images);
 		$arrows .= "<button type='button' class='prev'></button><button type='button' class='next'></button>";
