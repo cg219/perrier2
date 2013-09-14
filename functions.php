@@ -59,6 +59,16 @@ if ( function_exists( 'add_theme_support' ) ) {
 
   add_theme_support( 'menus' );
   register_nav_menu( "location-menu", "Locations Menu");
+
+  // add_theme_support( 'infinite-scroll', array(
+  //     'container'  => 'main',
+  //     "render" => "get_new_kreate_posts"
+  // ) );
+}
+
+function get_new_kreate_posts(){
+
+  get_template_part("loop");
 }
 
 function ajax_newsletter_main_subscribe()

@@ -38,10 +38,10 @@
 					<p><? the_excerpt(); ?><a href="<? the_permalink(); ?>">Read More</a></p>
 				</div>
 			</div>
-			<?
-				endwhile;
-				endif;
-			?>
+			<? endwhile; ?>
+			<div class="nextPostLink"><? next_posts_link(""); ?></div>
+
+			<? endif; ?>
 		</div>
 		<? get_sidebar(); ?>
 	</div>
