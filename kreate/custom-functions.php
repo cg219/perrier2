@@ -27,7 +27,7 @@
 	function make_slider_markup( array $images ){
 		$length = count($images);
 		$arrows .= "<button type='button' class='prev'></button><button type='button' class='next'></button>";
-		$markup .= "<div class='slider' data-amount='$length'>$arrows<div class='slider_images'>";
+		$markup .= "<div class='slider' data-index='0' data-amount='$length'>$arrows<div class='slider_images'>";
 
 		foreach($images as $image){
 			$url = $image["url"];

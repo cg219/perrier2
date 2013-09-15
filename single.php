@@ -45,11 +45,14 @@
 				<!-- <li><a href="#"><? the_title(); ?></a></li> -->
 			</ol>
 			<div class="single">
-				<? if( $galleries = get_post_galleries($post) ) :?>
-				<? print_r($galleries); ?>
-				<? endif; ?>
-				<? if( ( $videoID = get_post_meta($postID, "_perrier2_video_id", true) ) && $useVideo = get_post_meta($postID, "_perrier2_video_as_feature", true) ) : ?>
-				<? echo make_video_player($videoID, get_post_meta($postID, "_perrier2_video_type", true), 720, 480) ?>
+				<? if( get_post_meta($postID, meta . "slider_as_feature", true) == "on" ) :?>
+				<?
+					$ids = get_post_meta($postID, meta . "slider_ids", true);
+					$images = make_slider_image_array(explode(",", $ids));
+					echo make_slider_markup($images);
+				?>
+				<? elseif( ( $videoID = get_post_meta($postID, meta . "video_id", true) ) && $useVideo = get_post_meta($postID, meta . "video_as_feature", true) ) : ?>
+				<? echo make_video_player($videoID, get_post_meta($postID, meta . "video_type", true), 720, 480) ?>
 				<? else: ?>
 				<? 
 					if( has_post_thumbnail() ) :

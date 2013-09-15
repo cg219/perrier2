@@ -95,6 +95,17 @@ input {
   padding: 10px 15px;
   width: 245px;
 }
+#topNav #trending {
+  width: 300px;
+}
+#topNav #trending a {
+  color: #007833;
+  white-space: pre-wrap;
+}
+#topNav #trending a:hover {
+  background-color: #007833;
+  color: white;
+}
 #topNav #newsLetter #newsletterForm {
   width: 500px;
   padding: 10px 15px;
@@ -629,18 +640,17 @@ input {
   background: url("assets/images/image-bg.png");
   position: relative;
 }
-.slider .slider_images {
-  width: 3000px;
-}
 .slider .slider_images .slide_image_holder {
   line-height: 480px;
   height: 480px;
   width: 720px;
   display: inline-block;
+  position: relative;
 }
 .slider .slider_images .slide_image_holder img {
-  display: inline-block;
-  vertical-align: middle;
+  position: absolute;
+  left: 50%;
+  top: 50%;
 }
 .slider button {
   position: absolute;
@@ -651,6 +661,7 @@ input {
   top: 50%;
   background-image: url("assets/images/arrows.png");
   background-repeat: no-repeat;
+  z-index: 20;
 }
 .slider button.prev {
   left: 0;

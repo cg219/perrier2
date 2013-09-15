@@ -31,10 +31,20 @@
 	<li class="divider"></li>
 	<li class="dropdown">
 		<a href="#" class="dropdown-toggle" data-toggle="dropdown">NOW TRENDING <span class="caret"></span></a>
-		<ul class="dropdown-menu" >
-			<li><a href="#">Houwdy</a></li>
-			<li><a href="#">Houwdy</a></li>
-			<li><a href="#">Houwdy</a></li>
+		<ul id="trending" class="dropdown-menu" >
+			<?
+				$top_links = get_trending_global();
+
+				foreach($top_links as $link) :
+					$title = strstr($link, "articles/", false);
+					$title = substr($title, strlen("articles/"));
+					$title = explode("-", $title);
+					$title = ucwords(implode(" ", $title));
+					$title = substr($title, 0, strlen($title) - 1);
+					// print_r($title);
+			?>
+			<li><a href="<? echo $link; ?>"><? echo $title; ?></a></li>
+			<? endforeach; ?>
 		</ul>
 	</li>
 	<li class="divider"></li>
