@@ -93,6 +93,10 @@
 				endwhile;
 				endif;
 			?>
+
+			<div class="comments-area">
+			<? comments_template("", true); ?>
+			</div>
 		</div>
 		<? get_sidebar(); ?>
 	</div>

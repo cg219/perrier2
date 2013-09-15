@@ -581,6 +581,9 @@ input {
 .single.luminary .luminaryContent .data ul li img {
   width: 30px;
 }
+.comments-area {
+  margin-top: 20px;
+}
 .recipe {
   width: 720px;
   min-height: 200px;
