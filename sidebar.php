@@ -19,34 +19,35 @@
 
 			for( $i=0; $i < count($items); $i++ ) :
 				$currentID = ($items[$i]->menu_item_parent == 0) ? 0 : $items[$i]->ID;
-
-				if( $currentID == 0 && $creatingSubmenus == false ) :
+				$currentID = $items[$i]->ID;
+				$isTopLevel = $items[$i]->menu_item_parent == 0 ? true : false;
+				$isLastItem = $items[$i + 1] ? false : true;
+				$currentTopLevel = $i == 0 ? $currentID : $currentTopLevel;
+				
+				if($isTopLevel && !$isLastItem) :
+					$currentTopLevel = $currentID;
+					if($items[$i +1]->menu_item_parent == $currentTopLevel) :
 		?>
 			<li class="dropdown" role="menuitem" tabindex="-1">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><? echo $items[$i]->title?></a><span class="right-caret"></span>
 				<ul class="dropdown-menu rightMenu pull-right">
 		<? 	
-				elseif( $currentID == 0 && ($creatingSubmenus == true || $menuStarted == true)) :
-					$creatingSubmenus = false;
+					else :
 		?>
-			</ul></li>
-			<li class="dropdown" role="menuitem" tabindex="-1">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><? echo $items[$i]->title?></a><span class="right-caret"></span>
-				<ul class="dropdown-menu rightMenu pull-right">
+			<li role="menuitem"><a href="#"><? echo $items[$i]->title?></a></li>
 		<?
-				else:
-				$creatingSubmenus = true;
+					endif;
+				elseif(!$isTopLevel) :
+					if($items[$i +1]->menu_item_parent == $currentTopLevel) :
 		?>
-			<li><a href="<? echo $items[$i]->url?>" role="menuitem" tabindex="-1"><? echo $items[$i]->title?></a></li>
+			<li role="menuitem"><a href="#"><? echo $items[$i]->title?></a></li>
 		<?
+					else:
+		?>
+			<li role="menuitem"><a href="#"><? echo $items[$i]->title?></a></li></ul>
+		<?
+					endif;
 				endif;
-
-				if( $i == count($items) - 1) :
-		?>
-			</ul></li>
-		<?
-				endif;
-			$menuStarted = true;
 			endfor;
 		?>
 		</ul>

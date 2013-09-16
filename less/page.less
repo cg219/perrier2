@@ -1,6 +1,8 @@
 @green : #007833;
 @sidebargrey : #77787B;
 @times : Times "Times New Roman" serif;
+@helvetica : Helvetica Arial serif;
+@neue : "Helvetica Neue" Helvetica Arial serif;
 
 .author{
 	overflow: hidden;
@@ -15,8 +17,13 @@
 		margin-bottom: 15px;
 		border-bottom: 1px solid @green;
 
-		.avatar{
-			float: right;
+		div{
+			float: left;
+			margin-right: 10px;
+			margin-bottom: 10px;
+			height: 150px;
+			width: 225px;
+			overflow: hidden;
 		}
 
 		#authorDesc{
@@ -39,6 +46,8 @@
 		}
 
 		li{
+			text-transform: uppercase;
+
 			&+li{
 				&:before{
 					content: "\003e";

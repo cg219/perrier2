@@ -3,11 +3,7 @@
 	get_header();
 ?>
 <body>
-	<div class="navbar navbar-inverse navbar-static-top">
-		<div class="container wrap">
-			<? get_template_part("nav"); ?>
-		</div>
-	</div>
+	<? get_template_part("nav"); ?>
 	<div class="div wrap" id="wrapper">
 		<div class="container author" id="main">
 			<?
@@ -15,11 +11,10 @@
 
 			?>
 			<div id="authorbox">
-				<? echo get_avatar($author->ID, 122); ?>
+				<div><? echo get_avatar($author->ID, 225); ?></div>
 				<p id="authorDesc"><? echo $author->description; ?></p>
 			</div>
 			<ol class="breadcrumb">
-				<li><a href="/">GLOBAL HOME</a></li>
 				<li>Posts By: <? echo $author->first_name . " " . $author->last_name; ?></li>
 			</ol>
 			<?

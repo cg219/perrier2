@@ -6,17 +6,18 @@
 	position: relative;
 
 	.slider_images{
-		width: 3000px;
 
 		.slide_image_holder{
 			line-height: 480px;
 			height: 480px;
 			width: 720px;
 			display: inline-block;
+			position: relative;
 
 			img{
-				display: inline-block;
-				vertical-align: middle;
+				position: absolute;
+				left: 50%;
+				top: 50%;
 			}
 		}
 	}
@@ -30,6 +31,7 @@
 		top: 50%;
 		background-image: url("assets/images/arrows.png");
 		background-repeat: no-repeat;
+		z-index: 20;
 
 		&.prev{
 			left: 0;

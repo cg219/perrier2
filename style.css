@@ -6,7 +6,35 @@ Author: Clemente Gomez
 Author URI: http://imkreative.com
 Version: 1.0
 License: GNU General Public License
-*/body {
+*/@font-face {
+  font-family: "Helvetica Neue";
+  src: url("fonts/694015/88fcd49a-13c7-4d0c-86b1-ad1e258bd75d.eot?#iefix");
+  src: url("fonts/694015/88fcd49a-13c7-4d0c-86b1-ad1e258bd75d.eot?#iefix") format("eot"), url("fonts/694015/9a2e4855-380f-477f-950e-d98e8db54eac.woff") format("woff"), url("fonts/694015/fa82d0ee-4fbd-4cc9-bf9f-226ad1fcbae2.ttf") format("truetype"), url("fonts/694015/48d599a6-92b5-4d43-a4ac-8959f6971853.svg#48d599a6-92b5-4d43-a4ac-8959f6971853") format("svg");
+  font-weight: 100;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Helvetica Neue";
+  src: url("fonts/694021/0b3a3fca-0fad-402b-bd38-fdcbad1ef776.eot?#iefix");
+  src: url("fonts/694021/0b3a3fca-0fad-402b-bd38-fdcbad1ef776.eot?#iefix") format("eot"), url("fonts/694021/d5af76d8-a90b-4527-b3a3-182207cc3250.woff") format("woff"), url("fonts/694021/1d238354-d156-4dde-89ea-4770ef04b9f9.ttf") format("truetype"), url("fonts/694021/b68875cb-14a9-472e-8177-0247605124d7.svg#b68875cb-14a9-472e-8177-0247605124d7") format("svg");
+  font-weight: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: "Helvetica Neue";
+  src: url("fonts/694024/97787ad0-77de-4ad8-822f-7deba0c632ee.eot?#iefix");
+  src: url("fonts/694024/97787ad0-77de-4ad8-822f-7deba0c632ee.eot?#iefix") format("eot"), url("fonts/694024/47a4e844-a7b2-4195-a8dd-8b281e43aa83.woff") format("woff"), url("fonts/694024/f1ebe4f0-1d5e-4805-b348-bd02a294a14d.ttf") format("truetype"), url("fonts/694024/88ec594a-6ee9-43d8-80c2-60e869843f5e.svg#88ec594a-6ee9-43d8-80c2-60e869843f5e") format("svg");
+  font-weight: normal;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Helvetica Neue";
+  src: url("fonts/694033/db853e0e-929b-4272-b420-c946c954cf3a.eot?#iefix");
+  src: url("fonts/694033/db853e0e-929b-4272-b420-c946c954cf3a.eot?#iefix") format("eot"), url("fonts/694033/4a9c62ab-b359-4081-8383-a0d1cdebd111.woff") format("woff"), url("fonts/694033/db5f9ba6-05a4-433a-9461-0a6f257a0c3a.ttf") format("truetype"), url("fonts/694033/25e09910-ffc3-4fc4-b0d1-db9a95dface8.svg#25e09910-ffc3-4fc4-b0d1-db9a95dface8") format("svg");
+  font-weight: bold;
+  font-style: normal;
+}
+body {
   width: 100%;
 }
 h1,
@@ -59,13 +87,28 @@ input {
   padding-right: 0;
   padding-left: 14px;
 }
+#topNav .socialicon.disabled {
+  opacity: .3;
+}
 #topNav #nightlifeLink {
   font-size: 15px;
   font-style: italic;
+  font-family: Times "Times New Roman" serif;
 }
 #topNav #searchForm {
   padding: 10px 15px;
   width: 245px;
+}
+#topNav #trending {
+  width: 300px;
+}
+#topNav #trending a {
+  color: #007833;
+  white-space: pre-wrap;
+}
+#topNav #trending a:hover {
+  background-color: #007833;
+  color: white;
 }
 #topNav #newsLetter #newsletterForm {
   width: 500px;
@@ -198,7 +241,7 @@ input {
   color: white;
 }
 #wrapper {
-  margin-top: 50px;
+  margin-top: 120px;
 }
 #main {
   width: 720px;
@@ -207,7 +250,7 @@ input {
 #sidebar {
   float: left;
   width: 240px;
-  position: relative;
+  position: fixed;
 }
 #sidebar .widget {
   margin-bottom: 25px;
@@ -341,6 +384,7 @@ input {
   color: white;
   padding-left: 10px;
   padding-top: 0;
+  border-radius: 0;
 }
 .single .breadcrumb a {
   color: white;
@@ -394,6 +438,10 @@ input {
   font-size: 48px;
   font-family: Times "Times New Roman" serif;
 }
+.single .subtitle {
+  font-size: 26px;
+  font-family: Helvetica Arial serif !important;
+}
 .single .author {
   margin-top: 30px;
   font-size: 16px;
@@ -438,7 +486,7 @@ input {
 }
 .single.hotspot .title,
 .single.luminary .title {
-  font-family: "Helvetica Neue" Helvetica Arial serif;
+  font-family: Helvetica Arial serif;
 }
 .single.hotspot .author,
 .single.luminary .author {
@@ -542,6 +590,77 @@ input {
 .single.luminary .luminaryContent .data ul li img {
   width: 30px;
 }
+.single #titlebar {
+  background-color: #429d67;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#429d67), to(#1d7a36));
+  background-image: -webkit-linear-gradient(top, #429d67, #1d7a36);
+  background-image: -moz-linear-gradient(top, #429d67, #1d7a36);
+  background-image: -o-linear-gradient(top, #429d67, #1d7a36);
+  background-image: linear-gradient(to bottom, #429d67, #1d7a36);
+  height: 30px;
+  width: 720px;
+  padding-left: 10px;
+  position: relative;
+  argin-top: 0px;
+  padding-top: 7px;
+  text-transform: uppercase;
+  color: white;
+}
+.comments-area {
+  margin-top: 20px;
+}
+.recipe {
+  width: 720px;
+  min-height: 200px;
+  border-top: 1px dotted black;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 15px;
+}
+.recipe h4 {
+  font-family: "Helvetica Neue" Helvetica Arial serif;
+  font-size: 24px;
+  font-weight: 100;
+}
+.recipe h4 span {
+  font-size: 14px;
+  font-family: "Helvetica Neue" Helvetica Arial serif;
+  font-weight: normal;
+}
+.recipe p {
+  font-size: 14px !important;
+  line-height: 22px !important;
+  font-family: "Helvetica Neue" Helvetica Arial serif;
+  font-weight: normal;
+  width: 70%;
+}
+.recipe .ingredients {
+  background: url("assets/images/data-border.png");
+  width: 164px;
+  height: 167px;
+  position: absolute;
+  right: 0;
+  top: 30px;
+}
+.recipe .ingredients h5 {
+  background: #007833;
+  margin: 0;
+  width: 100%;
+  color: white;
+  padding: 3px 0 3px 5px;
+  font-family: "Helvetica Neue" Helvetica Arial serif;
+  font-weight: bold;
+  font-size: 12px;
+}
+.recipe .ingredients p {
+  color: #007833;
+  font-family: "Helvetica Neue" Helvetica Arial serif;
+  font-weight: normal;
+  font-size: 12px !important;
+  line-height: 16px !important;
+  padding: 5px 0 0 5px;
+  margin-bottom: 5px;
+}
 .slider {
   width: 720px;
   height: 480px;
@@ -549,18 +668,17 @@ input {
   background: url("assets/images/image-bg.png");
   position: relative;
 }
-.slider .slider_images {
-  width: 3000px;
-}
 .slider .slider_images .slide_image_holder {
   line-height: 480px;
   height: 480px;
   width: 720px;
   display: inline-block;
+  position: relative;
 }
 .slider .slider_images .slide_image_holder img {
-  display: inline-block;
-  vertical-align: middle;
+  position: absolute;
+  left: 50%;
+  top: 50%;
 }
 .slider button {
   position: absolute;
@@ -571,6 +689,7 @@ input {
   top: 50%;
   background-image: url("assets/images/arrows.png");
   background-repeat: no-repeat;
+  z-index: 20;
 }
 .slider button.prev {
   left: 0;
@@ -591,12 +710,14 @@ input {
 .article.media h5 {
   margin-top: 0;
 }
+.article.media h5 a {
+  color: black;
+}
 .article.media h3 {
   margin-top: 15px;
 }
 .article.media a {
   color: #007833;
-  text-transform: uppercase;
 }
 .article.media.hotspot {
   position: relative;
@@ -633,6 +754,9 @@ input {
   font-weight: bold;
   text-transform: uppercase;
 }
+.article h5 a {
+  color: black;
+}
 .article p {
   font-size: 14px;
   line-height: 21px;
@@ -644,6 +768,7 @@ input {
   width: 720px;
   height: 480px;
   background: url("assets/images/image-bg.png");
+  display: block;
 }
 .two-up-pair {
   overflow: hidden;
@@ -663,8 +788,13 @@ input {
   margin-bottom: 15px;
   border-bottom: 1px solid #007833;
 }
-.author #authorbox .avatar {
-  float: right;
+.author #authorbox div {
+  float: left;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  height: 150px;
+  width: 225px;
+  overflow: hidden;
 }
 .author #authorbox #authorDesc {
   margin: 0;
@@ -685,6 +815,9 @@ input {
 }
 .author .breadcrumb a {
   color: white;
+  text-transform: uppercase;
+}
+.author .breadcrumb li {
   text-transform: uppercase;
 }
 .author .breadcrumb li + li:before {

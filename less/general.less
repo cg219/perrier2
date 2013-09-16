@@ -2,13 +2,16 @@
 
 @green : #007833;
 @sidebargrey : #77787B;
+@times : Times "Times New Roman" serif;
+@helvetica : Helvetica Arial serif;
+@neue : "Helvetica Neue" Helvetica Arial serif;
 
 body{
 	width: 100%;
 }
 
 h1, h2, h3, h4, h5, h6, p{
-	font-family: "Helvetica Neue" Helvetica Arial serif;
+	font-family: @neue;
 }
 
 input{
@@ -59,16 +62,35 @@ input{
 			padding-right: 0;
 			padding-left: 14px;
 		}
+
+		&.disabled{
+			opacity: .3;
+		}
 	}
 
 	#nightlifeLink{
 		font-size: 15px;
 		font-style: italic;
+		font-family: @times;
 	}
 	
 	#searchForm{
 		padding: 10px 15px;
 		width: 245px;
+	}
+
+	#trending{
+		width: 300px;
+
+		a{
+			color: @green;
+			white-space: pre-wrap;
+
+			&:hover{
+				background-color: @green;
+				color: white;
+			}
+		}
 	}
 
 	#newsLetter{
@@ -211,7 +233,7 @@ input{
 }
 
 #wrapper{
-	margin-top: 50px;
+	margin-top: 120px;
 }
 
 #main{
@@ -222,7 +244,7 @@ input{
 #sidebar{
 	float: left;
 	width: 240px;
-	position: relative;
+	position: fixed;
 
 	.widget{
 		margin-bottom: 25px;

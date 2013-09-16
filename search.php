@@ -3,6 +3,7 @@ get_template_part("consts");
 get_header();
 ?>
 <body>
+<<<<<<< HEAD
     <div class="navbar navbar-inverse navbar-static-top">
         <div class="container wrap">
             <? get_template_part("nav"); ?>
@@ -48,6 +49,14 @@ restore_current_blog(); // Reset settings to the current blog
             <? get_sidebar(); ?>
     </div>
             <? get_footer(); ?>
+=======
+	<? get_template_part("nav"); ?>
+	<div class="div wrap" id="wrapper">
+		<div class="container" id="main">
+			<h2>Search Results for "<? echo get_search_query(); ?>"</h2>
+			<?
+				if(have_posts()): while(have_posts()): the_post();
+>>>>>>> 679ed95f2264790bd82677559fe602f0a714ae3a
 
 
 

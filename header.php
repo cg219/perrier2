@@ -6,4 +6,5 @@
 	<title><? wp_title( "|", true, "right"); ?></title>
 	<link rel="stylesheet" href="<? echo theme_uri; ?>/css/bootstrap.min.css">
 	<link rel="stylesheet" href="<? echo theme_uri; ?>/style.css">
+	<? wp_head(); ?>
 </head>

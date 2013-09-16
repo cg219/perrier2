@@ -1,7 +1,8 @@
 @green : #007833;
 @sidebargrey : #77787B;
 @times : Times "Times New Roman" serif;
-@helvetica : "Helvetica Neue" Helvetica Arial serif;
+@helvetica : Helvetica Arial serif;
+@neue : "Helvetica Neue" Helvetica Arial serif;
 
 
 .single{
@@ -17,6 +18,7 @@
 		color: white;
 		padding-left: 10px;
 		padding-top: 0;
+		border-radius: 0;
 
 		a{
 			color: white;
@@ -86,6 +88,11 @@
 	.title{
 		font-size: 48px;
 		font-family: @times;
+	}
+
+	.subtitle{
+		font-size: 26px;
+		font-family: @helvetica !important;
 	}
 
 	.author{
@@ -209,4 +216,20 @@
 			}
 		}
 	}
+
+	#titlebar{
+		.kreate.gradient(#429D67, #1D7A36);
+		height: 30px;
+		width: 720px;
+		padding-left: 10px;
+		position: relative;
+		argin-top: 0px;
+		padding-top: 7px;
+		text-transform: uppercase;;
+		color: white;
+	}
+}
+
+.comments-area{
+	margin-top: 20px;
 }
