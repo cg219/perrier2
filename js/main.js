@@ -15,7 +15,20 @@
 			})
 		})
 	}
-	
+
+	var timer =  setInterval(function(){
+		if( $(".addthis_button_expanded").length ){
+			$(".addthis_button_expanded").attr("id", "addThisImportant" );
+			console.log("Timer");
+
+			clearInterval(timer);
+		}
+			console.log("CHANE");
+	}, 500);
+
+	$(".addthis_button_expanded").css({
+		width: "40px"
+	})
 
 	$("#hotspot-navbar .dropdown-menu li").on("click", function(event){
 		event.preventDefault();

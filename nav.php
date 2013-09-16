@@ -1,4 +1,4 @@
-<div class="navbar navbar-inverse navbar-fixed-top">
+<div id="siteheader" class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container wrap">
 		<div class="navbar-header">
 			<a target="_blank" id="topNavLogo" href="/" class="navbar-brand"><img src="<? echo theme_uri; ?>/assets/images/logo.png" alt=""></a>
@@ -18,7 +18,7 @@
 								<ul class="nav" id="aboutLinks">
 									<li><a target="_blank" href="<? echo get_bloginfo("rss2_url"); ?>">RSS</a></li>
 									<li><a target="_blank" href="<? echo get_page_link(get_page_by_title("About")->ID) ?>">About Us</a></li>
-									<li><a target="_blank" href="<? echo get_page_link(get_page_by_title("Countact Us")->ID) ?>">Contact</a></li>
+									<li><a target="_blank" href="<? echo get_page_link(get_page_by_title("Contact Us")->ID) ?>">Contact</a></li>
 									<li><a target="_blank" href="<? echo get_page_link(get_page_by_title("Privacy Policy")->ID) ?>">Privacy</a></li>
 									<li><a target="_blank" href="<? echo get_page_link(get_page_by_title("Terms of Use")->ID) ?>">Terms of Use</a></li>
 									<li><a target="_blank" href="http://perrier.com">Perrier.com</a></li>

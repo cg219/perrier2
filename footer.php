@@ -1,5 +1,5 @@
 
-	<button class="backToTop"><img src="<? echo theme_uri; ?>/assets/images/top.png" alt=""></button>
+	<button class="backToTop"></button>
 	<script src="<? echo theme_uri; ?>/js/jquery.min.js"></script>
 	<script src="<? echo theme_uri; ?>/js/bootstrap.min.js"></script>
 	<script src="<? echo theme_uri; ?>/js/main.js"></script>
