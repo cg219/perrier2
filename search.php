@@ -3,11 +3,7 @@
 	get_header();
 ?>
 <body>
-	<div class="navbar navbar-inverse navbar-static-top">
-		<div class="container wrap">
-			<? get_template_part("nav"); ?>
-		</div>
-	</div>
+	<? get_template_part("nav"); ?>
 	<div class="div wrap" id="wrapper">
 		<div class="container" id="main">
 			<h2>Search Results for "<? echo get_search_query(); ?>"</h2>

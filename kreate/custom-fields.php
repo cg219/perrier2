@@ -169,7 +169,7 @@
 		$boxes[] = array(
 			"id" => "video_metabox",
 			"title" => "Video Settings",
-			"pages" => array("post"),
+			"pages" => array("post", "luminary", "hotspot"),
 			"context" => "normal",
 			"priority" => "high",
 			"show_names" => true,
@@ -207,7 +207,7 @@
 		$boxes[] = array(
 			"id" => "slider_metabox",
 			"title" => "Slider Settings",
-			"pages" => array("post"),
+			"pages" => array("post", "luminary", "hotspot"),
 			"context" => "normal",
 			"priority" => "high",
 			"show_names" => true,
@@ -229,33 +229,28 @@
 		return $boxes;
 	}
 
-	// function general_metabox_kreate( array $boxes ){
-	// 	$prefix = "_perrier2_";
+	function metabox_kreate( array $boxes ){
+		$prefix = "_perrier2_";
 
-	// 	$boxes[] = array(
-	// 		"id" => "general_metabox",
-	// 		"title" => "Slider Settings",
-	// 		"pages" => array("post"),
-	// 		"context" => "normal",
-	// 		"priority" => "high",
-	// 		"show_names" => true,
-	// 		"fields" => array(
-	// 			array(
-	// 				"name" => "Image IDs",
-	// 				"desc" => "List Image ID's seperated by commas.",
-	// 				"id" => $prefix . "slider_ids",
-	// 				"type" => "text"
-	// 			),
-	// 			array(
-	// 				"name" => "Use Slider as Feature",
-	// 				"id" => $prefix . "slider_as_feature",
-	// 				"type" => "checkbox"
-	// 			)
-	// 		)
-	// 	);
+		$boxes[] = array(
+			"id" => "reg_metabox",
+			"title" => "Extra Fields",
+			"pages" => array("post", "recipe", "luminary", "hotspot"),
+			"context" => "normal",
+			"priority" => "high",
+			"show_names" => true,
+			"fields" => array(
+				array(
+					"name" => "Sub Header",
+					"desc" => "Second Headline",
+					"id" => $prefix . "subline",
+					"type" => "text"
+				)
+			)
+		);
 
-	// 	return $boxes;
-	// }
+		return $boxes;
+	}
 
 	function init_metaboxes(){
 		if( !class_exists("cmb_Meta_Box") ){
@@ -263,6 +258,7 @@
 		}
 	}
 
+	add_filter( "cmb_meta_boxes", "metabox_kreate");
 	add_filter( "cmb_meta_boxes", "recipe_metaboxes_kreate");
 	add_filter( "cmb_meta_boxes", "hotspot_metaboxes_kreate");
 	add_filter( "cmb_meta_boxes", "luminary_metaboxes_kreate");

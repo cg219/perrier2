@@ -48,19 +48,21 @@
 		if( $(window).scrollTop() + $(window).height() == $(document).height() ){
 			processing = true;
 
-			var container = $("#main");
+			var container = $("#singlemain, #main").last();
 
+			console.log(container.data("next-page"));
+			console.log(defaultURL);
 			if(container.data("next-page") == defaultURL){
 				$(document).off(".main");
 				processing = false;
 				return false;
 			}
 
-			loadNextPage(container.data("next-page") || defaultURL, function(data, newURL){
+			loadNextPage(container.data("next-page") || defaultURL, "main", function(data, newURL){
 				processing = false;
-				$("#main").append(data);
+				container.append(data);
 				if( newURL ){
-					$("#main").data("next-page", newURL);
+					container.data("next-page", newURL);
 				}
 				else{
 					$(document).off(".main");
@@ -107,7 +109,9 @@
 		});
 	}
 
-	function loadNextPage( url, callback ){
+	function loadNextPage( url, id, callback ){
+		id = "#" + id;
+
 		$.ajax({
 			url: url,
 			type: "POST",
@@ -115,7 +119,7 @@
 				skipFirstFeatured: true
 			},
 			success: function(response){
-				var articles = $("#main .article", response);
+				var articles = $( id + " .article", response);
 				var nextURL = $(".nextPostLink a", response).last().attr("href") || false;
 				callback(articles, nextURL);
 			},

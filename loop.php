@@ -1,10 +1,7 @@
-				<?
-				// global $theFirstFeature;
+			<?
 				if(have_posts()): while(have_posts()): the_post();
 
 				$cats = array();
-
-				// print_r($theFirstFeature);
 
 				$isFeature = false;
 				$is2Up = false;
@@ -15,7 +12,7 @@
 					$is2Up = $terms[$i]->slug == "2-up" ? true : $is2Up;
 				}
 				for( $i=0; $i < count($terms2); $i++){
-					array_push($cats, $terms2[$i]->name);
+					array_push($cats, $terms2[$i]);
 				}
 				if($theFirstFeature == $post->ID) continue; 
 				if($isFeature) :
@@ -31,9 +28,10 @@
 					<img class="media-object" src="" alt="">
 					<? endif; ?>
 				</a>
-				<h5><? echo join(", ", $cats); ?></h5>
+				<? $thisCat = get_term_link($cats[0]); ?>
+				<h5><a href="<? echo $thisCat->errors ? "" : $thisCat;?>"><? echo $cats[0]->name; ?></a></h5>
 				<h2><a href="<? the_permalink(); ?>"><? the_title(); ?></a></h2>
-				<p><? the_excerpt(); ?><a href="<? the_permalink(); ?>">Read More</a></p>
+				<p><?  echo $post->post_excerpt; ?> <a href="<? the_permalink(); ?>">Read More</a></p>
 			</div>
 			<? 
 				elseif($is2Up) :
@@ -55,7 +53,7 @@
 			?>
 			<div class="article two-up-pair">
 				<div class="media two-up article">
-					<a href="<? the_permalink(); ?>">
+					<a href="<? echo get_permalink($thisPost->ID); ?>">
 						<? 
 							if( has_post_thumbnail() ) :
 								$img = wp_get_attachment_image_src( get_post_thumbnail_id(), '2-up');
@@ -67,11 +65,11 @@
 					</a>
 					<div class="media-body">
 						<h3><a href="<? echo get_permalink($thisPost->ID); ?>"><? echo $thisPost->post_title; ?></a></h3>
-						<p><? echo $thisPost->post_excerpt; ?><br/><a href="<? echo get_permalink($thisPost->ID); ?>">Read More</a></p>
+						<p><? echo $thisPost->post_excerpt; ?> <a href="<? echo get_permalink($thisPost->ID); ?>">Read More</a></p>
 					</div>
 				</div>
 				<div class="media two-up article">
-					<a href="<? the_permalink(); ?>">
+					<a href="<? echo get_permalink($nextPost->ID); ?>">
 						<? 
 							if( has_post_thumbnail() ) :
 								$img = wp_get_attachment_image_src( get_post_thumbnail_id(), '2-up');
@@ -83,7 +81,7 @@
 					</a>
 					<div class="media-body">
 						<h3><a href="<? echo get_permalink($nextPost->ID); ?>"><? echo $nextPost->post_title; ?></a></h3>
-						<p><? echo $nextPost->post_excerpt; ?><br/><a href="<? echo get_permalink($nextPost->ID); ?>">Read More</a></p>
+						<p><? echo $nextPost->post_excerpt; ?> <a href="<? echo get_permalink($nextPost->ID); ?>">Read More</a></p>
 					</div>
 				</div>
 			</div>
@@ -101,9 +99,10 @@
 					<? endif; ?>
 				</a>
 				<div class="media-body">
-					<h5><? echo join(", ", $cats); ?></h5>
+					<? $thisCat = get_term_link($cats[0]); ?>
+					<h5><a href="<? echo $thisCat->errors ? "" : $thisCat;?>"><? echo $cats[0]->name; ?></a></h5>
 					<h3><a href="<? the_permalink(); ?>"><? the_title(); ?></a></h3>
-					<p><? the_excerpt(); ?><a href="<? the_permalink(); ?>">Read More</a></p>
+					<p><? echo $post->post_excerpt; ?> <a href="<? the_permalink(); ?>">Read More</a></p>
 				</div>
 			</div>
 			<?

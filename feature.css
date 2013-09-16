@@ -1,3 +1,6 @@
-.featured img {
-  width: 700px;
+.feature {
+  overflow: hidden;
+}
+.feature img.hero {
+  width: 720px;
 }

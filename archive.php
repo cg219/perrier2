@@ -3,11 +3,7 @@
 	get_header();
 ?>
 <body>
-	<div class="navbar navbar-inverse navbar-static-top">
-		<div class="container wrap">
-			<? get_template_part("nav"); ?>
-		</div>
-	</div>
+	<? get_template_part("nav"); ?>
 	<div class="div wrap" id="wrapper">
 		<div class="container" id="main">
 			<?
@@ -18,7 +14,7 @@
 				$terms2 = wp_get_post_terms(get_the_ID(), "primary_category");
 
 				for( $i=0; $i < count($terms2); $i++){
-					array_push($cats, $terms2[$i]->name);
+					array_push($cats, $terms2[$i]);
 				}
 			?>
 			<div class="media article">
@@ -33,7 +29,8 @@
 					<? endif; ?>
 				</a>
 				<div class="media-body">
-					<h5><? echo join(", ", $cats); ?></h5>
+					<? $thisCat = get_term_link($cats[0]); ?>
+					<h5><a href="<? echo $thisCat->errors ? "" : $thisCat;?>"><? echo $cats[0]->name; ?></a></h5>
 					<h3><a href="<? the_permalink(); ?>"><? the_title(); ?></a></h3>
 					<p><? the_excerpt(); ?><a href="<? the_permalink(); ?>">Read More</a></p>
 				</div>
