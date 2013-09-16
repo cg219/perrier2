@@ -44,13 +44,29 @@ h4,
 h5,
 h6,
 p {
-  font-family: "Helvetica Neue" Helvetica Arial serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, serif;
 }
 input {
   border-radius: 0 !important;
 }
 .preferred {
   background: transparent !important;
+}
+.readmore {
+  text-transform: uppercase;
+}
+.backToTop {
+  background: none;
+  border: none;
+  outline: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: none;
+}
+.backToTop img {
+  width: 50px;
+  height: 50px;
 }
 .wrap {
   width: 980px;
@@ -93,7 +109,7 @@ input {
 #topNav #nightlifeLink {
   font-size: 15px;
   font-style: italic;
-  font-family: Times "Times New Roman" serif;
+  font-family: Times, "Times New Roman", serif;
 }
 #topNav #searchForm {
   padding: 10px 15px;
@@ -241,7 +257,7 @@ input {
   color: white;
 }
 #wrapper {
-  margin-top: 120px;
+  margin-top: 100px;
 }
 #main {
   width: 720px;
@@ -281,10 +297,15 @@ input {
 #sidebar .widget ul .rightMenu {
   position: relative;
   left: 160px;
-  bottom: 30px;
+  bottom: 20px;
+}
+#sidebar .widget ul .rightMenu li {
+  height: 18px;
 }
 #sidebar .widget ul .rightMenu li a {
   color: black;
+  line-height: 18px;
+  padding-top: 0;
 }
 #sidebar .widget ul .rightMenu li a:hover {
   text-decoration: none;
@@ -305,12 +326,12 @@ input {
   background-image: linear-gradient(to bottom, #429d67, #1d7a36);
 }
 #sidebar .widget ul li {
-  height: 25px;
+  height: 18px;
   height: 100%;
   border-bottom: 1px solid #dedfe0;
 }
 #sidebar .widget ul li a {
-  line-height: 25px;
+  line-height: 18px;
   color: #77787b;
   font-weight: 200;
   height: 100%;
@@ -418,7 +439,7 @@ input {
 }
 .single .metadata li.date {
   font-size: 16px;
-  font-family: Times "Times New Roman" serif;
+  font-family: Times, "Times New Roman", serif;
   font-style: italic;
   line-height: 16px;
   height: 16px;
@@ -436,11 +457,11 @@ input {
 }
 .single .title {
   font-size: 48px;
-  font-family: Times "Times New Roman" serif;
+  font-family: Times, "Times New Roman", serif;
 }
 .single .subtitle {
   font-size: 26px;
-  font-family: Helvetica Arial serif !important;
+  font-family: Helvetica, Arial, serif !important;
 }
 .single .author {
   margin-top: 30px;
@@ -486,7 +507,7 @@ input {
 }
 .single.hotspot .title,
 .single.luminary .title {
-  font-family: Helvetica Arial serif;
+  font-family: Helvetica, Arial, serif;
 }
 .single.hotspot .author,
 .single.luminary .author {
@@ -618,19 +639,19 @@ input {
   margin-bottom: 15px;
 }
 .recipe h4 {
-  font-family: "Helvetica Neue" Helvetica Arial serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, serif;
   font-size: 24px;
   font-weight: 100;
 }
 .recipe h4 span {
   font-size: 14px;
-  font-family: "Helvetica Neue" Helvetica Arial serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, serif;
   font-weight: normal;
 }
 .recipe p {
   font-size: 14px !important;
   line-height: 22px !important;
-  font-family: "Helvetica Neue" Helvetica Arial serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, serif;
   font-weight: normal;
   width: 70%;
 }
@@ -648,13 +669,13 @@ input {
   width: 100%;
   color: white;
   padding: 3px 0 3px 5px;
-  font-family: "Helvetica Neue" Helvetica Arial serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, serif;
   font-weight: bold;
   font-size: 12px;
 }
 .recipe .ingredients p {
   color: #007833;
-  font-family: "Helvetica Neue" Helvetica Arial serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, serif;
   font-weight: normal;
   font-size: 12px !important;
   line-height: 16px !important;
@@ -873,7 +894,7 @@ input {
 }
 .page .metadata li.date {
   font-size: 16px;
-  font-family: Times "Times New Roman" serif;
+  font-family: Times, "Times New Roman", serif;
   font-style: italic;
   line-height: 16px;
   height: 16px;
@@ -891,7 +912,7 @@ input {
 }
 .page .title {
   font-size: 48px;
-  font-family: Times "Times New Roman" serif;
+  font-family: Times, "Times New Roman", serif;
 }
 .page .author {
   margin-top: 30px;

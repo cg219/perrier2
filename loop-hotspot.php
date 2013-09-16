@@ -61,7 +61,7 @@
 	<div class="media-body">
 		<h5><? echo join(", ", $cities); ?></h5>
 		<h3><a href="<? the_permalink(); ?>"><? the_title(); ?></a></h3>
-		<p><? the_excerpt(); ?><a href="<? the_permalink(); ?>">Read More</a></p>
+		<p><? the_excerpt(); ?><a class="readmore" href="<? the_permalink(); ?>">Read More</a></p>
 	</div>
 </div>
 <? endwhile; ?>

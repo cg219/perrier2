@@ -31,7 +31,7 @@
 				<? $thisCat = get_term_link($cats[0]); ?>
 				<h5><a href="<? echo $thisCat->errors ? "" : $thisCat;?>"><? echo $cats[0]->name; ?></a></h5>
 				<h2><a href="<? the_permalink(); ?>"><? the_title(); ?></a></h2>
-				<p><?  echo $post->post_excerpt; ?> <a href="<? the_permalink(); ?>">Read More</a></p>
+				<p><?  echo $post->post_excerpt; ?> <a class="readmore" href="<? the_permalink(); ?>">Read More</a></p>
 			</div>
 			<? 
 				elseif($is2Up) :
@@ -65,7 +65,7 @@
 					</a>
 					<div class="media-body">
 						<h3><a href="<? echo get_permalink($thisPost->ID); ?>"><? echo $thisPost->post_title; ?></a></h3>
-						<p><? echo $thisPost->post_excerpt; ?> <a href="<? echo get_permalink($thisPost->ID); ?>">Read More</a></p>
+						<p><? echo $thisPost->post_excerpt; ?> <a class="readmore" href="<? echo get_permalink($thisPost->ID); ?>">Read More</a></p>
 					</div>
 				</div>
 				<div class="media two-up article">
@@ -81,7 +81,7 @@
 					</a>
 					<div class="media-body">
 						<h3><a href="<? echo get_permalink($nextPost->ID); ?>"><? echo $nextPost->post_title; ?></a></h3>
-						<p><? echo $nextPost->post_excerpt; ?> <a href="<? echo get_permalink($nextPost->ID); ?>">Read More</a></p>
+						<p><? echo $nextPost->post_excerpt; ?> <a class="readmore" href="<? echo get_permalink($nextPost->ID); ?>">Read More</a></p>
 					</div>
 				</div>
 			</div>
@@ -102,7 +102,7 @@
 					<? $thisCat = get_term_link($cats[0]); ?>
 					<h5><a href="<? echo $thisCat->errors ? "" : $thisCat;?>"><? echo $cats[0]->name; ?></a></h5>
 					<h3><a href="<? the_permalink(); ?>"><? the_title(); ?></a></h3>
-					<p><? echo $post->post_excerpt; ?> <a href="<? the_permalink(); ?>">Read More</a></p>
+					<p><? echo $post->post_excerpt; ?> <a class="readmore" href="<? the_permalink(); ?>">Read More</a></p>
 				</div>
 			</div>
 			<?

@@ -40,7 +40,31 @@
 		form.submit();
 	})
 
+	$(".disabled").on("click", function(event){
+		event.preventDefault();
+	})
+
+	$(".backToTop").on("click", function(){
+		$("html, body").animate({
+			scrollTop: "0px"
+		}, 1000,
+		"swing",
+		function(){
+			$(".backToTop").fadeOut(function(){
+				$(document).on("scroll.back", function(event){
+					scrollBack();
+				})
+			});
+		})
+	})
+
 	var defaultURL = $(".nextPostLink a").last().attr("href");
+	var originalH = $(document).height();
+	var showing = false;
+
+	$(document).on("scroll.back", function(event){
+		scrollBack();
+	})
 
 	$(document).on("scroll.main", function(event){
 		if(processing) return false;
@@ -78,6 +102,11 @@
 	$("button.prev").on("click", function(){
 		changeSlide("back");
 	})
+
+	function scrollBack(){
+		$(".backToTop").fadeIn();
+		$(document).off(".back");
+	}
 
 	function changeSlide(direction){
 			

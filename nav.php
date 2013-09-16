@@ -1,11 +1,11 @@
 <div class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container wrap">
 		<div class="navbar-header">
-			<a id="topNavLogo" href="/" class="navbar-brand"><img src="<? echo theme_uri; ?>/assets/images/logo.png" alt=""></a>
+			<a target="_blank" id="topNavLogo" href="/" class="navbar-brand"><img src="<? echo theme_uri; ?>/assets/images/logo.png" alt=""></a>
 		</div>
 		<ul id="topNav" class="nav navbar-nav">
 			<li class="dropdown">
-				<a id="nightlifeLink" href="#" class="dropdown-toggle" data-toggle="dropdown">The Source for Nightlife &amp; Culture <span class="caret"></span></a>
+				<a target="_blank" id="nightlifeLink" href="#" class="dropdown-toggle" data-toggle="dropdown">The Source for Nightlife &amp; Culture <span class="caret"></span></a>
 				<ul class="dropdown-menu">
 					<li>
 						<div class="row" id="aboutDropdown">
@@ -16,12 +16,12 @@
 								<h5>About Socete Perrier</h5>
 								<p>Société Perrier is the global enthusiast's source for engaging content and great events. Curating the best in nightlife, art, music, fashion, travel, mixology and cocktail culture, Société Perrier is the trusted arbiter of what's hot around the world. When you see the Société Perrier seal, you know you are in the right place.</p>
 								<ul class="nav" id="aboutLinks">
-									<li><a href="<? echo get_bloginfo("rss2_url"); ?>">RSS</a></li>
-									<li><a href="<? echo get_page_link(get_page_by_title("About")->ID) ?>">About Us</a></li>
-									<li><a href="<? echo get_page_link(get_page_by_title("Countact Us")->ID) ?>">Contact</a></li>
-									<li><a href="<? echo get_page_link(get_page_by_title("Privacy Policy")->ID) ?>">Privacy</a></li>
-									<li><a href="<? echo get_page_link(get_page_by_title("Terms of Use")->ID) ?>">Terms of Use</a></li>
-									<li><a href="http://perrier.com">Perrier.com</a></li>
+									<li><a target="_blank" href="<? echo get_bloginfo("rss2_url"); ?>">RSS</a></li>
+									<li><a target="_blank" href="<? echo get_page_link(get_page_by_title("About")->ID) ?>">About Us</a></li>
+									<li><a target="_blank" href="<? echo get_page_link(get_page_by_title("Countact Us")->ID) ?>">Contact</a></li>
+									<li><a target="_blank" href="<? echo get_page_link(get_page_by_title("Privacy Policy")->ID) ?>">Privacy</a></li>
+									<li><a target="_blank" href="<? echo get_page_link(get_page_by_title("Terms of Use")->ID) ?>">Terms of Use</a></li>
+									<li><a target="_blank" href="http://perrier.com">Perrier.com</a></li>
 								</ul>
 								<p id="copy">&copy; 2013 Mirrorball Group LLC — All rights reserved<br/>The website Société Perrier is run and controlled by Mirrorball. Perrier is a registered trademark of Nestlé Waters France; Mirrorball is authorized to use the trademark on this website.</p>
 							</div>
@@ -31,7 +31,7 @@
 			</li>
 			<li class="divider"></li>
 			<li class="dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown">NOW TRENDING <span class="caret"></span></a>
+				<a target="_blank" href="#" class="dropdown-toggle" data-toggle="dropdown">NOW TRENDING <span class="caret"></span></a>
 				<ul id="trending" class="dropdown-menu" >
 					<?
 						$top_links = get_trending_global();
@@ -44,13 +44,13 @@
 							$title = substr($title, 0, strlen($title) - 1);
 							// print_r($title);
 					?>
-					<li><a href="<? echo $link; ?>"><? echo $title; ?></a></li>
+					<li><a target="_blank" href="<? echo $link; ?>"><? echo $title; ?></a></li>
 					<? endforeach; ?>
 				</ul>
 			</li>
 			<li class="divider"></li>
 			<li class="dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown">SIGN UP FOR THE NEWSLETTER <span class="caret"></span></a>
+				<a target="_blank" href="#" class="dropdown-toggle" data-toggle="dropdown">SIGN UP FOR THE NEWSLETTER <span class="caret"></span></a>
 				<ul class="dropdown-menu pull-right" id="newsLetter">
 					<li>
 						<form action="" class="form-inline" role="form" id="newsletterForm">
@@ -359,13 +359,13 @@
 				$igclass = $ig ? "" : "disabled";
 				$ytclass = $yt ? "" : "disabled";
 			?>
-			<li><a class="socialicon first <? echo $fbclass; ?>" href="<? echo $fb; ?>"><img src="<? echo theme_uri; ?>/assets/images/fb.png" alt=""></a></li>
-			<li><a class="socialicon <? echo $twclass; ?>" href="<? echo $tweet; ?>"><img src="<? echo theme_uri; ?>/assets/images/twitter.png" alt=""></a></li>
-			<li><a class="socialicon <? echo $igclass; ?>" href="<? echo $ig; ?>"><img src="<? echo theme_uri; ?>/assets/images/ig.png" alt=""></a></li>
-			<li><a class="socialicon <? echo $ytclass; ?>" href="<? echo $yt; ?>"><img src="<? echo theme_uri; ?>/assets/images/yt.png" alt=""></a></li>
+			<li><a target="_blank" class="socialicon first <? echo $fbclass; ?>" href="<? echo $fb; ?>"><img src="<? echo theme_uri; ?>/assets/images/fb.png" alt=""></a></li>
+			<li><a target="_blank" class="socialicon <? echo $twclass; ?>" href="<? echo $tweet; ?>"><img src="<? echo theme_uri; ?>/assets/images/twitter.png" alt=""></a></li>
+			<li><a target="_blank" class="socialicon <? echo $igclass; ?>" href="<? echo $ig; ?>"><img src="<? echo theme_uri; ?>/assets/images/ig.png" alt=""></a></li>
+			<li><a target="_blank" class="socialicon <? echo $ytclass; ?>" href="<? echo $yt; ?>"><img src="<? echo theme_uri; ?>/assets/images/yt.png" alt=""></a></li>
 			<li class="divider"></li>
 			<li class="dropdown">
-				<a href="#" class="dropdown-toggle socialicon search" data-toggle="dropdown"><img src="<? echo theme_uri; ?>/assets/images/search.png" alt=""></a>
+				<a target="_blank" href="#" class="dropdown-toggle socialicon search" data-toggle="dropdown"><img src="<? echo theme_uri; ?>/assets/images/search.png" alt=""></a>
 				<ul class="dropdown-menu pull-right">
 					<li>
 						<form id="searchForm" action="" role="form">
