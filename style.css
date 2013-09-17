@@ -34,8 +34,10 @@ License: GNU General Public License
   font-weight: bold;
   font-style: normal;
 }
-body {
+body,
+html {
   width: 100%;
+  min-width: 980px;
 }
 h1,
 h2,

@@ -68,22 +68,49 @@
 
 			$terms = get_terms("primary_category", $termArgs);
 			$types = get_post_types($typeArgs, "names");
+			$interests = array();
 
-			for( $i = 0; $i < count($terms); $i++) :
+			foreach($terms as $term){
+				$obj = new stdClass();
+				$obj->type = "term";
+				$obj->value = $term;
+				$interests[$term->name] = $obj;
+			}
+
+			foreach($types as $type){
+				$obj = new stdClass();
+				$obj->type = "type";
+				$obj->value = get_post_type_object($type);
+				$interests[$obj->value->labels->name] = $obj;
+			}
+
+			$final = array();
+			$final[] = $interests["Art"];
+			$final[] = $interests["Music"];
+			$final[] = $interests["Fashion"];
+			$final[] = $interests["Nightlife"];
+			$final[] = $interests["Cocktail Culture"];
+			$final[] = $interests["Travel"];
+			$final[] = $interests["Hotspots"];
+			$final[] = $interests["Mixology"];
+			$final[] = $interests["Luminary"];
+			$final[] = $interests["Audio"];
+			$final[] = $interests["Videos"];
+
+			// print_r($final);
+
+			foreach($final as $interest) :
+				if($interest->type == "term") :
 		?>
-			<li><a href="<? echo get_term_link($terms[$i]); ?>" role="menuitem" tabindex="-1"><? echo $terms[$i]->name; ?></a></li>
+			<li><a href="<? echo get_term_link($interest->value); ?>" role="menuitem" tabindex="-1"><? echo $interest->value->name; ?></a></li>
 		<?
-			endfor;
-			foreach( $types as $type ) :
-				if($type == "staff") continue;
+				else:
 		?>
-			<li><a href="<? echo get_post_type_archive_link($type); ?>" role="menuitem" tabindex="-1">
-				<? 
-					$obj = get_post_type_object($type);
-					echo $obj->labels->name;
-				?>
-			</a></li>
-		<? endforeach; ?>
+			<li><a href="<? echo get_post_type_archive_link($interest->value); ?>" role="menuitem" tabindex="-1"><? echo $interest->value->labels->name; ?></a></li>
+		<? 
+				endif;
+			endforeach;
+		?>
 		</ul>
 	</div>
 </div>
