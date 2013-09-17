@@ -82,7 +82,7 @@ add_action( 'init', 'register_luminaries_kreate' );
 function register_luminaries_kreate() {
 
     $labels = array( 
-        'name' => _x( 'Luminary', 'luminaries' ),
+        'name' => _x( 'Luminaries', 'luminaries' ),
         'singular_name' => _x( 'luminary', 'luminary' ),
         'add_new' => _x( 'Add New', 'luminary' ),
         'add_new_item' => _x( 'Add New Luminary', 'luminary' ),

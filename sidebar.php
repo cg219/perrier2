@@ -34,17 +34,17 @@
 		<? 	
 					else :
 		?>
-			<li role="menuitem"><a href="#"><? echo $items[$i]->title?></a></li>
+			<li role="menuitem"><a href="<? echo $items[$i]->url; ?>"><? echo $items[$i]->title?></a></li>
 		<?
 					endif;
 				elseif(!$isTopLevel) :
 					if($items[$i +1]->menu_item_parent == $currentTopLevel) :
 		?>
-			<li role="menuitem"><a href="#"><? echo $items[$i]->title?></a></li>
+			<li role="menuitem"><a href="<? echo $items[$i]->url; ?>"><? echo $items[$i]->title?></a></li>
 		<?
 					else:
 		?>
-			<li role="menuitem"><a href="#"><? echo $items[$i]->title?></a></li></ul>
+			<li role="menuitem"><a href="<? echo $items[$i]->url; ?>"><? echo $items[$i]->title?></a></li></ul>
 		<?
 					endif;
 				endif;
@@ -93,11 +93,11 @@
 			$final[] = $interests["Travel"];
 			$final[] = $interests["Hotspots"];
 			$final[] = $interests["Mixology"];
-			$final[] = $interests["Luminary"];
+			$final[] = $interests["Luminaries"];
 			$final[] = $interests["Audio"];
 			$final[] = $interests["Videos"];
 
-			// print_r($final);
+			// print_r($final[8]);
 
 			foreach($final as $interest) :
 				if($interest->type == "term") :
@@ -106,7 +106,7 @@
 		<?
 				else:
 		?>
-			<li><a href="<? echo get_post_type_archive_link($interest->value); ?>" role="menuitem" tabindex="-1"><? echo $interest->value->labels->name; ?></a></li>
+			<li><a href="<? echo get_post_type_archive_link($interest->value->name); ?>" role="menuitem" tabindex="-1"><? echo $interest->value->labels->name; ?></a></li>
 		<? 
 				endif;
 			endforeach;

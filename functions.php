@@ -59,6 +59,7 @@ if ( function_exists( 'add_theme_support' ) ) {
 
   add_theme_support( 'menus' );
   register_nav_menu( "location-menu", "Locations Menu");
+  register_nav_menu( "interests-menu", "Interests Menu");
 
   // add_theme_support( 'infinite-scroll', array(
   //     'container'  => 'main',

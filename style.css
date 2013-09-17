@@ -305,14 +305,14 @@ input {
 #sidebar .widget ul .rightMenu {
   position: relative;
   left: 160px;
-  bottom: 20px;
+  bottom: 23px;
 }
 #sidebar .widget ul .rightMenu li {
-  height: 18px;
+  height: 20px;
 }
 #sidebar .widget ul .rightMenu li a {
   color: black;
-  line-height: 18px;
+  line-height: 20px;
   padding-top: 0;
 }
 #sidebar .widget ul .rightMenu li a:hover {
@@ -334,12 +334,12 @@ input {
   background-image: linear-gradient(to bottom, #429d67, #1d7a36);
 }
 #sidebar .widget ul li {
-  height: 18px;
+  height: 20px;
   height: 100%;
   border-bottom: 1px solid #dedfe0;
 }
 #sidebar .widget ul li a {
-  line-height: 18px;
+  line-height: 20px;
   color: #77787b;
   font-weight: 200;
   height: 100%;
