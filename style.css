@@ -303,9 +303,10 @@ input {
   padding-top: 30px;
 }
 #sidebar .widget ul .rightMenu {
-  position: relative;
-  left: 160px;
-  top: -23px;
+  position: absolute;
+  left: 210px;
+  top: -3px;
+  overflow: hidden;
 }
 #sidebar .widget ul .rightMenu li {
   height: 20px !important;
