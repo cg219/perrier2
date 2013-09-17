@@ -16,15 +16,30 @@
 		})
 	}
 
-	var timer =  setInterval(function(){
-		if( $(".addthis_button_expanded").length ){
-			$(".addthis_button_expanded").attr("id", "addThisImportant" );
-			console.log("Timer");
+	if( $(".single").length ){
 
-			clearInterval(timer);
-		}
-			console.log("CHANE");
-	}, 500);
+		var timer =  setInterval(function(){
+			if( $(".addthis_button_expanded").length ){
+				$(".addthis_button_expanded").attr("id", "addThisImportant" );
+				console.log("Timer");
+
+				clearInterval(timer);
+			}
+		}, 500);
+
+	}
+
+	$("li.dropdown.hover").hover(function(){
+		$(this).find(".dropdown-toggle").click();
+	}, function(){
+		$(this).removeClass("open");
+		// $(this).find(".dropdown-toggle").click();
+	})
+
+	$("li.dropdown.hover").click(function(){
+		// console.log($(this).find(".dropdown-toggle"));
+		$(this).removeClass("open");
+	})
 
 	$(".addthis_button_expanded").css({
 		width: "40px"

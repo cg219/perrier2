@@ -304,10 +304,10 @@ input{
 			.rightMenu{
 				position: relative;
 				left: 160px;
-				bottom: 23px;
+				top: -23px;
 
 				li{
-					height: 20px;
+					height: 20px !important;
 					a{
 						color: black;
 						line-height: 20px;
@@ -328,7 +328,6 @@ input{
 
 			li{
 				height: 20px;
-				height: 100%;
 				border-bottom: 1px solid lighten(@sidebargrey, 40%);
 
 				a{
@@ -376,7 +375,7 @@ input{
 				}
 
 				&.open{
-					.kreate.gradient(#D1D3D4, #77787B);
+					// .kreate.gradient(#D1D3D4, #77787B);
 
 					& >a{
 						color: white;

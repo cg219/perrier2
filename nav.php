@@ -1,7 +1,7 @@
 <div id="siteheader" class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container wrap">
 		<div class="navbar-header">
-			<a target="_blank" id="topNavLogo" href="/" class="navbar-brand"><img src="<? echo theme_uri; ?>/assets/images/logo.png" alt=""></a>
+			<a id="topNavLogo" href="/" class="navbar-brand"><img src="<? echo theme_uri; ?>/assets/images/logo.png" alt=""></a>
 		</div>
 		<ul id="topNav" class="nav navbar-nav">
 			<li class="dropdown">

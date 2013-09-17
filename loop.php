@@ -56,7 +56,7 @@
 					<a href="<? echo get_permalink($thisPost->ID); ?>">
 						<? 
 							if( has_post_thumbnail() ) :
-								$img = wp_get_attachment_image_src( get_post_thumbnail_id(), '2-up');
+								$img = wp_get_attachment_image_src( get_post_thumbnail_id($thisPost->ID), '2-up');
 						?>
 							<img src="<? echo $img[0]; ?>" class="media-object" />
 						<? else :?>
@@ -72,7 +72,7 @@
 					<a href="<? echo get_permalink($nextPost->ID); ?>">
 						<? 
 							if( has_post_thumbnail() ) :
-								$img = wp_get_attachment_image_src( get_post_thumbnail_id(), '2-up');
+								$img = wp_get_attachment_image_src( get_post_thumbnail_id($nextPost->ID), '2-up');
 						?>
 							<img src="<? echo $img[0]; ?>" class="media-object" />
 						<? else :?>

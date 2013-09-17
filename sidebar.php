@@ -28,7 +28,7 @@
 					$currentTopLevel = $currentID;
 					if($items[$i +1]->menu_item_parent == $currentTopLevel) :
 		?>
-			<li class="dropdown" role="menuitem" tabindex="-1">
+			<li class="dropdown hover" role="menuitem" tabindex="-1">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><? echo $items[$i]->title?></a><span class="right-caret"></span>
 				<ul class="dropdown-menu rightMenu pull-right">
 		<? 	
