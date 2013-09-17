@@ -9,6 +9,7 @@
 		</div>
 	</div>
 	<div class="div wrap" id="wrapper">
+				<? kreate_get_all_cities(); ?>
 		<div class="container" id="main">
 			<div class="row" id="hotspot-navbar">
 				<h5>Hotspots</h5>
@@ -26,11 +27,12 @@
 						?>
 						<li role="presentation"><a href="#">ALL</a></li>
 						<?
-							$cities = get_terms("city");
-
-							foreach($cities as $city) :
+							$allcities = kreate_get_all_cities();
+							foreach($allcities as $cities) :
+								foreach($cities as $city) :
 						?>
 						<li><a href="#"><? echo $city->name; ?></a></li>
+							<? endforeach; ?>
 						<? endforeach; ?>
 					</ul>
 				</div>

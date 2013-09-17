@@ -36,9 +36,10 @@
 		// $(this).find(".dropdown-toggle").click();
 	})
 
-	$("li.dropdown.hover").click(function(){
+	$("li.dropdown.hover").click(function(event){
 		// console.log($(this).find(".dropdown-toggle"));
 		$(this).removeClass("open");
+		window.location = $(this).attr("href");
 	})
 
 	$(".addthis_button_expanded").css({

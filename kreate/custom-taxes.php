@@ -112,6 +112,24 @@
 			'query_var' => true,
 			'rewrite' => array( 'slug' => 'city', 'with_front' => FALSE ),
 		));
+
+		add_filter( "post_link", "city_perm", 10, 3 );
+		add_filter( "post_type_link", "city_perm", 10, 3 );
+	}
+
+	function city_perm($permalink, $post_id, $leavename){
+		if (strpos($permalink, '%city%') === FALSE) return $permalink;
+	     
+	        // Get post
+	        $post = get_post($post_id);
+	        if (!$post) return $permalink;
+	 
+	        // Get taxonomy terms
+	        $terms = wp_get_object_terms($post->ID, 'rating');   
+	        if (!is_wp_error($terms) && !empty($terms) && is_object($terms[0])) $taxonomy_slug = $terms[0]->slug;
+	        else $taxonomy_slug = 'not-rated';
+	 
+	    return str_replace('%city%', $taxonomy_slug, $permalink);
 	}
 
 ?>

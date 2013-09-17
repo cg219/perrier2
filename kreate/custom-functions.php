@@ -83,27 +83,37 @@
 	    return $trends;
 	}
 
-// function get_post_terms(){
+
+	/* Global Hotspot Stuff */
+
+	function kreate_get_blogs(){
+		global $wpdb;
+
+		$blogs = get_site_transient("all_blogs");
+
+		if( $blogs === false ){
+			$blogs = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM " . $wpdb->base_prefix . "blogs ORDER BY blog_id" ) );
+			set_site_transient("all_blogs", $blogs, 604800);
+		}
+
+		return $blogs;		
+	}
+
+	function kreate_get_hotspots($where){
 		
-	// }
+	}
 
-	// function addDefaultTerms(){
-	// 	$country = get_option("plugin_options")["country"];
-	// 	$city = get_option("plugin_options")["city"];
+	function kreate_get_all_cities(){
+		$blogs = kreate_get_blogs();
+		// print_r($blogs);
+		$cities;
 
-	// 	$countryExists = term_exists($country, "country");
+		foreach($blogs as $blog){
+			switch_to_blog($blog->blog_id);
+			$cities[] = get_terms("city");
+			restore_current_blog();
+		}
 
-	// 	echo $countryExists;
-	// 	if( $countryExists == 0 || $countryExists == null){
-	// 		wp_insert_term( $country, "country", array(
-	// 			"slug" => strtolower($country),
-	// 			"description" => "Country",
-	// 			"parent" => 0
-	// 		));
-
-	// 		echo "Added";
-	// 	}
-	// }
-
-	// add_action("after_setup_theme", addDefaultTerms);
+		return $cities;
+	}
 ?>

@@ -1,6 +1,8 @@
 <?
 
 	$paged = get_query_var("paged") ? get_query_var("paged") : 1;
+	$blogs = kreate_get_blogs();
+
 	if($queryCities){
 		$hotspotTaxes = array();
 
@@ -31,16 +33,19 @@
 		);
 	}
 
-	$query = new WP_Query($hotspotArgs);
-	if($query->have_posts()) :
-	while($query->have_posts()): $query->the_post();
+	// foreach( $blogs as $blog ):
+	// 	switch_to_blog($blog->blog_id);
+		$query = new WP_Query($hotspotArgs);
+		// print_r($query);
+		if($query->have_posts()) :
+		while($query->have_posts()): $query->the_post();
 
-	$cities = array();
+		$cities = array();
 
-	$terms = wp_get_post_terms($post->ID, "city");
-	for( $i=0; $i < count($terms); $i++){
-		array_push($cities, $terms[$i]->name);
-	}
+		$terms = wp_get_post_terms($post->ID, "city");
+		for( $i=0; $i < count($terms); $i++){
+			array_push($cities, $terms[$i]->name);
+		}
 ?>
 <div class="media article hotspot">
 	<a href="<? the_permalink(); ?>" class="pull-left">
