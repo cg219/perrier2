@@ -92,15 +92,49 @@
 		$blogs = get_site_transient("all_blogs");
 
 		if( $blogs === false ){
-			$blogs = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM " . $wpdb->base_prefix . "blogs ORDER BY blog_id" ) );
+			$blogs = $wpdb->get_results( esc_sql( "SELECT * FROM " . $wpdb->base_prefix . "blogs ORDER BY blog_id" ) );
 			set_site_transient("all_blogs", $blogs, 604800);
 		}
 
 		return $blogs;		
 	}
 
-	function kreate_get_hotspots($where){
-		
+	function kreate_create_hotspot_list(){
+		$blogs = kreate_get_blogs();
+
+		$hotspots = array();
+
+		foreach($blogs as $blog){
+			switch_to_blog($blog->blog_id);
+			$query = new WP_Query( array(
+				"post_type" => "hotspot",
+				"posts_per_page" => -1
+			));
+
+			if($query->have_posts()){
+				foreach($query->posts as $post){
+					$post->blog_id = $blog->blog_id;
+					$post->city = wp_get_post_terms($post->ID, "city");
+					$post->city = $post->city[0];
+					$hotspots[] = $post;
+				}
+					
+			}
+			restore_current_blog();
+		}
+		// print_r($hotspots);
+		set_site_transient("all_hotspots", $hotspots);
+		return $hotspots;
+	}
+
+	function kreate_get_hotspot_list(){
+		$hotspots = get_site_transient("all_hotspots");
+
+		if( !$hotspots ){
+			return kreate_create_hotspot_list();
+		}
+
+		return $hotspots;
 	}
 
 	function kreate_get_all_cities(){

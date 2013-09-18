@@ -110,60 +110,7 @@
 			<div class="morePosts">
 				<h5 id="titlebar">More Hotspots</h5>
 				<div class="container" id="singlemain">
-					<?
-						$paged = get_query_var("paged") ? get_query_var("paged") : 1;
-
-						$args = array(
-							"post_type" => "hotspot",
-							"posts_per_page" => 10,
-							"paged" => $paged
-						);
-
-						// print_r($args);
-						rewind_posts();
-						$query = new WP_Query($args);
-						// print_r($query);
-						
-						if($query->have_posts()) :
-							while($query->have_posts()): $query->the_post();
-
-							// $cats = array();
-
-							$cities = array();
-
-							$terms = wp_get_post_terms($post->ID, "city");
-							for( $i=0; $i < count($terms); $i++){
-								array_push($cities, $terms[$i]->name);
-							}
-					?>
-					<div class="media article hotspot">
-						<a href="<? the_permalink(); ?>" class="pull-left">
-							<? 
-								if( has_post_thumbnail() ) :
-									$img = wp_get_attachment_image_src( get_post_thumbnail_id(), 'thumb');
-							?>
-							<img src="<? echo $img[0]; ?>" class="media-object" />
-							<? else :?>
-							<img src="" alt="">
-							<? 
-								endif;
-								if(get_post_meta(get_the_ID(), "_perrier2_hotspot_preferred", true) == "on") :
-							?>
-							<img class="preferred" src="<? echo theme_uri; ?>/assets/images/hotspot.png" />
-							<? endif; ?>
-						</a>
-						<div class="media-body">
-							<h5><? echo join(", ", $cities); ?></h5>
-							<h3><a href="<? the_permalink(); ?>"><? the_title(); ?></a></h3>
-							<p><?  echo $post->post_excerpt; ?> <a class="readmore" href="<? the_permalink(); ?>">Read More</a></p>
-						</div>
-					</div>
-						<? endwhile; ?>
-						<? if( $paged + 1 <= $query->max_num_pages): ?>
-					<div class="nextPostLink"><a href="<? echo get_post_type_archive_link("hotspot") ?>page/<? echo $paged + 1; ?>"></a></div>
-						<? endif; ?>
-
-					<? endif; ?>
+					<? include( locate_template("loop-hotspot.php")); ?>
 				</div>
 			</div>
 		</div>

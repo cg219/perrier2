@@ -9,7 +9,6 @@
 		</div>
 	</div>
 	<div class="div wrap" id="wrapper">
-				<? kreate_get_all_cities(); ?>
 		<div class="container" id="main">
 			<div class="row" id="hotspot-navbar">
 				<h5>Hotspots</h5>

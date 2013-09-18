@@ -1,7 +1,7 @@
 <?
-
 	$paged = get_query_var("paged") ? get_query_var("paged") : 1;
 	$blogs = kreate_get_blogs();
+	$amount = 10;
 
 	if($queryCities){
 		$hotspotTaxes = array();
@@ -9,67 +9,46 @@
 		foreach($queryCities as $qc){
 			$hotspotTaxes[] = $qc;
 		}
-
-		$hotspotArgs = array(
-			"post_type" => "hotspot",
-			"posts_per_page" => 10,
-			"tax_query" => array(
-				array(
-					"taxonomy" => "city",
-					"field" => "slug",
-					"terms" => $hotspotTaxes
-				)
-			),
-			"paged" => $paged
-		);
-
-		// print_r($hotspotArgs);
-	}
-	else{
-		$hotspotArgs = array(
-			"post_type" => "hotspot",
-			"posts_per_page" => 10,
-			"paged" => $paged
-		);
 	}
 
-	// foreach( $blogs as $blog ):
-	// 	switch_to_blog($blog->blog_id);
-		$query = new WP_Query($hotspotArgs);
-		// print_r($query);
-		if($query->have_posts()) :
-		while($query->have_posts()): $query->the_post();
+	$query = kreate_get_hotspot_list();
+	// print_r($query);
+	$i = ($paged-1) * $amount;
+	$limit = $i + 10;
 
-		$cities = array();
-
-		$terms = wp_get_post_terms($post->ID, "city");
-		for( $i=0; $i < count($terms); $i++){
-			array_push($cities, $terms[$i]->name);
-		}
-?>
-<div class="media article hotspot">
-	<a href="<? the_permalink(); ?>" class="pull-left">
-		<? 
-			if( has_post_thumbnail() ) :
-				$img = wp_get_attachment_image_src( get_post_thumbnail_id(), 'thumb');
-		?>
-		<img src="<? echo $img[0]; ?>" class="media-object" />
-		<? else :?>
-		<img src="" alt="">
-		<? 
+	if( $hotspotTaxes ) :
+		$temp = array();
+		foreach($query as $hs):
+			if(in_array($hs->city->name, $hotspotTaxes)):
+				$temp[] = $hs;
 			endif;
-			if(get_post_meta(get_the_ID(), "_perrier2_hotspot_preferred", true) == "on") :
-		?>
-		<img class="preferred" src="<? echo theme_uri; ?>/assets/images/hotspot.png" />
-		<? endif; ?>
-	</a>
-	<div class="media-body">
-		<h5><? echo join(", ", $cities); ?></h5>
-		<h3><a href="<? the_permalink(); ?>"><? the_title(); ?></a></h3>
-		<p><? the_excerpt(); ?><a class="readmore" href="<? the_permalink(); ?>">Read More</a></p>
-	</div>
-</div>
-<? endwhile; ?>
+		endforeach;
+		$query = $temp;
+	endif;
 
-	<div class="nextPostLink"><? next_posts_link("", $query->max_num_pages); ?></div>
+	for( $i; $i < $limit; $i++ ):
+		global $blog_id;
+		$post = $query[$i];
+		$cities = $post->city->name;
+
+		if($post->blog_id != $blog_id) :
+			switch_to_blog($post->blog_id);
+			$blog_switched = true;
+		endif;
+
+		if( $hotspotTaxes ) :
+			if( in_array($cities, $hotspotTaxes) ) :
+				include( locate_template("content-hotspot.php"));
+			endif;
+		else :
+			include( locate_template("content-hotspot.php"));
+		endif;
+		if( $blog_switched ) :
+			restore_current_blog();
+			$blog_switched = false;
+		endif;
+	endfor;
+?>
+<? if($query[$limit + 1]): ?>
+<div class="nextPostLink"><a href="<? echo get_post_type_archive_link("hotspot"); ?>page/<? echo $paged + 1; ?>"></a></div>
 <? endif; ?>

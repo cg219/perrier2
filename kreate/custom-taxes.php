@@ -91,6 +91,9 @@
 			'rewrite' => array( 'slug' => 'country', 'with_front' => FALSE ),
 		));
 
+		add_filter( "post_link", "country_perm", 10, 3 );
+		add_filter( "post_type_link", "country_perm", 10, 3 );
+
 		$labels = array(
 			'name' => _x( 'City', 'taxonomy general name' ),
 			'singular_name' => _x( 'City', 'taxonomy singular name' ),
@@ -125,11 +128,26 @@
 	        if (!$post) return $permalink;
 	 
 	        // Get taxonomy terms
-	        $terms = wp_get_object_terms($post->ID, 'rating');   
+	        $terms = wp_get_object_terms($post->ID, 'city');   
 	        if (!is_wp_error($terms) && !empty($terms) && is_object($terms[0])) $taxonomy_slug = $terms[0]->slug;
-	        else $taxonomy_slug = 'not-rated';
+	        else $taxonomy_slug = 'city';
 	 
 	    return str_replace('%city%', $taxonomy_slug, $permalink);
+	}
+
+	function country_perm($permalink, $post_id, $leavename){
+		if (strpos($permalink, '%country%') === FALSE) return $permalink;
+	     
+	        // Get post
+	        $post = get_post($post_id);
+	        if (!$post) return $permalink;
+	 
+	        // Get taxonomy terms
+	        $terms = wp_get_object_terms($post->ID, 'country');   
+	        if (!is_wp_error($terms) && !empty($terms) && is_object($terms[0])) $taxonomy_slug = $terms[0]->slug;
+	        else $taxonomy_slug = 'country';
+	 
+	    return str_replace('%country%', $taxonomy_slug, $permalink);
 	}
 
 ?>
