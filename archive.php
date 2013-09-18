@@ -39,6 +39,8 @@
 			<div class="nextPostLink"><? next_posts_link(""); ?></div>
 
 			<? endif; ?>
+			
+			<div class="loader row"><img src="<? echo theme_uri; ?>/assets/images/loader.gif" alt=""></div>
 		</div>
 		<? get_sidebar(); ?>
 	</div>

@@ -111,8 +111,11 @@
 				return false;
 			}
 
+			$(".loader").fadeIn();
+
 			loadNextPage(container.data("next-page") || defaultURL, "main", function(data, newURL){
 				processing = false;
+				$(".loader").fadeOut();
 				container.append(data);
 				if( newURL ){
 					container.data("next-page", newURL);

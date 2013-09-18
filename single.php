@@ -160,6 +160,8 @@
 						<? endif; ?>
 
 					<? endif; ?>
+
+					<div class="loader row"><img src="<? echo theme_uri; ?>/assets/images/loader.gif" alt=""></div>
 				</div>
 			</div>
 		</div>

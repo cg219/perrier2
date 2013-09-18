@@ -41,6 +41,8 @@
 				</form>
 			</div>
 			<? include( locate_template("loop-hotspot.php")); ?>
+			
+			<div class="loader row"><img src="<? echo theme_uri; ?>/assets/images/loader.gif" alt=""></div>
 		</div>
 		<? get_sidebar(); ?>
 	</div>

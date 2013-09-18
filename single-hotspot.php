@@ -72,7 +72,7 @@
 						<p id="address1"><? echo get_post_meta(get_the_ID(), meta . "hotspot_address1", true) ?></p>
 						<p id="address2"><? echo get_post_meta(get_the_ID(), meta . "hotspot_address2", true) ?></p>
 						<p id="phone"><? echo get_post_meta(get_the_ID(), meta . "hotspot_phone", true) ?></p>
-						<p id="web"><a href="<? echo get_post_meta(get_the_ID(), meta . "hotspot_url", true) ?>"><? echo get_post_meta(get_the_ID(), meta . "hotspot_url", true) ?></a></p>
+						<p id="web"><a href="<? echo get_post_meta(get_the_ID(), meta . "hotspot_url", true) ?>">Website</a></p>
 						<ul>
 							<? if(get_post_meta(get_the_ID(), meta . "hotspot_twitter", true)) : ?>
 							<li><a href="<? echo get_post_meta(get_the_ID(), meta . "hotspot_twitter", true); ?>"><img src="<? echo theme_uri; ?>/assets/images/twitter-g.png" alt=""></a></li>
@@ -113,6 +113,8 @@
 					<? include( locate_template("loop-hotspot.php")); ?>
 				</div>
 			</div>
+
+			<div class="loader row"><img src="<? echo theme_uri; ?>/assets/images/loader.gif" alt=""></div>
 		</div>
 		<? get_sidebar(); ?>
 	</div>

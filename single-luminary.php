@@ -66,10 +66,10 @@
 					<div class="content pull-left"><? the_content(); ?></div>
 					<div class="data pull-right">
 						<h6>SPOTLIGHT</h6>
-						<p id="lname"><? echo get_post_meta(get_the_ID(), meta . "luminary_name", true) ?></p>
-						<p id="fame"><? echo get_post_meta(get_the_ID(), meta . "luminary_fame", true) ?></p>
-						<p id="location"><? echo get_post_meta(get_the_ID(), meta . "luminary_location", true) ?></p>
-						<p id="web"><? echo get_post_meta(get_the_ID(), meta . "luminary_url", true) ?></p>
+						<p id="lname">Name: <? echo get_post_meta(get_the_ID(), meta . "luminary_name", true) ?></p>
+						<p id="fame">Known for: <? echo get_post_meta(get_the_ID(), meta . "luminary_fame", true) ?></p>
+						<p id="location">Based: <? echo get_post_meta(get_the_ID(), meta . "luminary_location", true) ?></p>
+						<p id="web"><a href="<? echo get_post_meta(get_the_ID(), meta . "luminary_url", true) ?>">Wbesite</a></p>
 						<ul>
 							<? if(get_post_meta(get_the_ID(), meta . "luminary_twitter", true)) : ?>
 							<li><a href="<? echo get_post_meta(get_the_ID(), meta . "luminary_twitter", true); ?>"><img src="<? echo theme_uri; ?>/assets/images/twitter-g.png" alt=""></a></li>
@@ -153,6 +153,8 @@
 						<? endif; ?>
 
 					<? endif; ?>
+
+					<div class="loader row"><img src="<? echo theme_uri; ?>/assets/images/loader.gif" alt=""></div>
 				</div>
 			</div>
 		</div>

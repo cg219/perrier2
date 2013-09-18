@@ -57,6 +57,12 @@ input {
 .readmore {
   text-transform: uppercase;
 }
+.loader {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  display: none;
+}
 .backToTop {
   width: 50px;
   height: 50px;
@@ -270,6 +276,7 @@ input {
 #main {
   width: 720px;
   float: right;
+  position: relative;
 }
 #sidebar {
   float: left;
@@ -630,6 +637,7 @@ input {
 }
 #singlemain {
   padding-left: 0;
+  position: relative;
 }
 .comments-area {
   margin-top: 20px;
