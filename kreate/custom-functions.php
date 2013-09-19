@@ -91,7 +91,8 @@
 	function kreate_get_blogs(){
 		global $wpdb;
 
-		$blogs = get_site_transient("all_blogs");
+		// $blogs = get_site_transient("all_blogs");
+		$blogs = false;
 
 		if( $blogs === false ){
 			$blogs = $wpdb->get_results( esc_sql( "SELECT * FROM " . $wpdb->base_prefix . "blogs ORDER BY blog_id" ) );
@@ -157,10 +158,10 @@
 		if(! wp_is_post_revision( $postID )) :
 
 			$blogs = kreate_get_blogs();
-			$globalBlogID = $blogs[0]->blog_id;
+			$options = get_option("plugin_options");
+			$globalBlogID = $options["global_blog"] ? $options["global_blog"] : $blogs[1]->blog_id;
 			$post = get_post($postID, ARRAY_A);
 			$dupe = array();
-			$global_posts = get_site_transient("global_posts") === false ? array() : get_site_transient("global_posts");
 
 			if( get_post_meta($postID, meta . "enable_add_to_global", true) === "on" ) :
 
@@ -172,40 +173,19 @@
 					endif;
 				endforeach;
 
-				if( array_key_exists($postID, $global_posts) ) :
-					switch_to_blog($globalBlogID);
-					$dupe["ID"] = $global_posts[$postID];
-					wp_update_post($dupe);
-					restore_current_blog();
-				else:
-					switch_to_blog($globalBlogID);
-					$newID = wp_insert_post($dupe);
-					restore_current_blog();
+				$currentBlogID = get_current_blog_id();
+				switch_to_blog($globalBlogID);
+				$dupe["original_blog_id"] = $currentBlogID;
+				$dupe["original_post_id"] = $postID;
+				$newID = wp_insert_post($dupe);
+				add_post_meta($newID, "original_blog_id", $currentBlogID);
+				add_post_meta($newID, "original_post_id", $postID);
+				restore_current_blog();
 
-					$global_posts[$postID] = $newID;
-					$global_posts[$newID . "_blog_id"] = get_current_blog_id();
-					$global_posts[$newID . "_id"] = $postID;
-				endif;
-
-				set_site_transient("global_posts", $global_posts);
-				wp_update_post($post);
+				delete_post_meta($postID, meta . "enable_add_to_global");
+				delete_post_meta($postID, meta . "add_to_global");
+				// wp_update_post($post);
 				add_action( "save_post", "check_if_global", 100, 1 );
-			else:
-
-				if( array_key_exists($postID, $global_posts) ) :
-					remove_action( "save_post", "check_if_global", 100, 1 );
-
-					switch_to_blog($globalBlogID);
-					wp_delete_post($global_posts[$postID]);
-					restore_current_blog();
-
-					$tempID = $global_posts[$postID];
-					unset($global_posts[$postID]);
-					unset($global_posts[$tempID . "_blog_id"]);
-					unset($global_posts[$tempID . "_id"]);
-
-					add_action( "save_post", "check_if_global", 100, 1 );
-				endif;
 			endif;
 		endif;
 	}

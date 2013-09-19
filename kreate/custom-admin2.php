@@ -1,6 +1,7 @@
 <?
 	add_action("admin_menu", "kreate_add_cities");
 	add_action("admin_menu", "kreate_update_events");
+	add_action("admin_menu", "kreate_clear_data");
 
 	add_option("plugin_options", "plugin_options" );
 	add_action('admin_menu', 'create_theme_options_page');
@@ -53,6 +54,26 @@
 	}
 
 	/*
+		Clear Data Admin
+	*/
+
+	function kreate_clear_data(){
+		$data_admin_page = add_management_page(
+			"Kreate Clear Data",
+			"Kreate Clear Data",
+			"manage_options",
+			"-kreate_clear_data",
+			"display_clear_data_page"
+		);
+
+		add_action("admin_head-" . $data_admin_page, "add_externals");
+	}
+
+	function display_clear_data_page(){
+		include("pages/clear_data.php");
+	}
+
+	/*
 		Options Page
 	*/
 
@@ -83,6 +104,7 @@
 
 	   add_settings_field("country", "Default Country:", "country_setting_kreate", __FILE__, "main_section");
 	   add_settings_field("city", "Default City:", "city_setting_kreate", __FILE__, "main_section");
+	   add_settings_field("global_blog", "Default Global Blog:", "blog_setting_kreate", __FILE__, "main_section");
 
 	   add_settings_field("twitter", "Twitter:", "twitter_setting_kreate", __FILE__, "social_section");
 	   add_settings_field("facebook", "Facebook:", "fb_setting_kreate", __FILE__, "social_section");
@@ -124,6 +146,17 @@
 	   $val = get_option("plugin_options") ? get_option("plugin_options") : "";
 	   $val = $val["instagram"];
 	   echo '<input class="input-lg" type="text" name="plugin_options[instagram]" value="' . $val . '" />';
+	}
+
+	function blog_setting_kreate() {
+	   $val = get_option("plugin_options") ? get_option("plugin_options") : "";
+	   $val = $val["instagram"];
+	   echo '<select name="plugin_options[global_blog]">';
+	   $blogs = kreate_get_blogs();
+	   foreach($blogs as $blog){
+	   echo "<option value='$blog->blog_id'>$blog->path</option>";
+	   }
+	   echo '</select>';
 	}
 
 	function section_cb() {}

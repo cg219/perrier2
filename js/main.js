@@ -21,7 +21,7 @@
 		var timer =  setInterval(function(){
 			if( $(".addthis_button_expanded").length ){
 				$(".addthis_button_expanded").attr("id", "addThisImportant" );
-				console.log("Timer");
+				// console.log("Timer");
 
 				clearInterval(timer);
 			}
@@ -29,15 +29,14 @@
 
 	}
 
-	$("li.dropdown.hover").hover(function(){
-		$(this).find(".dropdown-toggle").click();
+	$("li.dropdown.hover").hover(function(event){
+		$(this).addClass("open");
 	}, function(){
 		$(this).removeClass("open");
-		// $(this).find(".dropdown-toggle").click();
 	})
 
 	$("li.dropdown.hover").click(function(event){
-		// console.log($(this).find(".dropdown-toggle"));
+		event.preventDefault();
 		$(this).removeClass("open");
 		window.location = $(this).attr("href");
 	})
@@ -103,8 +102,8 @@
 
 			var container = $("#singlemain, #main").last();
 
-			console.log(container.data("next-page"));
-			console.log(defaultURL);
+			// console.log(container.data("next-page"));
+			// console.log(defaultURL);
 			if(container.data("next-page") == defaultURL){
 				$(document).off(".main");
 				processing = false;
@@ -136,7 +135,7 @@
 	})
 
 	$("#newsletterForm").submit(function(){
-		console.log("Form Submitting");
+		// console.log("Form Submitting");
 		var form = $(this);
 		
 		$.ajax({
@@ -144,7 +143,7 @@
 			type: "POST",
 			data: form.serialize(),
 			success: function(response){
-				console.log(response);
+				// console.log(response);
 			}
 		})
 		return false;
@@ -200,7 +199,7 @@
 				callback(articles, nextURL);
 			},
 			error: function(response){
-				console.log("error")
+				// console.log("error")
 			}
 		});
 	}

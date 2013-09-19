@@ -15,34 +15,35 @@
 					array_push($cats, $terms2[$i]);
 				}
 				
-				$isGlobalFeature = get_post_meta(get_the_ID(), meta . "add_to_global", true) == "feature" ? true : false;
-				$isGlobal2Up = get_post_meta(get_the_ID(), meta . "add_to_global", true) == "two-up" ? true : false;
-				$isGlobal = get_post_meta(get_the_ID(), meta . "add_to_global", true) == "regular" ? true : false;
-				$isGlobalEnabled = get_post_meta(get_the_ID(), meta . "enable_add_to_global", true) == "on" ? true : false;
+				$postID = get_the_ID();
+				$isGlobalType = get_post_meta(get_the_ID(), meta . "add_to_global", true);
+				$isGlobalEnabled = get_post_meta(get_the_ID(), meta . "enable_add_to_global", true) === "on" ? true : false;
 				
+				$old_blog_id = get_current_blog_id();
+				$blog_id = get_post_meta($postID, "original_blog_id", true);
+				$original_id = get_post_meta($postID, "original_post_id", true);
+
+				$img = null;
+
 				if($theFirstFeature == $post->ID) continue; 
-				if($isFeature) :
+				if($isFeature || ($isGlobalEnabled && $isGlobalType === "feature")) :
 			?>
 			<div class="featured article">
 				<? 
-					if($isGlobal && $isGlobalFeature) :
-
-						$gbs = get_site_transient("global_posts");
-						$blog_id = $gbs[get_the_ID() . "_blog_id"];
-						$original_id = $gbs[get_the_ID() . "_id"];
-						$perm = get_blog_permalink($blog_id, $original_id);
+					if($isGlobalEnabled) :
+						$perm = get_post_meta($postID, meta . "global_link", true);
 					else :
 						$perm = get_permalink();
 					endif;
 				?>
 				<a href="<? echo $perm; ?>">
 					<? 
-						if( $isGlobal && $isGlobalFeature ) :
-							switch_to_blog($blog_id);
+						if( $isGlobalEnabled) :
+							switch_to_blog(get_post_meta($post->ID, "original_blog_id", true));
 							if( has_post_thumbnail($original_id) ) :
 								$img = wp_get_attachment_image_src( get_post_thumbnail_id($original_id), 'featured');
 							endif;
-							restore_current_blog();
+							switch_to_blog($old_blog_id);
 						else:
 							if( has_post_thumbnail() ) :
 								$img = wp_get_attachment_image_src( get_post_thumbnail_id(), 'featured');
@@ -62,9 +63,14 @@
 				<p><?  echo $post->post_excerpt; ?> <a class="readmore" href="<? echo $perm; ?>">Read More</a></p>
 			</div>
 			<? 
-				elseif($is2Up) :
+				elseif($is2Up || ($isGlobalEnabled && $isGlobalType === "two-up")) :
 					$thisPost = $post;
 					$nextPost = get_next_post();
+
+					$this_blog_id = get_post_meta($thisPost->ID, "original_blog_id", true);
+					$next_blog_id = get_post_meta($nextPost->ID, "original_blog_id", true);
+					$this_original_id = get_post_meta($thisPost->ID, "original_post_id", true);
+					$next_original_id = get_post_meta($nextPost->ID, "original_post_id", true);
 
 					$nextPostTerms = wp_get_post_terms($nextPost->ID, "type");
 					$nextPostIsCorrect = false;
@@ -82,24 +88,20 @@
 			<div class="article two-up-pair">
 				<div class="media two-up article">
 					<? 
-						if($isGlobal && $isGlobal2Up) :
-
-							$gbs = get_site_transient("global_posts");
-							$blog_id = $gbs[get_the_ID() . "_blog_id"];
-							$original_id = $gbs[get_the_ID() . "_id"];
-							$perm = get_blog_permalink($blog_id, $original_id);
+						if($isGlobalEnabled) :
+							$perm = get_post_meta($thisPost->ID, meta . "global_link", true);
 						else :
 							$perm = get_permalink($thisPost->ID);
 						endif;
 					?>
 					<a href="<? echo $perm; ?>">
 						<? 
-							if( $isGlobal && $isGlobal2Up ) :
-								switch_to_blog($blog_id);
+							if( $isGlobalEnabled) :
+								switch_to_blog(get_post_meta($thisPost->ID, "original_blog_id", true));
 								if( has_post_thumbnail($original_id) ) :
-									$img = wp_get_attachment_image_src( get_post_thumbnail_id($original_id), '2-up');
+									$img = wp_get_attachment_image_src( get_post_thumbnail_id($this_original_id), '2-up');
 								endif;
-								restore_current_blog();
+								switch_to_blog($old_blog_id);
 							else:
 								if( has_post_thumbnail() ) :
 									$img = wp_get_attachment_image_src( get_post_thumbnail_id($thisPost->ID), '2-up');
@@ -120,24 +122,21 @@
 				</div>
 				<div class="media two-up article">
 					<? 
-						if($isGlobal && $isGlobal2Up) :
-
-							$gbs = get_site_transient("global_posts");
-							$blog_id = $gbs[get_the_ID() . "_blog_id"];
-							$original_id = $gbs[get_the_ID() . "_id"];
-							$perm = get_blog_permalink($blog_id, $original_id);
+						$img = null;
+						if($isGlobalEnabled) :
+							$perm = get_post_meta($nextPost->ID, meta . "global_link", true);
 						else :
-							$perm = get_permalink($thisPost->ID);
+							$perm = get_permalink($nextPost->ID);
 						endif;
 					?>
 					<a href="<? echo $perm; ?>">
 						<? 
-							if( $isGlobal && $isGlobal2Up ) :
-								switch_to_blog($blog_id);
+							if( $isGlobalEnabled) :
+								switch_to_blog(get_post_meta($nextPost->ID, "original_blog_id", true));
 								if( has_post_thumbnail($original_id) ) :
-									$img = wp_get_attachment_image_src( get_post_thumbnail_id($original_id), '2-up');
+									$img = wp_get_attachment_image_src( get_post_thumbnail_id($next_original_id), '2-up');
 								endif;
-								restore_current_blog();
+								switch_to_blog($old_blog_id);
 							else:
 								if( has_post_thumbnail() ) :
 									$img = wp_get_attachment_image_src( get_post_thumbnail_id($nextPost->ID), '2-up');
@@ -161,24 +160,20 @@
 			<? else: ?>
 			<div class="media article">
 				<? 
-					if($isGlobal && $isGlobalFeature) :
-
-						$gbs = get_site_transient("global_posts");
-						$blog_id = $gbs[get_the_ID() . "_blog_id"];
-						$original_id = $gbs[get_the_ID() . "_id"];
-						$perm = get_blog_permalink($blog_id, $original_id);
+					if($isGlobalEnabled) :
+						$perm = get_post_meta($postID, meta . "global_link", true);
 					else :
 						$perm = get_permalink();
 					endif;
 				?>
 				<a class="pull-left" href="<? echo $perm; ?>">
 					<? 
-						if( $isGlobal && $isGlobalFeature ) :
-							switch_to_blog($blog_id);
+						if( $isGlobalEnabled) :
+							switch_to_blog(get_post_meta($post->ID, "original_blog_id", true));
 							if( has_post_thumbnail($original_id) ) :
 								$img = wp_get_attachment_image_src( get_post_thumbnail_id($original_id), 'thumb');
 							endif;
-							restore_current_blog();
+							switch_to_blog($old_blog_id);
 						else:
 							if( has_post_thumbnail() ) :
 								$img = wp_get_attachment_image_src( get_post_thumbnail_id(), 'thumb');

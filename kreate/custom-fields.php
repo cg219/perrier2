@@ -290,7 +290,13 @@
 							"value" => "feature"
 						)
 					)
-				)
+				),
+				array(
+					"name" => "Link",
+					"desc" => "Original Link",
+					"id" => $prefix . "global_link",
+					"type" => "text"
+				),
 			)
 		);
 
@@ -316,7 +322,7 @@
 		}
 	}
 
-	add_filter( "cmb_show_on", "kreate_show_on_super_admin");
+	add_filter( "cmb_show_on", "kreate_show_on_super_admin", 10, 2);
 	add_filter( "cmb_meta_boxes", "super_admin_metabox_kreate");
 	add_filter( "cmb_meta_boxes", "metabox_kreate");
 	add_filter( "cmb_meta_boxes", "recipe_metaboxes_kreate");
