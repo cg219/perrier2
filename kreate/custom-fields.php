@@ -234,7 +234,7 @@
 
 		$boxes[] = array(
 			"id" => "reg_metabox",
-			"title" => "Extra Fields",
+			"title" => "Additional Fields",
 			"pages" => array("post", "recipe", "luminary", "hotspot"),
 			"context" => "normal",
 			"priority" => "high",
@@ -252,12 +252,72 @@
 		return $boxes;
 	}
 
+	function super_admin_metabox_kreate( array $boxes ){
+		$prefix = "_perrier2_";
+
+		$boxes[] = array(
+			"id" => "global_metabox",
+			"title" => "Super Admin Options",
+			"pages" => array("post"),
+			"context" => "normal",
+			"priority" => "high",
+			"show_names" => true,
+			"show_on" => array(
+				"key" => "is_super_admin"
+			),
+			"fields" => array(
+				array(
+					"name" => "Enable",
+					"id" => $prefix . "enable_add_to_global",
+					"type" => "checkbox"
+				),
+				array(
+					"name" => "Add to Global",
+					"id" => $prefix . "add_to_global",
+					"type" => "select",
+					"options" => array(
+						array(
+							"name" => "Regular",
+							"value" => "regular",
+							"selected" => "true"
+						),
+						array(
+							"name" => "2-Up",
+							"value" => "two-up"
+						),
+						array(
+							"name" => "Feature",
+							"value" => "feature"
+						)
+					)
+				)
+			)
+		);
+
+		return $boxes;
+	}
+
+	function kreate_show_on_super_admin( $display, $boxes ){
+		if( "is_super_admin" !== $boxes["show_on"]["key"] ){
+			return $display;
+		}
+
+		if( is_super_admin() ){
+			return $display;
+		}
+		else{
+			return false;
+		}
+	}
+
 	function init_metaboxes(){
 		if( !class_exists("cmb_Meta_Box") ){
 			require_once(__DIR__ . "/../metas/init.php");
 		}
 	}
 
+	add_filter( "cmb_show_on", "kreate_show_on_super_admin");
+	add_filter( "cmb_meta_boxes", "super_admin_metabox_kreate");
 	add_filter( "cmb_meta_boxes", "metabox_kreate");
 	add_filter( "cmb_meta_boxes", "recipe_metaboxes_kreate");
 	add_filter( "cmb_meta_boxes", "hotspot_metaboxes_kreate");

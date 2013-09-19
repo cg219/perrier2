@@ -14,14 +14,42 @@
 				for( $i=0; $i < count($terms2); $i++){
 					array_push($cats, $terms2[$i]);
 				}
+				
+				$isGlobalFeature = get_post_meta(get_the_ID(), meta . "add_to_global", true) == "feature" ? true : false;
+				$isGlobal2Up = get_post_meta(get_the_ID(), meta . "add_to_global", true) == "two-up" ? true : false;
+				$isGlobal = get_post_meta(get_the_ID(), meta . "add_to_global", true) == "regular" ? true : false;
+				$isGlobalEnabled = get_post_meta(get_the_ID(), meta . "enable_add_to_global", true) == "on" ? true : false;
+				
 				if($theFirstFeature == $post->ID) continue; 
 				if($isFeature) :
 			?>
 			<div class="featured article">
-				<a href="<? the_permalink(); ?>">
+				<? 
+					if($isGlobal && $isGlobalFeature) :
+
+						$gbs = get_site_transient("global_posts");
+						$blog_id = $gbs[get_the_ID() . "_blog_id"];
+						$original_id = $gbs[get_the_ID() . "_id"];
+						$perm = get_blog_permalink($blog_id, $original_id);
+					else :
+						$perm = get_permalink();
+					endif;
+				?>
+				<a href="<? echo $perm; ?>">
 					<? 
-						if( has_post_thumbnail() ) :
-							$img = wp_get_attachment_image_src( get_post_thumbnail_id(), 'featured');
+						if( $isGlobal && $isGlobalFeature ) :
+							switch_to_blog($blog_id);
+							if( has_post_thumbnail($original_id) ) :
+								$img = wp_get_attachment_image_src( get_post_thumbnail_id($original_id), 'featured');
+							endif;
+							restore_current_blog();
+						else:
+							if( has_post_thumbnail() ) :
+								$img = wp_get_attachment_image_src( get_post_thumbnail_id(), 'featured');
+							endif;
+						endif;
+
+						if( $img[0] ) :
 					?>
 						<img class="media-object" src="<? echo $img[0]; ?>" />
 					<? else :?>
@@ -30,8 +58,8 @@
 				</a>
 				<? $thisCat = get_term_link($cats[0]); ?>
 				<h5><a href="<? echo $thisCat->errors ? "" : $thisCat;?>"><? echo $cats[0]->name; ?></a></h5>
-				<h2><a href="<? the_permalink(); ?>"><? the_title(); ?></a></h2>
-				<p><?  echo $post->post_excerpt; ?> <a class="readmore" href="<? the_permalink(); ?>">Read More</a></p>
+				<h2><a href="<? echo $perm; ?>"><? the_title(); ?></a></h2>
+				<p><?  echo $post->post_excerpt; ?> <a class="readmore" href="<? echo $perm; ?>">Read More</a></p>
 			</div>
 			<? 
 				elseif($is2Up) :
@@ -53,56 +81,122 @@
 			?>
 			<div class="article two-up-pair">
 				<div class="media two-up article">
-					<a href="<? echo get_permalink($thisPost->ID); ?>">
+					<? 
+						if($isGlobal && $isGlobal2Up) :
+
+							$gbs = get_site_transient("global_posts");
+							$blog_id = $gbs[get_the_ID() . "_blog_id"];
+							$original_id = $gbs[get_the_ID() . "_id"];
+							$perm = get_blog_permalink($blog_id, $original_id);
+						else :
+							$perm = get_permalink($thisPost->ID);
+						endif;
+					?>
+					<a href="<? echo $perm; ?>">
 						<? 
-							if( has_post_thumbnail() ) :
-								$img = wp_get_attachment_image_src( get_post_thumbnail_id($thisPost->ID), '2-up');
+							if( $isGlobal && $isGlobal2Up ) :
+								switch_to_blog($blog_id);
+								if( has_post_thumbnail($original_id) ) :
+									$img = wp_get_attachment_image_src( get_post_thumbnail_id($original_id), '2-up');
+								endif;
+								restore_current_blog();
+							else:
+								if( has_post_thumbnail() ) :
+									$img = wp_get_attachment_image_src( get_post_thumbnail_id($thisPost->ID), '2-up');
+								endif;
+							endif;
+
+							if( $img[0] ) :
 						?>
-							<img src="<? echo $img[0]; ?>" class="media-object" />
+							<img class="media-object" src="<? echo $img[0]; ?>" />
 						<? else :?>
-						<img src="" alt="">
+						<img class="media-object" src="" alt="">
 						<? endif; ?>
 					</a>
 					<div class="media-body">
-						<h3><a href="<? echo get_permalink($thisPost->ID); ?>"><? echo $thisPost->post_title; ?></a></h3>
-						<p><? echo $thisPost->post_excerpt; ?> <a class="readmore" href="<? echo get_permalink($thisPost->ID); ?>">Read More</a></p>
+						<h3><a href="<? echo $perm; ?>"><? echo $thisPost->post_title; ?></a></h3>
+						<p><? echo $thisPost->post_excerpt; ?> <a class="readmore" href="<? echo $perm ?>">Read More</a></p>
 					</div>
 				</div>
 				<div class="media two-up article">
-					<a href="<? echo get_permalink($nextPost->ID); ?>">
+					<? 
+						if($isGlobal && $isGlobal2Up) :
+
+							$gbs = get_site_transient("global_posts");
+							$blog_id = $gbs[get_the_ID() . "_blog_id"];
+							$original_id = $gbs[get_the_ID() . "_id"];
+							$perm = get_blog_permalink($blog_id, $original_id);
+						else :
+							$perm = get_permalink($thisPost->ID);
+						endif;
+					?>
+					<a href="<? echo $perm; ?>">
 						<? 
-							if( has_post_thumbnail() ) :
-								$img = wp_get_attachment_image_src( get_post_thumbnail_id($nextPost->ID), '2-up');
+							if( $isGlobal && $isGlobal2Up ) :
+								switch_to_blog($blog_id);
+								if( has_post_thumbnail($original_id) ) :
+									$img = wp_get_attachment_image_src( get_post_thumbnail_id($original_id), '2-up');
+								endif;
+								restore_current_blog();
+							else:
+								if( has_post_thumbnail() ) :
+									$img = wp_get_attachment_image_src( get_post_thumbnail_id($nextPost->ID), '2-up');
+								endif;
+							endif;
+
+							if( $img[0] ) :
 						?>
-							<img src="<? echo $img[0]; ?>" class="media-object" />
+							<img class="media-object" src="<? echo $img[0]; ?>" />
 						<? else :?>
-						<img src="" alt="">
+						<img class="media-object" src="" alt="">
 						<? endif; ?>
 					</a>
 					<div class="media-body">
-						<h3><a href="<? echo get_permalink($nextPost->ID); ?>"><? echo $nextPost->post_title; ?></a></h3>
-						<p><? echo $nextPost->post_excerpt; ?> <a class="readmore" href="<? echo get_permalink($nextPost->ID); ?>">Read More</a></p>
+						<h3><a href="<? echo $perm; ?>"><? echo $thisPost->post_title; ?></a></h3>
+						<p><? echo $thisPost->post_excerpt; ?> <a class="readmore" href="<? echo $perm ?>">Read More</a></p>
 					</div>
 				</div>
 			</div>
 			
 			<? else: ?>
 			<div class="media article">
-				<a href="<? the_permalink(); ?>" class="pull-left">
+				<? 
+					if($isGlobal && $isGlobalFeature) :
+
+						$gbs = get_site_transient("global_posts");
+						$blog_id = $gbs[get_the_ID() . "_blog_id"];
+						$original_id = $gbs[get_the_ID() . "_id"];
+						$perm = get_blog_permalink($blog_id, $original_id);
+					else :
+						$perm = get_permalink();
+					endif;
+				?>
+				<a class="pull-left" href="<? echo $perm; ?>">
 					<? 
-						if( has_post_thumbnail() ) :
-							$img = wp_get_attachment_image_src( get_post_thumbnail_id(), 'thumb');
+						if( $isGlobal && $isGlobalFeature ) :
+							switch_to_blog($blog_id);
+							if( has_post_thumbnail($original_id) ) :
+								$img = wp_get_attachment_image_src( get_post_thumbnail_id($original_id), 'thumb');
+							endif;
+							restore_current_blog();
+						else:
+							if( has_post_thumbnail() ) :
+								$img = wp_get_attachment_image_src( get_post_thumbnail_id(), 'thumb');
+							endif;
+						endif;
+
+						if( $img[0] ) :
 					?>
-						<img src="<? echo $img[0]; ?>" class="media-object" />
+						<img class="media-object" src="<? echo $img[0]; ?>" />
 					<? else :?>
-					<img src="" alt="">
+					<img class="media-object" src="" alt="">
 					<? endif; ?>
 				</a>
 				<div class="media-body">
 					<? $thisCat = get_term_link($cats[0]); ?>
 					<h5><a href="<? echo $thisCat->errors ? "" : $thisCat;?>"><? echo $cats[0]->name; ?></a></h5>
-					<h3><a href="<? the_permalink(); ?>"><? the_title(); ?></a></h3>
-					<p><? echo $post->post_excerpt; ?> <a class="readmore" href="<? the_permalink(); ?>">Read More</a></p>
+					<h3><a href="<? echo $perm; ?>"><? the_title(); ?></a></h3>
+					<p><? echo $post->post_excerpt; ?> <a class="readmore" href="<? echo $perm; ?>">Read More</a></p>
 				</div>
 			</div>
 			<?

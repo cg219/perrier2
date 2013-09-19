@@ -135,6 +135,21 @@
 		changeSlide("back");
 	})
 
+	$("#newsletterForm").submit(function(){
+		console.log("Form Submitting");
+		var form = $(this);
+		
+		$.ajax({
+			url: form.attr("action"),
+			type: "POST",
+			data: form.serialize(),
+			success: function(response){
+				console.log(response);
+			}
+		})
+		return false;
+	})
+
 	function scrollBack(){
 		$(".backToTop").fadeIn();
 		$(document).off(".back");

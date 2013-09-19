@@ -1,4 +1,6 @@
 <?
+	get_template_part("consts");
+
 	function make_video_player( $id, $type, $width, $height ){
 		$url = $type == "vimeo" ? "//player.vimeo.com/video/" . $id : "//www.youtube.com/embed/" . $id;
 		$player = "<iframe src='$url' width='$width' height='$height' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>";
@@ -150,4 +152,63 @@
 
 		return $cities;
 	}
+
+	function check_if_global($postID){
+		if(! wp_is_post_revision( $postID )) :
+
+			$blogs = kreate_get_blogs();
+			$globalBlogID = $blogs[0]->blog_id;
+			$post = get_post($postID, ARRAY_A);
+			$dupe = array();
+			$global_posts = get_site_transient("global_posts") === false ? array() : get_site_transient("global_posts");
+
+			if( get_post_meta($postID, meta . "enable_add_to_global", true) === "on" ) :
+
+				remove_action( "save_post", "check_if_global", 100, 1 );
+
+				foreach($post as $key=>$value) :
+					if($key !== "ID"):
+						$dupe[$key] = $value;
+					endif;
+				endforeach;
+
+				if( array_key_exists($postID, $global_posts) ) :
+					switch_to_blog($globalBlogID);
+					$dupe["ID"] = $global_posts[$postID];
+					wp_update_post($dupe);
+					restore_current_blog();
+				else:
+					switch_to_blog($globalBlogID);
+					$newID = wp_insert_post($dupe);
+					restore_current_blog();
+
+					$global_posts[$postID] = $newID;
+					$global_posts[$newID . "_blog_id"] = get_current_blog_id();
+					$global_posts[$newID . "_id"] = $postID;
+				endif;
+
+				set_site_transient("global_posts", $global_posts);
+				wp_update_post($post);
+				add_action( "save_post", "check_if_global", 100, 1 );
+			else:
+
+				if( array_key_exists($postID, $global_posts) ) :
+					remove_action( "save_post", "check_if_global", 100, 1 );
+
+					switch_to_blog($globalBlogID);
+					wp_delete_post($global_posts[$postID]);
+					restore_current_blog();
+
+					$tempID = $global_posts[$postID];
+					unset($global_posts[$postID]);
+					unset($global_posts[$tempID . "_blog_id"]);
+					unset($global_posts[$tempID . "_id"]);
+
+					add_action( "save_post", "check_if_global", 100, 1 );
+				endif;
+			endif;
+		endif;
+	}
+
+	add_action( "save_post", "check_if_global", 100, 1 );
 ?>
