@@ -215,7 +215,14 @@
 			return substr($excerpt, 0, 200) . "...";
 		endif;
 	}
+	function unregister_category(){
+		global $wp_taxonomies;
+		$taxonomy = 'category';
+		if ( taxonomy_exists( $taxonomy))
+			unset( $wp_taxonomies[$taxonomy]);
+	}
 
+	add_action( 'init', 'unregister_category');
 	add_filter( 'avatar_defaults', 'newgravatar' );
 	add_action( "save_post", "check_if_global", 100, 1 );
 ?>

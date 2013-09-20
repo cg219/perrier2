@@ -72,7 +72,7 @@
 							<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
 							<a class="addthis_button_tweet"></a>
 							<a class="addthis_button_pinterest_pinit"></a>
-							<a class="addthis_button_google_plusone_badge" g:plusone:size="small" g:plusone:href="https://plus.google.com/102383601500147943541/"></a> 
+							<!-- <a class="addthis_button_google_plusone_badge" g:plusone:size="small" g:plusone:href="https://plus.google.com/102383601500147943541/"></a>  -->
 							<a class="addthis_counter addthis_pill_style"></a>
 						</div>
 					</li>
