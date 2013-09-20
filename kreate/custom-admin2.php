@@ -1,6 +1,6 @@
 <?
-	add_action("admin_menu", "kreate_add_cities");
-	add_action("admin_menu", "kreate_update_events");
+	// add_action("admin_menu", "kreate_add_cities");
+	// add_action("admin_menu", "kreate_update_events");
 	add_action("admin_menu", "kreate_clear_data");
 
 	add_option("plugin_options", "plugin_options" );
