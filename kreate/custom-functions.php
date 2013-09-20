@@ -140,6 +140,10 @@
 		return $hotspots;
 	}
 
+	function kreate_get_cities(){
+		return get_terms("city");
+	}
+
 	function kreate_get_all_cities(){
 		$blogs = kreate_get_blogs();
 		// print_r($blogs);

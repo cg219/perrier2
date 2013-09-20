@@ -92,10 +92,10 @@
 			$final[] = $interests["Cocktail Culture"];
 			$final[] = $interests["Travel"];
 			$final[] = $interests["Hotspots"];
-			$final[] = $interests["Mixology"];
+			$final[] = $interests["Mixology by Perrier"];
 			$final[] = $interests["Luminaries"];
-			$final[] = $interests["Audio"];
-			$final[] = $interests["Videos"];
+			// $final[] = $interests["Audio"];
+			// $final[] = $interests["Videos"];
 
 			// print_r($final[8]);
 

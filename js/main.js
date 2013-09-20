@@ -38,7 +38,8 @@
 	$("li.dropdown.hover").click(function(event){
 		event.preventDefault();
 		$(this).removeClass("open");
-		window.location = $(this).attr("href");
+		console.log($(this).attr("href"));
+		window.location = $(this).find("a").attr("href");
 	})
 
 	$(".addthis_button_expanded").css({

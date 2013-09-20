@@ -3,6 +3,11 @@
 	$blogs = kreate_get_blogs();
 	$amount = 10;
 
+	$query = kreate_get_hotspot_list();
+	// print_r($query);
+	$i = ($paged-1) * $amount;
+	$limit = $i + 10;
+
 	if($queryCities){
 		$hotspotTaxes = array();
 
@@ -10,11 +15,19 @@
 			$hotspotTaxes[] = $qc;
 		}
 	}
+	else if( $tax ){
+		print_r(array("tax" => $tax));
+		$hotspotTaxes = array(
+			$tax->name
+		);
+	}
+	else if($taxes){
+		$hotspotTaxes = array();
 
-	$query = kreate_get_hotspot_list();
-	// print_r($query);
-	$i = ($paged-1) * $amount;
-	$limit = $i + 10;
+		foreach($taxes as $singleTax){
+			$hotspotTaxes[] = $singleTax->name;
+		}
+	}
 
 	if( $hotspotTaxes ) :
 		$temp = array();

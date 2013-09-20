@@ -13,17 +13,40 @@
 			<div class="row" id="hotspot-navbar">
 				<h5>Hotspots</h5>
 				<div class="dropdown pull-right">
-					<a id="hotspot-toggle" href="#" data-toggle="dropdown" class="dropdown-toggle">ALL</a>
+					<?
+						if($cities = $_POST["hotspots"]){
+							if($cities != "ALL")
+								$queryCities = explode(",", $cities);
+								$selectName = count($queryCities) > 1 ? "MULTIPLE" : $cities;
+								$_POST["hotspots"] = null;
+								$_POST["hotspots"] = implode(",", $queryCities);
+					?>
+					<a id="hotspot-toggle" href="#" data-toggle="dropdown" class="dropdown-toggle"><? echo $selectName; ?></a>
+					<?
+						}
+						else if(get_query_var("city")){
+							$tax = get_term_by("slug", get_query_var("city"), "city");
+					?>
+					<a id="hotspot-toggle" href="#" data-toggle="dropdown" class="dropdown-toggle"><? echo $tax->name; ?></a>
+					<?
+						}
+						else{
+							$taxes = kreate_get_cities();
+							if(count($taxes) > 1) :
+					?>
+					<a id="hotspot-toggle" href="#" data-toggle="dropdown" class="dropdown-toggle">MULTIPLE</a>
+					<?
+							else:
+								echo "CHO";
+								print_r($taxes);
+					?>
+					<a id="hotspot-toggle" href="#" data-toggle="dropdown" class="dropdown-toggle"><? echo $taxes[0]->name; ?></a>
+					<?
+							endif;
+						}
+					?>
 
 					<ul class="dropdown-menu" role="menu">
-						<?
-							if($cities = $_POST["hotspots"]){
-								if($cities != "ALL")
-									$queryCities = explode(",", $cities);
-									$_POST["hotspots"] = null;
-									$_POST["hotspots"] = implode(",", $queryCities);
-							}
-						?>
 						<li role="presentation"><a href="#">ALL</a></li>
 						<?
 							$allcities = kreate_get_all_cities();
