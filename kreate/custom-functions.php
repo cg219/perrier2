@@ -202,5 +202,12 @@
 
 	}
 
+	function newgravatar ($avatar_defaults) {
+	    $myavatar = get_template_directory_uri() . '/assets/images/gravatar.jpg';
+	    $avatar_defaults[$myavatar] = "Own";
+	    return $avatar_defaults;
+	}
+
+	add_filter( 'avatar_defaults', 'newgravatar' );
 	add_action( "save_post", "check_if_global", 100, 1 );
 ?>
