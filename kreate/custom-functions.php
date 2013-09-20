@@ -208,6 +208,14 @@
 	    return $avatar_defaults;
 	}
 
+	function kreate_excerpt($excerpt){
+		if( count($excerpt) <= 200 ) :
+			return $excerpt;
+		else :
+			return substr($excerpt, 0, 200) . "...";
+		endif;
+	}
+
 	add_filter( 'avatar_defaults', 'newgravatar' );
 	add_action( "save_post", "check_if_global", 100, 1 );
 ?>

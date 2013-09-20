@@ -60,7 +60,7 @@
 				<? $thisCat = get_term_link($cats[0]); ?>
 				<h5><a href="<? echo $thisCat->errors ? "" : $thisCat;?>"><? echo $cats[0]->name; ?></a></h5>
 				<h2><a href="<? echo $perm; ?>"><? the_title(); ?></a></h2>
-				<p><?  echo substr($post->post_excerpt, 0, 200) . "..."; ?> <a class="readmore" href="<? echo $perm; ?>">Read More</a></p>
+				<p><?  echo kreate_excerpt($post->post_excerpt); ?> <a class="readmore" href="<? echo $perm; ?>">Read More</a></p>
 			</div>
 			<? 
 				elseif($is2Up || ($isGlobalEnabled && $isGlobalType === "two-up")) :
@@ -117,7 +117,7 @@
 					</a>
 					<div class="media-body">
 						<h3><a href="<? echo $perm; ?>"><? echo $thisPost->post_title; ?></a></h3>
-						<p><?  echo substr($thisPost->post_excerpt, 0, 200) . "..."; ?>  <a class="readmore" href="<? echo $perm ?>">Read More</a></p>
+						<p><?  echo kreate_excerpt($thisPost->post_excerpt); ?>  <a class="readmore" href="<? echo $perm ?>">Read More</a></p>
 					</div>
 				</div>
 				<div class="media two-up article">
@@ -152,7 +152,7 @@
 					</a>
 					<div class="media-body">
 						<h3><a href="<? echo $perm; ?>"><? echo $nextPost->post_title; ?></a></h3>
-						<p><?  echo substr($nextPost->post_excerpt, 0, 200) . "..."; ?>  <a class="readmore" href="<? echo $perm ?>">Read More</a></p>
+						<p><?  echo kreate_excerpt($nextPost->post_excerpt); ?>  <a class="readmore" href="<? echo $perm ?>">Read More</a></p>
 					</div>
 				</div>
 			</div>
@@ -193,7 +193,7 @@
 					<? $thisCat = get_term_link($cats[0]); ?>
 					<h5><a href="<? echo $thisCat->errors ? "" : $thisCat;?>"><? echo $cats[0]->name; ?></a></h5>
 					<h3><a href="<? echo $perm; ?>"><? the_title(); ?></a></h3>
-					<p><?  echo substr($post->post_excerpt, 0, 200) . "..."; ?>  <a class="readmore" href="<? echo $perm; ?>">Read More</a></p>
+					<p><?  echo kreate_excerpt($post->post_excerpt); ?>  <a class="readmore" href="<? echo $perm; ?>">Read More</a></p>
 				</div>
 			</div>
 			<?

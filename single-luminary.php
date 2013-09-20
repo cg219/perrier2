@@ -144,7 +144,7 @@
 						</a>
 						<div class="media-body">
 							<h3><a href="<? the_permalink(); ?>"><? the_title(); ?></a></h3>
-							<p><?  echo substr($post->post_excerpt, 0, 200) . "..."; ?> <a class="readmore" href="<? the_permalink(); ?>">Read More</a></p>
+							<p><?  echo kreate_excerpt($post->post_excerpt); ?> <a class="readmore" href="<? the_permalink(); ?>">Read More</a></p>
 						</div>
 					</div>
 						<? endwhile; ?>

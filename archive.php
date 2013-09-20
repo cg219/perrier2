@@ -40,7 +40,7 @@
 					<? $thisCat = get_term_link($cats[0]); ?>
 					<h5><a href="<? echo $thisCat->errors ? "" : $thisCat;?>"><? echo $cats[0]->name; ?></a></h5>
 					<h3><a href="<? the_permalink(); ?>"><? the_title(); ?></a></h3>
-					<p><?  echo substr($post->post_excerpt, 0, 200) . "..."; ?> <a class="readmore" href="<? the_permalink(); ?>">Read More</a></p>
+					<p><?  echo kreate_excerpt($post->post_excerpt); ?> <a class="readmore" href="<? the_permalink(); ?>">Read More</a></p>
 				</div>
 			</div>
 			<? endwhile; ?>

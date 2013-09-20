@@ -17,6 +17,6 @@
 	<div class="media-body">
 		<h5><? echo $cities; ?></h5>
 		<h3><a href="<? the_permalink(); ?>"><? echo $post->post_title; ?></a></h3>
-		<p><?  echo substr($post->post_excerpt, 0, 200) . "..."; ?>  <a class="readmore" href="<? echo get_permalink($post->ID); ?>">Read More</a></p>
+		<p><?  echo kreate_excerpt($post->post_excerpt); ?>  <a class="readmore" href="<? echo get_permalink($post->ID); ?>">Read More</a></p>
 	</div>
 </div>
