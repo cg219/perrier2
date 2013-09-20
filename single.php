@@ -1,6 +1,7 @@
 <? 
 	get_template_part("consts");
 	get_header();
+	// include_once(theme_uri . "/mc/bitly.php");
 ?>
 <body>
 	<? get_template_part("nav"); ?>	
@@ -66,6 +67,7 @@
 					<li class="date"><? the_date(); ?></li>
 					<li class="comments-meta-link"><? comments_number("","",""); ?></li>
 					<li class="addthis">
+						<? echo shorten("http://www.google.com"); ?>
 						<div class="addthis_toolbox addthis_default_style ">
 							<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
 							<a class="addthis_button_tweet"></a>
@@ -151,7 +153,7 @@
 						</a>
 						<div class="media-body">
 							<h3><a href="<? the_permalink(); ?>"><? the_title(); ?></a></h3>
-							<p><?  echo $post->post_excerpt; ?> <a class="readmore" href="<? the_permalink(); ?>">Read More</a></p>
+							<p><?  echo substr($post->post_excerpt, 0, 120) . "..."; ?>  <a class="readmore" href="<? the_permalink(); ?>">Read More</a></p>
 						</div>
 					</div>
 						<? endwhile; ?>

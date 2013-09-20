@@ -17,10 +17,12 @@
 	}
 
 	if( $(".single").length ){
+				// console.log("Set Time");
 
 		var timer =  setInterval(function(){
 			if( $(".addthis_button_expanded").length ){
 				$(".addthis_button_expanded").attr("id", "addThisImportant" );
+				// console.log("Timer");
 				// console.log("Timer");
 
 				clearInterval(timer);
@@ -116,6 +118,7 @@
 			loadNextPage(container.data("next-page") || defaultURL, "main", function(data, newURL){
 				processing = false;
 				$(".loader").fadeOut();
+				console.log(data);
 				container.append(data);
 				if( newURL ){
 					container.data("next-page", newURL);

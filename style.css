@@ -119,6 +119,7 @@ input {
 }
 #topNav .socialicon.disabled {
   opacity: .3;
+  cursor: default;
 }
 #topNav #nightlifeLink {
   font-size: 15px;
@@ -278,6 +279,32 @@ input {
   float: right;
   position: relative;
 }
+#main .breadcrumb {
+  background-color: #429d67;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#429d67), to(#1d7a36));
+  background-image: -webkit-linear-gradient(top, #429d67, #1d7a36);
+  background-image: -moz-linear-gradient(top, #429d67, #1d7a36);
+  background-image: -o-linear-gradient(top, #429d67, #1d7a36);
+  background-image: linear-gradient(to bottom, #429d67, #1d7a36);
+  height: 30px;
+  width: 720px;
+  line-height: 30px;
+  color: white;
+  padding-left: 10px;
+  padding-top: 0;
+  border-radius: 0;
+}
+#main .breadcrumb a {
+  color: white;
+  text-transform: uppercase;
+}
+#main .breadcrumb li {
+  text-transform: uppercase;
+}
+#main .breadcrumb li + li:before {
+  content: "\003e";
+  color: white;
+}
 #sidebar {
   float: left;
   width: 240px;
@@ -394,8 +421,10 @@ input {
 #sidebar .widget ul li ul {
   padding-top: 0;
 }
+#hideComment {
+  display: none !important;
+}
 .single {
-  overflow: hidden;
   width: 720px;
   padding-left: 0;
 }
@@ -567,7 +596,7 @@ input {
 .single.luminary .luminaryContent .data p {
   color: #007833;
   padding-left: 5px;
-  font-size: 14px;
+  font-size: 12px;
   margin: 0;
   line-height: 21px;
 }

@@ -6,6 +6,14 @@
 	<? get_template_part("nav"); ?>
 	<div class="div wrap" id="wrapper">
 		<div class="container" id="main">
+			<ol class="breadcrumb">
+				<li><a href="/">GLOBAL HOME</a></li>
+				<? global $wp_query; if(is_tax()) : ?>
+				<li><? echo ucwords($wp_query->get_queried_object()->name); ?></li>
+				<? else : ?>
+				<li><? echo ucwords(post_type_archive_title()); ?></li>
+				<? endif; ?>
+			</ol>
 			<?
 				if(have_posts()): while(have_posts()): the_post();
 
@@ -32,7 +40,7 @@
 					<? $thisCat = get_term_link($cats[0]); ?>
 					<h5><a href="<? echo $thisCat->errors ? "" : $thisCat;?>"><? echo $cats[0]->name; ?></a></h5>
 					<h3><a href="<? the_permalink(); ?>"><? the_title(); ?></a></h3>
-					<p><? the_excerpt(); ?><a class="readmore" href="<? the_permalink(); ?>">Read More</a></p>
+					<p><?  echo substr($post->post_excerpt, 0, 120) . "..."; ?> <a class="readmore" href="<? the_permalink(); ?>">Read More</a></p>
 				</div>
 			</div>
 			<? endwhile; ?>

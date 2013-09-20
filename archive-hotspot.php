@@ -37,8 +37,6 @@
 					<a id="hotspot-toggle" href="#" data-toggle="dropdown" class="dropdown-toggle">MULTIPLE</a>
 					<?
 							else:
-								echo "CHO";
-								print_r($taxes);
 					?>
 					<a id="hotspot-toggle" href="#" data-toggle="dropdown" class="dropdown-toggle"><? echo $taxes[0]->name; ?></a>
 					<?

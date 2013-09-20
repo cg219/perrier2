@@ -69,7 +69,7 @@
 						<p id="lname">Name: <? echo get_post_meta(get_the_ID(), meta . "luminary_name", true) ?></p>
 						<p id="fame">Known for: <? echo get_post_meta(get_the_ID(), meta . "luminary_fame", true) ?></p>
 						<p id="location">Based: <? echo get_post_meta(get_the_ID(), meta . "luminary_location", true) ?></p>
-						<p id="web"><a href="<? echo get_post_meta(get_the_ID(), meta . "luminary_url", true) ?>">Wbesite</a></p>
+						<p id="web"><a href="<? echo get_post_meta(get_the_ID(), meta . "luminary_url", true) ?>">Website</a></p>
 						<ul>
 							<? if(get_post_meta(get_the_ID(), meta . "luminary_twitter", true)) : ?>
 							<li><a href="<? echo get_post_meta(get_the_ID(), meta . "luminary_twitter", true); ?>"><img src="<? echo theme_uri; ?>/assets/images/twitter-g.png" alt=""></a></li>
@@ -144,7 +144,7 @@
 						</a>
 						<div class="media-body">
 							<h3><a href="<? the_permalink(); ?>"><? the_title(); ?></a></h3>
-							<p><?  echo $post->post_excerpt; ?> <a class="readmore" href="<? the_permalink(); ?>">Read More</a></p>
+							<p><?  echo substr($post->post_excerpt, 0, 120) . "..."; ?> <a class="readmore" href="<? the_permalink(); ?>">Read More</a></p>
 						</div>
 					</div>
 						<? endwhile; ?>

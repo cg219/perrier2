@@ -194,5 +194,13 @@
 		endif;
 	}
 
+	function shorten($url){
+		// include_once("../mc/bitly.php");
+
+		// $bitly = new Bitly("societeperrier", "R_66f1708f86b22fd762c564cbbfb414f3");
+		// return bitly_v3_shorten($url);
+
+	}
+
 	add_action( "save_post", "check_if_global", 100, 1 );
 ?>

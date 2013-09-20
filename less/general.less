@@ -105,6 +105,7 @@ input{
 
 		&.disabled{
 			opacity: .3;
+			cursor: default;
 		}
 	}
 
@@ -280,6 +281,33 @@ input{
 	width: 720px;
 	float: right;
 	position: relative;
+
+	.breadcrumb{
+		.kreate.gradient(#429D67, #1D7A36);
+		height: 30px;
+		width: 720px;
+		line-height: 30px;
+		color: white;
+		padding-left: 10px;
+		padding-top: 0;
+		border-radius: 0;
+
+		a{
+			color: white;
+			text-transform: uppercase;
+		}
+
+		li{
+			text-transform: uppercase;
+
+			&+li{
+				&:before{
+					content: "\003e";
+					color: white;
+				}
+			}
+		}
+	}
 }
 
 #sidebar{
@@ -398,3 +426,6 @@ input{
 		}
 	}
 }
+
+#hideComment {
+display: none !important;}
