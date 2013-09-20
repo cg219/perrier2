@@ -176,7 +176,9 @@
 							switch_to_blog($old_blog_id);
 						else:
 							if( has_post_thumbnail() ) :
-								$img = wp_get_attachment_image_src( get_post_thumbnail_id(), 'thumb');
+								// print_r("TESTING");
+								// print_r(wp_get_attachment_image_src( get_post_thumbnail_id(), 'thumb'));
+								$img = wp_get_attachment_image_src( get_post_thumbnail_id($postID), 'thumb');
 							endif;
 						endif;
 

@@ -118,7 +118,7 @@
 			loadNextPage(container.data("next-page") || defaultURL, "main", function(data, newURL){
 				processing = false;
 				$(".loader").fadeOut();
-				console.log(data);
+				// console.log(data);
 				container.append(data);
 				if( newURL ){
 					container.data("next-page", newURL);
@@ -148,6 +148,9 @@
 			data: form.serialize(),
 			success: function(response){
 				// console.log(response);
+				form.each(function(){
+					this.reset();
+				})
 			}
 		})
 		return false;
@@ -198,7 +201,7 @@
 				skipFirstFeatured: true
 			},
 			success: function(response){
-				var articles = $( id + " .article", response);
+				var articles = $( id + " > .article", response);
 				var nextURL = $(".nextPostLink a", response).last().attr("href") || false;
 				callback(articles, nextURL);
 			},

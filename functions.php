@@ -10,12 +10,11 @@
 // require("functions/MCAPI.class.php");
 
 // require("functions/functions-user-image.php");
-require("functions/functions-user-custom-fields.php");
 
 // -----------------------------------------------------------------------------
 // CUSTOM FIELDS ---------------------------------------------------------------
 // -----------------------------------------------------------------------------
-require("functions/functions-custom-fields.php");
+
 
 // -----------------------------------------------------------------------------
 // POST TYPES ------------------------------------------------------------------
@@ -42,6 +41,10 @@ require("kreate/custom-admin2.php");
 require("kreate/custom-taxes.php");
 require("kreate/custom-functions.php");
 require("kreate/custom-shortcodes.php");
+
+
+require("functions/functions-user-custom-fields.php");
+require("functions/functions-custom-fields.php");
 
 // -----------------------------------------------------------------------------
 // CUSTOM BUILD FUNCTIONS ------------------------------------------------------

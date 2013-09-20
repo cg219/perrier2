@@ -65,7 +65,50 @@ input{
 }
 
 #siteheader{
-	
+	.container{
+		min-width: 960px !important;
+	}
+
+	.navbar-header{
+		float: left;
+	}
+
+	.navbar-nav{
+		float: left;
+		margin: 0;
+
+		&> li{
+			float: left;
+		}
+
+		.open{
+
+			.dropdown-menu{
+				position: absolute;;
+				background-color: white;
+			}
+		}
+	}
+
+	.col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11{
+		float: left;
+	}
+
+	.col-lg-2 {
+		width: 16.666666666666664%;
+	}
+
+	.col-lg-5 {
+		width: 41.66666666666667%;
+	}
+
+	.col-lg-6 {
+		width: 50%;
+	}
+
+	.col-lg-10 {
+		width: 83.33333333333334%;
+	}
 }
 
 #topNavLogo{
@@ -314,6 +357,10 @@ input{
 	float: left;
 	width: 240px;
 	position: fixed;
+
+	@media (max-width:768px) {
+		position: relative;
+	}
 
 	.widget{
 		margin-bottom: 25px;

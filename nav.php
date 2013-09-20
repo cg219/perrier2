@@ -17,10 +17,10 @@
 								<p>Société Perrier is the global enthusiast's source for engaging content and great events. Curating the best in nightlife, art, music, fashion, travel, mixology and cocktail culture, Société Perrier is the trusted arbiter of what's hot around the world. When you see the Société Perrier seal, you know you are in the right place.</p>
 								<ul class="nav" id="aboutLinks">
 									<li><a target="_blank" href="<? echo get_bloginfo("rss2_url"); ?>">RSS</a></li>
-									<li><a target="_blank" href="<? echo get_page_link(get_page_by_title("About")->ID) ?>">About Us</a></li>
-									<li><a target="_blank" href="<? echo get_page_link(get_page_by_title("Contact Us")->ID) ?>">Contact</a></li>
-									<li><a target="_blank" href="<? echo get_page_link(get_page_by_title("Privacy Policy")->ID) ?>">Privacy</a></li>
-									<li><a target="_blank" href="<? echo get_page_link(get_page_by_title("Terms of Use")->ID) ?>">Terms of Use</a></li>
+									<li><a target="_blank" href="http://societeperrier.com/about/">About Us</a></li>
+									<li><a target="_blank" href="http://societeperrier.com/contact-us/">Contact</a></li>
+									<li><a target="_blank" href="http://societeperrier.com/privacy-policy/">Privacy</a></li>
+									<li><a target="_blank" href="http://societeperrier.com/terms-of-use/">Terms of Use</a></li>
 									<li><a target="_blank" href="http://perrier.com">Perrier.com</a></li>
 								</ul>
 								<p id="copy">&copy; 2013 Mirrorball Group LLC — All rights reserved<br/>The website Société Perrier is run and controlled by Mirrorball. Perrier is a registered trademark of Nestlé Waters France; Mirrorball is authorized to use the trademark on this website.</p>

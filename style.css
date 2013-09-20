@@ -87,6 +87,48 @@ input {
   margin-right: auto;
   margin-left: auto;
 }
+#siteheader .container {
+  min-width: 960px !important;
+}
+#siteheader .navbar-header {
+  float: left;
+}
+#siteheader .navbar-nav {
+  float: left;
+  margin: 0;
+}
+#siteheader .navbar-nav > li {
+  float: left;
+}
+#siteheader .navbar-nav .open .dropdown-menu {
+  position: absolute;
+  background-color: white;
+}
+#siteheader .col-lg-1,
+#siteheader .col-lg-2,
+#siteheader .col-lg-3,
+#siteheader .col-lg-4,
+#siteheader .col-lg-5,
+#siteheader .col-lg-6,
+#siteheader .col-lg-7,
+#siteheader .col-lg-8,
+#siteheader .col-lg-9,
+#siteheader .col-lg-10,
+#siteheader .col-lg-11 {
+  float: left;
+}
+#siteheader .col-lg-2 {
+  width: 16.666666666666664%;
+}
+#siteheader .col-lg-5 {
+  width: 41.66666666666667%;
+}
+#siteheader .col-lg-6 {
+  width: 50%;
+}
+#siteheader .col-lg-10 {
+  width: 83.33333333333334%;
+}
 #topNavLogo {
   padding-right: 0px;
   padding-top: 10px;
@@ -309,6 +351,11 @@ input {
   float: left;
   width: 240px;
   position: fixed;
+}
+@media (max-width: 768px) {
+  #sidebar {
+    position: relative;
+  }
 }
 #sidebar .widget {
   margin-bottom: 25px;
