@@ -67,10 +67,9 @@
 					<li class="date"><? the_date(); ?></li>
 					<li class="comments-meta-link"><? comments_number("","",""); ?></li>
 					<li class="addthis">
-						<? echo shorten("http://www.google.com"); ?>
 						<div class="addthis_toolbox addthis_default_style ">
 							<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-							<a class="addthis_button_tweet"></a>
+							<a class="addthis_button_tweet" addthis:url="<? echo shorten(get_permalink()); ?>"></a>
 							<a class="addthis_button_pinterest_pinit"></a>
 							<!-- <a class="addthis_button_google_plusone_badge" g:plusone:size="small" g:plusone:href="https://plus.google.com/102383601500147943541/"></a>  -->
 							<a class="addthis_counter addthis_pill_style"></a>
@@ -80,8 +79,6 @@
 				<h2 class="title"><? the_title(); ?></h2>
 				<? if(get_post_meta($postID, meta . "subline", true)): ?>
 				<h3 class="subtitle"><? echo get_post_meta($postID, meta . "subline", true) ?></h3>
-				<? else: ?>
-				<h3 class="subtitle"><? echo get_the_excerpt(); ?></h3>
 				<? endif; ?>
 				<h6 class="author"><strong>By:</strong> <a href="<? echo get_author_posts_url( get_the_author_meta("ID") ); ?>"><? the_author(); ?></a></h6>
 				<div class="content"><? the_content(); ?></div>

@@ -546,7 +546,7 @@ input {
 }
 .single .title {
   font-size: 48px;
-  font-family: Times, "Times New Roman", serif;
+  font-family: Helvetica, Arial, serif;
 }
 .single .subtitle {
   font-size: 26px;
@@ -586,6 +586,7 @@ input {
   border-top: 1px dotted black;
   font-size: 14px;
   line-height: 40px;
+  text-transform: lowercase;
 }
 .single .tags a {
   color: black;

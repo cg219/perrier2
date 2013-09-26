@@ -195,11 +195,22 @@
 	}
 
 	function shorten($url){
-		// include_once("../mc/bitly.php");
+		//login information
+		$login = 'societeperrier';  //your bit.ly login
+		$apikey = 'R_66f1708f86b22fd762c564cbbfb414f3'; //bit.ly apikey
+		$format = 'json'; //choose between json or xml
+		$version = '2.0.1';
 
-		// $bitly = new Bitly("societeperrier", "R_66f1708f86b22fd762c564cbbfb414f3");
-		// return bitly_v3_shorten($url);
 
+		//create the URL
+		$bitly = 'http://api.bit.ly/shorten?version='.$version.'&longUrl='.urlencode($url).'&login='.$login.'&apiKey='.$apikey.'&format='.$format;
+
+		//get the url
+		//could also use cURL here
+		$response = file_get_contents($bitly);
+
+		$json = @json_decode($response,true);
+		return $json['results'][$url]['shortUrl'];
 	}
 
 	function newgravatar ($avatar_defaults) {
