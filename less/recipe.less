@@ -32,33 +32,42 @@
 		width: 70%;
 	}
 
-	.ingredients{
-		background: url("assets/images/data-border.png");
+	.ingredients-container{
 		width: 164px;
-		height: 167px;
+		min-height: 167px;
 		position: absolute;
 		right: 0;
 		top: 30px;
 
-		h5{
-			background: @green;
-			margin: 0;
-			width: 100%;
-			color: white;
-			padding: 3px 0 3px 5px;
-			font-family: @neue;
-			font-weight: bold;
-			font-size: 12px;
-		}
+		.ingredients{
+			background: url("assets/images/data-border-side.png") repeat-y;
+			width: 164px;
+			// min-height: 167px;
 
-		p{
-			color: @green;
-			font-family: @neue;
-			font-weight: normal;
-			font-size: 12px !important;
-			line-height: 16px !important;
-			padding: 5px 0 0 5px;
-			margin-bottom: 5px;
+			.bottom-cap{
+				width: 164px;
+			}
+
+			h5{
+				background: @green;
+				margin: 0;
+				width: 100%;
+				color: white;
+				padding: 3px 0 3px 5px;
+				font-family: @neue;
+				font-weight: bold;
+				font-size: 12px;
+			}
+
+			p{
+				color: @green;
+				font-family: @neue;
+				font-weight: normal;
+				font-size: 12px !important;
+				line-height: 16px !important;
+				padding: 5px 0 0 5px;
+				margin-bottom: 5px;
+			}
 		}
 	}
 }

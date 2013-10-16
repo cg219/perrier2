@@ -70,6 +70,18 @@ if ( function_exists( 'add_theme_support' ) ) {
   // ) );
 }
 
+if( is_admin() ){
+  add_action("admin_head", "add_admin_css");
+}
+
+if( !is_admin() ){
+  add_action("wp_head", "add_admin_css");
+}
+
+function add_admin_css(){
+  wp_enqueue_style("admin_style", get_template_directory_uri() . "/css/admin-options.css");
+}
+
 function get_new_kreate_posts(){
 
   get_template_part("loop");

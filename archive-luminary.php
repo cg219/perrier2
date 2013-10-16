@@ -5,39 +5,37 @@
 <body>
 	<? get_template_part("nav"); ?>
 	<div class="div wrap" id="wrapper">
-		<div class="container author" id="main">
-			<?
-				$author = get_user_by("slug", get_query_var("author_name"));
-			?>
-			<div id="authorbox">
-				<div><? echo get_avatar($author->ID, 225); ?></div>
-				<p id="authorDesc"><? echo $author->description; ?></p>
-			</div>
+		<div class="container" id="main">
 			<ol class="breadcrumb">
-				<li>Posts By: <? echo $author->first_name . " " . $author->last_name; ?></li>
+				<li><a href="/">GLOBAL HOME</a></li>
+				<? global $wp_query; if(is_tax()) : ?>
+				<li><? echo ucwords($wp_query->get_queried_object()->name); ?></li>
+				<? else : ?>
+				<li><? echo ucwords(post_type_archive_title()); ?></li>
+				<? endif; ?>
 			</ol>
 			<?
 				$paged = get_query_var("paged") ? get_query_var("paged") : 1;
 
-
 				$args = array(
-					"author" => $author->ID,
-					"paged" => $paged,
-					"posts_per_page" => 5
+					"post_type" => "luminary",
+					"posts_per_page" => 10,
+					"post_status" => "publish",
+					"orderby" => "title",
+					"order" => "ASC",
+					"paged" => $paged
 				);
 
 				$query = new WP_Query($args);
 
-				print_r($query->max_num_pages);
-
-				while($query->have_posts()): $query->the_post();
+				if($query->have_posts()): while($query->have_posts()): $query->the_post();
 
 				$cats = array();
 
 				$terms2 = wp_get_post_terms(get_the_ID(), "primary_category");
 
 				for( $i=0; $i < count($terms2); $i++){
-					array_push($cats, $terms2[$i]->name);
+					array_push($cats, $terms2[$i]);
 				}
 			?>
 			<div class="media article">
@@ -52,17 +50,20 @@
 					<? endif; ?>
 				</a>
 				<div class="media-body">
-					<h5><? echo join(", ", $cats); ?></h5>
+					<? $thisCat = get_term_link($cats[0]); ?>
+					<h5><a href="<? echo $thisCat->errors ? "" : $thisCat;?>"><? echo $cats[0]->name; ?></a></h5>
 					<h3><a href="<? the_permalink(); ?>"><? the_title(); ?></a></h3>
-					<p><? the_excerpt(); ?><a href="<? the_permalink(); ?>">Read More</a></p>
+					<p><?  echo kreate_excerpt($post->post_excerpt); ?> <a class="readmore" href="<? the_permalink(); ?>">Read More</a></p>
 				</div>
 			</div>
+			<? endwhile;
+					if( $paged + 1 <= $query->max_num_pages): ?>
+			<div class="nextPostLink"><a href="<? echo get_post_type_archive_link("luminary"); ?>page/<? echo $paged + 1; ?>"></a></div>
 			<?
-				endwhile;
-				print_r($paged + 1);
-				if( $paged + 1 <= $query->max_num_pages): ?>
-					<div class="nextPostLink"><a href="<? echo get_author_posts_url( $author->ID ); ?>page/<? echo $paged + 1; ?>"></a></div>
-			<?	endif; ?>
+					endif;
+				endif;
+			?>
+			
 			<div class="loader row"><img src="<? echo theme_uri; ?>/assets/images/loader.gif" alt=""></div>
 		</div>
 		<? get_sidebar(); ?>

@@ -39,9 +39,19 @@
 
 	$("li.dropdown.hover").click(function(event){
 		event.preventDefault();
-		$(this).removeClass("open");
-		console.log($(this).attr("href"));
+		// console.log($(this).find("a").attr("href"));
+		// console.log($(this));
 		window.location = $(this).find("a").attr("href");
+		$(this).removeClass("open");
+	})
+
+	$(".widget li.dropdown.hover .dropdown-menu li").click(function(event){
+		event.preventDefault();
+		event.stopPropagation();
+		// console.log($(this).find("a").attr("href"));
+		// console.log($(this));
+		window.location = $(this).find("a").attr("href");
+		$(this).removeClass("open");
 	})
 
 	$(".addthis_button_expanded").css({
@@ -60,6 +70,14 @@
 		if(newTitle == "ALL"){
 			deselectChoices($this.parent());
 		}
+	})
+
+	$(".slide_image_holder").on("mouseenter", function(){
+		$(this).find(".caption").fadeIn();
+	})
+
+	$(".slide_image_holder").on("mouseleave", function(){
+		$(this).find(".caption").fadeOut();
 	})
 
 	$(".goButton").on("click", function(event){
@@ -100,7 +118,7 @@
 	$(document).on("scroll.main", function(event){
 		if(processing) return false;
 
-		if( $(window).scrollTop() + $(window).height() == $(document).height() ){
+		if( $(window).scrollTop() + $(window).height() + 30 >= $(document).height() ){
 			processing = true;
 
 			var container = $("#singlemain, #main").last();

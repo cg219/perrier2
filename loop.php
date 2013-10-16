@@ -67,17 +67,42 @@
 					$thisPost = $post;
 					$nextPost = get_next_post();
 
+					$thisCats = array();
+					$nextCats = array();
+
 					$this_blog_id = get_post_meta($thisPost->ID, "original_blog_id", true);
 					$next_blog_id = get_post_meta($nextPost->ID, "original_blog_id", true);
 					$this_original_id = get_post_meta($thisPost->ID, "original_post_id", true);
 					$next_original_id = get_post_meta($nextPost->ID, "original_post_id", true);
 
+					$thisPostCats = wp_get_post_terms($thisPost->ID, "primary_category");
+					$nextPostCats = wp_get_post_terms($nextPost->ID, "primary_category");
+
 					$nextPostTerms = wp_get_post_terms($nextPost->ID, "type");
 					$nextPostIsCorrect = false;
+
+					for( $i=0; $i < count($thisPostCats); $i++){
+						array_push($thisCats, $thisPostTerms[$i]);
+					}
+
+					$thisCatName = $thisCats[0]->name;
+					$thisCat = get_term_link($thisCats[0]);
+
+					// print_r($thisCats);
 
 					for( $i=0; $i < count($nextPostTerms); $i++){
 						if( $nextPostTerms[$i]->slug == "2-up" ){
 							$nextPostIsCorrect = true;
+
+							for( $i=0; $i < count($nextPostCats); $i++){
+								array_push($nextCats, $nextPostCats[$i]);
+							}
+							$nextCatName = $nextCats[0]->name;
+							$nextCat = get_term_link($nextCats[0]);
+
+
+							// print_r($nextCats);
+
 							break;
 						}
 					}
@@ -116,6 +141,7 @@
 						<? endif; ?>
 					</a>
 					<div class="media-body">
+						<h5><a href="<? echo $thisCat->errors ? "" : $thisCat;?>"><? echo $thisCatName; ?></a></h5>
 						<h3><a href="<? echo $perm; ?>"><? echo $thisPost->post_title; ?></a></h3>
 						<p><?  echo kreate_excerpt($thisPost->post_excerpt); ?>  <a class="readmore" href="<? echo $perm ?>">Read More</a></p>
 					</div>
@@ -151,6 +177,7 @@
 						<? endif; ?>
 					</a>
 					<div class="media-body">
+						<h5><a href="<? echo $nextCat->errors ? "" : $nextCat;?>"><? echo $nextCatName; ?></a></h5>
 						<h3><a href="<? echo $perm; ?>"><? echo $nextPost->post_title; ?></a></h3>
 						<p><?  echo kreate_excerpt($nextPost->post_excerpt); ?>  <a class="readmore" href="<? echo $perm ?>">Read More</a></p>
 					</div>

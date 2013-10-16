@@ -39,6 +39,12 @@
 		$query = $temp;
 	endif;
 
+	usort($query, function($a, $b){
+        if( $a->post_title == $b->post_title ) return 0;
+
+        return ($a->post_title < $b->post_title) ? -1 : 1;
+    });
+
 	for( $i; $i < $limit; $i++ ):
 		global $blog_id;
 		$post = $query[$i];

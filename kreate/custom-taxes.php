@@ -88,7 +88,7 @@
 	    	'labels' => $labels,
 			'show_ui' => true,
 			'query_var' => true,
-			'rewrite' => array( 'slug' => 'country', 'with_front' => FALSE ),
+			'rewrite' => array( 'slug' => false, 'with_front' => FALSE ),
 		));
 
 		add_filter( "post_link", "country_perm", 10, 3 );
@@ -113,7 +113,7 @@
 	    	'labels' => $labels,
 			'show_ui' => true,
 			'query_var' => true,
-			'rewrite' => array( 'slug' => 'city', 'with_front' => FALSE ),
+			'rewrite' => array( 'slug' => false, 'with_front' => FALSE ),
 		));
 
 		add_filter( "post_link", "city_perm", 10, 3 );

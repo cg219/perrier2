@@ -314,12 +314,15 @@ input {
   color: white;
 }
 #wrapper {
-  margin-top: 100px;
+  margin-top: 130px;
 }
 #main {
   width: 720px;
   float: right;
   position: relative;
+}
+#main > .hotspot.media {
+  margin-left: -15px;
 }
 #main .breadcrumb {
   background-color: #429d67;
@@ -560,6 +563,42 @@ input {
   border-top: 2px solid #007833;
   padding-top: 30px;
 }
+.single .content .alignnone {
+  margin: 5px 20px 20px 0;
+}
+.single .content .aligncenter,
+.single .content div.aligncenter {
+  display: block;
+  margin: 5px auto 5px auto;
+}
+.single .content .alignright {
+  float: right;
+  margin: 5px 0 20px 20px;
+}
+.single .content .alignleft {
+  float: left;
+  margin: 5px 20px 20px 0;
+}
+.single .content .aligncenter {
+  display: block;
+  margin: 5px auto 5px auto;
+}
+.single .content a img.alignright {
+  float: right;
+  margin: 5px 0 20px 20px;
+}
+.single .content a img.alignnone {
+  margin: 5px 20px 20px 0;
+}
+.single .content a img.alignleft {
+  float: left;
+  margin: 5px 20px 20px 0;
+}
+.single .content a img.aligncenter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
 .single .content p {
   font-size: 16px;
   line-height: 26px;
@@ -625,80 +664,92 @@ input {
   width: 500px;
   border: none;
 }
-.single.hotspot .hotspotContent .data,
-.single.luminary .hotspotContent .data,
-.single.hotspot .luminaryContent .data,
-.single.luminary .luminaryContent .data {
-  background: url("assets/images/data-border.png");
+.single.hotspot .hotspotContent .data-container,
+.single.luminary .hotspotContent .data-container,
+.single.hotspot .luminaryContent .data-container,
+.single.luminary .luminaryContent .data-container {
   width: 164px;
-  height: 167px;
+  min-height: 167px;
 }
-.single.hotspot .hotspotContent .data h6,
-.single.luminary .hotspotContent .data h6,
-.single.hotspot .luminaryContent .data h6,
-.single.luminary .luminaryContent .data h6 {
+.single.hotspot .hotspotContent .data-container .data,
+.single.luminary .hotspotContent .data-container .data,
+.single.hotspot .luminaryContent .data-container .data,
+.single.luminary .luminaryContent .data-container .data {
+  background: url("assets/images/data-border-side.png") repeat-y;
+  width: 164px;
+}
+.single.hotspot .hotspotContent .data-container .data .bottom-cap,
+.single.luminary .hotspotContent .data-container .data .bottom-cap,
+.single.hotspot .luminaryContent .data-container .data .bottom-cap,
+.single.luminary .luminaryContent .data-container .data .bottom-cap {
+  width: 164px;
+}
+.single.hotspot .hotspotContent .data-container .data h6,
+.single.luminary .hotspotContent .data-container .data h6,
+.single.hotspot .luminaryContent .data-container .data h6,
+.single.luminary .luminaryContent .data-container .data h6 {
   color: white;
   background: #007833;
   width: 164px;
   margin-top: 0;
   padding: 2px 0 2px 5px;
 }
-.single.hotspot .hotspotContent .data p,
-.single.luminary .hotspotContent .data p,
-.single.hotspot .luminaryContent .data p,
-.single.luminary .luminaryContent .data p {
+.single.hotspot .hotspotContent .data-container .data p,
+.single.luminary .hotspotContent .data-container .data p,
+.single.hotspot .luminaryContent .data-container .data p,
+.single.luminary .luminaryContent .data-container .data p {
   color: #007833;
   padding-left: 5px;
   font-size: 12px;
   margin: 0;
   line-height: 21px;
 }
-.single.hotspot .hotspotContent .data p#phone,
-.single.luminary .hotspotContent .data p#phone,
-.single.hotspot .luminaryContent .data p#phone,
-.single.luminary .luminaryContent .data p#phone,
-.single.hotspot .hotspotContent .data p#web,
-.single.luminary .hotspotContent .data p#web,
-.single.hotspot .luminaryContent .data p#web,
-.single.luminary .luminaryContent .data p#web,
-.single.hotspot .hotspotContent .data p#lname,
-.single.luminary .hotspotContent .data p#lname,
-.single.hotspot .luminaryContent .data p#lname,
-.single.luminary .luminaryContent .data p#lname,
-.single.hotspot .hotspotContent .data p#fame,
-.single.luminary .hotspotContent .data p#fame,
-.single.hotspot .luminaryContent .data p#fame,
-.single.luminary .luminaryContent .data p#fame,
-.single.hotspot .hotspotContent .data p#location,
-.single.luminary .hotspotContent .data p#location,
-.single.hotspot .luminaryContent .data p#location,
-.single.luminary .luminaryContent .data p#location {
+.single.hotspot .hotspotContent .data-container .data p#phone,
+.single.luminary .hotspotContent .data-container .data p#phone,
+.single.hotspot .luminaryContent .data-container .data p#phone,
+.single.luminary .luminaryContent .data-container .data p#phone,
+.single.hotspot .hotspotContent .data-container .data p#web,
+.single.luminary .hotspotContent .data-container .data p#web,
+.single.hotspot .luminaryContent .data-container .data p#web,
+.single.luminary .luminaryContent .data-container .data p#web,
+.single.hotspot .hotspotContent .data-container .data p#lname,
+.single.luminary .hotspotContent .data-container .data p#lname,
+.single.hotspot .luminaryContent .data-container .data p#lname,
+.single.luminary .luminaryContent .data-container .data p#lname,
+.single.hotspot .hotspotContent .data-container .data p#fame,
+.single.luminary .hotspotContent .data-container .data p#fame,
+.single.hotspot .luminaryContent .data-container .data p#fame,
+.single.luminary .luminaryContent .data-container .data p#fame,
+.single.hotspot .hotspotContent .data-container .data p#location,
+.single.luminary .hotspotContent .data-container .data p#location,
+.single.hotspot .luminaryContent .data-container .data p#location,
+.single.luminary .luminaryContent .data-container .data p#location {
   padding-top: 8px;
 }
-.single.hotspot .hotspotContent .data p a,
-.single.luminary .hotspotContent .data p a,
-.single.hotspot .luminaryContent .data p a,
-.single.luminary .luminaryContent .data p a {
+.single.hotspot .hotspotContent .data-container .data p a,
+.single.luminary .hotspotContent .data-container .data p a,
+.single.hotspot .luminaryContent .data-container .data p a,
+.single.luminary .luminaryContent .data-container .data p a {
   color: #007833;
 }
-.single.hotspot .hotspotContent .data ul,
-.single.luminary .hotspotContent .data ul,
-.single.hotspot .luminaryContent .data ul,
-.single.luminary .luminaryContent .data ul {
+.single.hotspot .hotspotContent .data-container .data ul,
+.single.luminary .hotspotContent .data-container .data ul,
+.single.hotspot .luminaryContent .data-container .data ul,
+.single.luminary .luminaryContent .data-container .data ul {
   list-style-type: none;
   padding: 5px;
 }
-.single.hotspot .hotspotContent .data ul li,
-.single.luminary .hotspotContent .data ul li,
-.single.hotspot .luminaryContent .data ul li,
-.single.luminary .luminaryContent .data ul li {
+.single.hotspot .hotspotContent .data-container .data ul li,
+.single.luminary .hotspotContent .data-container .data ul li,
+.single.hotspot .luminaryContent .data-container .data ul li,
+.single.luminary .luminaryContent .data-container .data ul li {
   padding: 0 5px 0 0;
   display: inline;
 }
-.single.hotspot .hotspotContent .data ul li img,
-.single.luminary .hotspotContent .data ul li img,
-.single.hotspot .luminaryContent .data ul li img,
-.single.luminary .luminaryContent .data ul li img {
+.single.hotspot .hotspotContent .data-container .data ul li img,
+.single.luminary .hotspotContent .data-container .data ul li img,
+.single.hotspot .luminaryContent .data-container .data ul li img,
+.single.luminary .luminaryContent .data-container .data ul li img {
   width: 30px;
 }
 .single #titlebar {
@@ -724,8 +775,18 @@ input {
 .comments-area {
   margin-top: 20px;
 }
+.addthis {
+  position: relative;
+}
 .addthis_button_tweet {
   width: 90px;
+}
+.twitter-share-button {
+  position: absolute;
+  left: 0;
+}
+.addthis_button_facebook_like {
+  margin-left: 80px;
 }
 .addthis_pill_style {
   width: 100px;
@@ -764,15 +825,21 @@ input {
   font-weight: normal;
   width: 70%;
 }
-.recipe .ingredients {
-  background: url("assets/images/data-border.png");
+.recipe .ingredients-container {
   width: 164px;
-  height: 167px;
+  min-height: 167px;
   position: absolute;
   right: 0;
   top: 30px;
 }
-.recipe .ingredients h5 {
+.recipe .ingredients-container .ingredients {
+  background: url("assets/images/data-border-side.png") repeat-y;
+  width: 164px;
+}
+.recipe .ingredients-container .ingredients .bottom-cap {
+  width: 164px;
+}
+.recipe .ingredients-container .ingredients h5 {
   background: #007833;
   margin: 0;
   width: 100%;
@@ -782,7 +849,7 @@ input {
   font-weight: bold;
   font-size: 12px;
 }
-.recipe .ingredients p {
+.recipe .ingredients-container .ingredients p {
   color: #007833;
   font-family: "Helvetica Neue", Helvetica, Arial, serif;
   font-weight: normal;
@@ -809,6 +876,21 @@ input {
   position: absolute;
   left: 50%;
   top: 50%;
+}
+.slider .slider_images .slide_image_holder .caption {
+  display: none;
+  z-index: 8000;
+  color: white;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  min-height: 26px;
+  line-height: 18px;
+  font-size: 12px;
+  width: 100%;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  margin-bottom: 0;
 }
 .slider button {
   position: absolute;
@@ -870,6 +952,9 @@ input {
   width: 345px;
   height: 230px;
   background: url("assets/images/image-bg.png");
+}
+.article.two-up h5 {
+  margin-top: 10px;
 }
 .article h2 {
   color: #007833;

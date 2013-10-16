@@ -34,11 +34,76 @@
 		foreach($images as $image){
 			$url = $image["url"];
 			$crop = wp_get_attachment_image($image["id"], array(720,480));
-			$img .= "<div class='slide_image_holder'><img data-image='$url' " . substr($crop, 5, strlen($crop) - 5) . "</div>";
+			$caption = get_post($image["id"])->post_excerpt;
+			$img .= "<div class='slide_image_holder'><p class='caption'>" . $caption . "</p><img data-image='$url' " . substr($crop, 5, strlen($crop) - 5) . "</div>";
 		}
 		$markup .= $img . "</div></div>";
 
 		return $markup;
+	}
+
+	function get_trending_posts($global = false){
+		
+		if($global):
+			$blogs = get_blog_list(0, 'all');
+			$trends = array();
+			foreach ($blogs as $blog):
+                    switch_to_blog($blog['blog_id']);
+                	$query = make_trend_query(2);
+                	if(count($trends) > 0):
+						$trends = array_merge($trends, set_trend($query));
+					else:
+						$trends = set_trend($query);
+					endif;
+                	restore_current_blog();
+            endforeach;
+
+            uasort($trends, function($a, $b){
+                if( $a->time == $b->time ) return 0;
+
+                return ($a->time > $b->time) ? -1 : 1;
+            });
+
+            return array_slice($trends, 0, 5);
+		else:
+			$query = make_trend_query();
+			$trends = set_trend($query);
+			return $trends;
+		endif;
+	}
+
+	function make_trend_query($limit = 5){
+		$args = array(
+			"meta_key" => "_perrier2_pageviews",
+			"orderby" => "meta_value_num",
+			"posts_per_page" => $limit,
+			"meta_query" => array(
+				array(
+					"key" => "_perrier2_pageviews"
+				)
+			)
+		);
+
+		return $meta_query = new WP_Query($args);
+	}
+
+	function set_trend($query){
+		$array = array();
+
+		if( $query->have_posts() ):
+			while($query->have_posts()) :
+				$query->the_post();
+
+				$trend = new stdClass();
+				$trend->title = get_the_title();
+				$trend->categories = wp_get_post_terms(get_the_ID(), "primary_category");
+				$trend->permalink = get_permalink();
+				$trend->views = get_post_meta(get_the_ID(), "_perrier2_pageviews", true);
+				array_push($array, $trend);
+			endwhile;
+		endif;
+
+		return $array;
 	}
         
     /*
@@ -201,7 +266,6 @@
 		$format = 'json'; //choose between json or xml
 		$version = '2.0.1';
 
-
 		//create the URL
 		$bitly = 'http://api.bit.ly/shorten?version='.$version.'&longUrl='.urlencode($url).'&login='.$login.'&apiKey='.$apikey.'&format='.$format;
 
@@ -210,7 +274,33 @@
 		$response = file_get_contents($bitly);
 
 		$json = @json_decode($response,true);
+
+		// print_r("parse_url()");
+		// print_r(parse_url("http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']));
 		return $json['results'][$url]['shortUrl'];
+	}
+
+	function twitterTitle($title, $country){
+		$countries = array(
+			"brazil" => "sperrier_bra",
+			"canada" => "SPerrier_CA",
+			"germany" => "sperrier_ger",
+			"israel" => "sperrier_TLV",
+			"japan" => "sperrier_TYO",
+			"lebanon" => "SPerrier_BEY",
+			"mexico" => "Societe_MX",
+			"russia" => "sperrier_mos",
+			"spain" => "sperrier_es",
+			"turkey" => "sperrier_tr",
+			"uae" => "societe_dxb",
+			"uk" => "sperrier_ldn",
+			"us" => "SPerrier_USA",
+			"venezuela" => "SocietePerrierV"
+		);
+
+		$at = in_array($countries[$country], $countries) ? $countries[$country] : "SPerrier_USA";
+		return $at;
+
 	}
 
 	function newgravatar ($avatar_defaults) {

@@ -25,8 +25,9 @@ function recipe_shortcode($attrs, $content){
 				$author = get_post_meta(get_the_ID(), "_perrier2_recipe_creator", true);
 				$ingredients = get_post_meta(get_the_ID(), "_perrier2_recipe_ingredients", true);
 				$content = get_post_meta(get_the_ID(), "_perrier2_recipe_process", true);
+				$uri = theme_uri;
 
-				$html = "<div class='recipe'><h4>$title <span>By: $author</span></h4><p>$content</p><div class='ingredients'><h5>INGREDIENTS</h5><p>$ingredients</p></div></div>";
+				$html = "<div class='recipe'><h4>$title <span>By: $author</span></h4><p>$content</p><div class='ingredients-container'><div class='ingredients pull-right'><h5>INGREDIENTS</h5><p>$ingredients</p></div><img class='pull-right bottom-cap' src='$uri/assets/images/data-border-bottom.png' /></div></div>";
 
 				return $html;
 			}

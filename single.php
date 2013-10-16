@@ -23,11 +23,27 @@
 				$country = wp_get_post_terms($postID, "country");
 				$city = wp_get_post_terms($postID, "city");
 
+				$pageviews = get_post_meta($postID, meta . "pageviews", true);
+				$transient = get_transient(meta . "pageviews" . get_current_blog_id() . $postID);
+
+				if( $transient === "set" ){
+					$pageviews = $pageviews == "" ? 1 : $pageviews + 1;
+					update_post_meta($postID, meta . "pageviews", $pageviews);
+				}
+				else{
+					set_transient(meta . "pageviews" . get_current_blog_id() . $postID, "set");
+					update_post_meta($postID, meta . "pageviews", 1);
+				}
+
+				preg_match("/http:\/\/[a-zA-Z.]+\/([a-zA-Z]+)/", get_permalink(), $matches);
+				// print_r($matches);
+				// print_r(get_headers(get_permalink()));
+
 			?>
 			<ol class="breadcrumb">
 				<li><a href="/">GLOBAL HOME</a></li>
 				<? if($country) :?>
-				<li><a href="<? echo get_term_link($country[0]->slug, "country"); ?>"><? echo $country[0]->name; ?></a></li>
+				<li><a href="<? echo home_url(); ?>"><? echo $country[0]->name; ?></a></li>
 				<? 
 					endif;
 					if($city) :
@@ -64,12 +80,12 @@
 					<? $thisCat = get_term_link($cats[0]); ?>
 					<li class="categories"><a href="<? echo $thisCat->errors ? "" : $thisCat;?>"><? echo $cats[0]->name; ?></a></li>
 					<li class="divider"></li>
-					<li class="date"><? the_date(); ?></li>
+					<li class="date"><? the_date("F j, Y"); ?></li>
 					<li class="comments-meta-link"><? comments_number("","",""); ?></li>
 					<li class="addthis">
 						<div class="addthis_toolbox addthis_default_style ">
+							<a href="https://twitter.com/share" class="twitter-share-button addthis_button_tweet" data-url="<? echo shorten(get_permalink()); ?>" data-counturl="<? echo get_permalink(); ?>" data-via="<? echo twitterTitle(get_the_title(), $matches[1]); ?>" data-lang="en">Tweet</a>
 							<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-							<a class="addthis_button_tweet" addthis:url="<? echo shorten(get_permalink()); ?>"></a>
 							<a class="addthis_button_pinterest_pinit"></a>
 							<!-- <a class="addthis_button_google_plusone_badge" g:plusone:size="small" g:plusone:href="https://plus.google.com/102383601500147943541/"></a>  -->
 							<a class="addthis_counter addthis_pill_style"></a>

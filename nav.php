@@ -34,17 +34,11 @@
 				<a target="_blank" href="#" class="dropdown-toggle" data-toggle="dropdown">NOW TRENDING <span class="caret"></span></a>
 				<ul id="trending" class="dropdown-menu" >
 					<?
-						$top_links = get_trending_global();
+						$top_links = get_current_blog_id() == 1 ? get_trending_posts(true) : get_trending_posts();
 
 						foreach($top_links as $link) :
-							$title = strstr($link, "articles/", false);
-							$title = substr($title, strlen("articles/"));
-							$title = explode("-", $title);
-							$title = ucwords(implode(" ", $title));
-							$title = substr($title, 0, strlen($title) - 1);
-							// print_r($title);
 					?>
-					<li><a target="_blank" href="<? echo $link; ?>"><? echo $title; ?></a></li>
+					<li><a target="_blank" href="<? echo $link->permalink; ?>"><? echo $link->title; ?></a></li>
 					<? endforeach; ?>
 				</ul>
 			</li>
@@ -360,15 +354,49 @@
 				$ytclass = $yt ? "" : "disabled";
 			?>
 			<li><a target="_blank" class="socialicon first <? echo $fbclass; ?>" href="<? echo $fb; ?>"><img src="<? echo theme_uri; ?>/assets/images/fb.png" alt=""></a></li>
+			<? if(get_current_blog_id() == 1): ?>
+			<li class="dropdown">
+				<a target="_blank" class="dropdown-toggle socialicon <? //echo $twclass; ?>" data-toggle="dropdown" href="#"><img src="<? echo theme_uri; ?>/assets/images/twitter.png" alt=""></a>
+				<ul class="dropdown-menu">
+					<li><a target="_blank" href="https://twitter.com/sperrier_bra" target="new">Brazil</a></li>
+					<li><a target="_blank" href="https://twitter.com/SPerrier_CA" target="new">Canada</a></li>
+					<li><a target="_blank" href="https://twitter.com/sperrier_ger" target="new">Germany</a></li>
+					<li><a target="_blank" href="https://twitter.com/sperrier_TLV" target="new">Israel</a></li>
+					<li><a target="_blank" href="https://twitter.com/sperrier_TYO" target="new">Japan</a></li>
+					<li><a target="_blank" href="https://twitter.com/SPerrier_BEY" target="new">Lebanon</a></li>
+					<li><a target="_blank" href="https://twitter.com/Societe_MX" target="new">Mexico</a></li>
+					<li><a target="_blank" href="https://twitter.com/sperrier_mos" target="new">Russia</a></li>
+					<li><a target="_blank" href="https://twitter.com/sperrier_es" target="new">Spain</a></li>
+					<li><a target="_blank" href="https://twitter.com/sperrier_tr" target="new">Turkey</a></li>
+					<li><a target="_blank" href="https://twitter.com/societe_dxb" target="new">United Arab Emirates</a></li>
+					<li><a target="_blank" href="https://twitter.com/sperrier_ldn" target="new">United Kingdom</a></li>
+					<li><a target="_blank" href="https://twitter.com/SPerrier_USA" target="new">United States</a></li>
+					<li><a target="_blank" href="https://twitter.com/SocietePerrierV" target="new">Venezuela</a></li>
+				</ul>
+			</li>
+			<li>
+				<a target="_blank" class="dropdown-toggle socialicon <? //echo $igclass; ?>" data-toggle="dropdown" href="#"><img src="<? echo theme_uri; ?>/assets/images/ig.png" alt=""></a>
+				<ul class="dropdown-menu">
+					<li><a target="_blank" href="http://instagram.com/societeperrierbrasil" target="new">Brazil</a></li>
+					<li><a target="_blank" href="http://instagram.com/sperrier_ca" target="new">Canada</a></li>
+					<li><a target="_blank" href="http://instagram.comsocieteperrierbeirut" target="new">Lebanon</a></li>
+					<li><a target="_blank" href="http://instagram.com/societeperriermx" target="new">Mexico</a></li>
+					<li><a target="_blank" href="http://instagram.com/sperrier_msks" target="new">Russia</a></li>
+					<li><a target="_blank" href="http://instagram.com/societeperrierdubai" target="new">United Arab Emirates</a></li>
+					<li><a target="_blank" href="http://instagram.com/societeperrierus" target="new">United States</a></li>
+				</ul>
+			</li>
+			<? else: ?>
 			<li><a target="_blank" class="socialicon <? echo $twclass; ?>" href="<? echo $tweet; ?>"><img src="<? echo theme_uri; ?>/assets/images/twitter.png" alt=""></a></li>
 			<li><a target="_blank" class="socialicon <? echo $igclass; ?>" href="<? echo $ig; ?>"><img src="<? echo theme_uri; ?>/assets/images/ig.png" alt=""></a></li>
+			<? endif; ?>
 			<li><a target="_blank" class="socialicon <? echo $ytclass; ?>" href="<? echo $yt; ?>"><img src="<? echo theme_uri; ?>/assets/images/yt.png" alt=""></a></li>
 			<li class="divider"></li>
 			<li class="dropdown">
 				<a target="_blank" href="#" class="dropdown-toggle socialicon search" data-toggle="dropdown"><img src="<? echo theme_uri; ?>/assets/images/search.png" alt=""></a>
 				<ul class="dropdown-menu pull-right">
 					<li>
-						<form id="searchForm" action="" role="form">
+						<form id="searchForm" action="/" role="form">
 							<input type="search" class="form-control input-sm" placeholder="Search" name="s" value="<? echo get_search_query(); ?>">
 						</form>
 						<? //Multisite_Global_Search::ms_global_search_perrier_form("search.php", null, null); ?>

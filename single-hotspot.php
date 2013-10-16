@@ -21,11 +21,25 @@
 				$country = wp_get_post_terms($postID, "country");
 				$city = wp_get_post_terms($postID, "city");
 
+				$pageviews = get_post_meta($postID, meta . "pageviews", true);
+				$transient = get_transient(meta . "pageviews" . get_current_blog_id() . $postID);
+
+				if( $transient === "set" ){
+					$pageviews = $pageviews == "" ? 1 : $pageviews + 1;
+					update_post_meta($postID, meta . "pageviews", $pageviews);
+				}
+				else{
+					set_transient(meta . "pageviews" . get_current_blog_id() . $postID, "set");
+					update_post_meta($postID, meta . "pageviews", 1);
+				}
+
+				preg_match("/http:\/\/[a-zA-Z.]+\/([a-zA-Z]+)/", get_permalink(), $matches);
+
 			?>
 			<ol class="breadcrumb">
 				<li><a href="/">GLOBAL HOME</a></li>
 				<? if($country) :?>
-				<li><a href="<? echo get_term_link($country[0]->slug, "country"); ?>"><? echo $country[0]->name; ?></a></li>
+				<li><a href="<? echo home_url(); ?>"><? echo $country[0]->name; ?></a></li>
 				<? 
 					endif;
 					if($city) :
@@ -63,27 +77,41 @@
 					?>
 				<img class="preferred" src="<? echo theme_uri; ?>/assets/images/hotspot.png" />
 					<? endif; ?>
+				<ul class="metadata">
+					<li class="addthis">
+						<div class="addthis_toolbox addthis_default_style ">
+							<a href="https://twitter.com/share" class="twitter-share-button addthis_button_tweet" data-counturl="<? echo get_permalink(); ?>" data-url="<? echo shorten(get_permalink()); ?>" data-via="<? echo twitterTitle(get_the_title(), $matches[1]); ?>">Tweet</a>
+							<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+							<a class="addthis_button_pinterest_pinit"></a>
+							<!-- <a class="addthis_button_google_plusone_badge" g:plusone:size="small" g:plusone:href="https://plus.google.com/102383601500147943541/"></a>  -->
+							<a class="addthis_counter addthis_pill_style"></a>
+						</div>
+					</li>
+				</ul>
 				<h2 class="title"><? the_title(); ?></h2>
 				<h6 class="author"><strong>By:</strong> <? the_author(); ?></h6>
 				<div class="hotspotContent">
 					<div class="content pull-left"><? the_content(); ?></div>
-					<div class="data pull-right">
-						<h6>HOTSPOT DETAILS</h6>
-						<p id="address1"><? echo get_post_meta(get_the_ID(), meta . "hotspot_address1", true) ?></p>
-						<p id="address2"><? echo get_post_meta(get_the_ID(), meta . "hotspot_address2", true) ?></p>
-						<p id="phone"><? echo get_post_meta(get_the_ID(), meta . "hotspot_phone", true) ?></p>
-						<p id="web"><a href="<? echo get_post_meta(get_the_ID(), meta . "hotspot_url", true) ?>">Website</a></p>
-						<ul>
-							<? if(get_post_meta(get_the_ID(), meta . "hotspot_twitter", true)) : ?>
-							<li><a href="<? echo get_post_meta(get_the_ID(), meta . "hotspot_twitter", true); ?>"><img src="<? echo theme_uri; ?>/assets/images/twitter-g.png" alt=""></a></li>
-							<? endif; ?>
-							<? if(get_post_meta(get_the_ID(), meta . "hotspot_fb", true)) : ?>
-							<li><a href="<? echo get_post_meta(get_the_ID(), meta . "hotspot_fb", true); ?>"><img src="<? echo theme_uri; ?>/assets/images/fb-g.png" alt=""></a></li>
-							<? endif; ?>
-							<? if(get_post_meta(get_the_ID(), meta . "hotspot_ig", true)) : ?>
-							<li><a href="<? echo get_post_meta(get_the_ID(), meta . "hotspot_ig", true); ?>"><img src="<? echo theme_uri; ?>/assets/images/ig-g.png" alt=""></a></li>
-							<? endif; ?>
-						</ul>
+					<div class="data-container pull-right">
+						<div class="data pull-right">
+							<h6>HOTSPOT DETAILS</h6>
+							<p id="address1"><? echo get_post_meta(get_the_ID(), meta . "hotspot_address1", true) ?></p>
+							<p id="address2"><? echo get_post_meta(get_the_ID(), meta . "hotspot_address2", true) ?></p>
+							<p id="phone"><? echo get_post_meta(get_the_ID(), meta . "hotspot_phone", true) ?></p>
+							<p id="web"><a href="<? echo get_post_meta(get_the_ID(), meta . "hotspot_url", true) ?>">Website</a></p>
+							<ul>
+								<? if(get_post_meta(get_the_ID(), meta . "hotspot_twitter", true)) : ?>
+								<li><a href="<? echo get_post_meta(get_the_ID(), meta . "hotspot_twitter", true); ?>"><img src="<? echo theme_uri; ?>/assets/images/twitter-g.png" alt=""></a></li>
+								<? endif; ?>
+								<? if(get_post_meta(get_the_ID(), meta . "hotspot_fb", true)) : ?>
+								<li><a href="<? echo get_post_meta(get_the_ID(), meta . "hotspot_fb", true); ?>"><img src="<? echo theme_uri; ?>/assets/images/fb-g.png" alt=""></a></li>
+								<? endif; ?>
+								<? if(get_post_meta(get_the_ID(), meta . "hotspot_ig", true)) : ?>
+								<li><a href="<? echo get_post_meta(get_the_ID(), meta . "hotspot_ig", true); ?>"><img src="<? echo theme_uri; ?>/assets/images/ig-g.png" alt=""></a></li>
+								<? endif; ?>
+							</ul>
+						</div>
+						<img class="pull-right bottom-cap" src="<? echo theme_uri ?>/assets/images/data-border-bottom.png" alt="" />
 					</div>
 				</div>
 				<?
